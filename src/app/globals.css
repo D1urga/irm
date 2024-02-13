@@ -86,13 +86,31 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  P {
+    user-select: none;
+  }
+  *::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  *::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 1px;
+    height: 0px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(79, 69, 69);
+    border-radius: 15px;
+    border: 2px solid rgb(179, 179, 179);
+  }
+  *::placeholder {
+    /* color: rgb(168, 168, 168); */
+    font-size: 12px;
+    font-weight: 300;
+  }
+  input:focus {
+    outline: none;
+  }
 }
 
 a {
