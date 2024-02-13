@@ -24,6 +24,7 @@
   .angle_up {
     font-size: 17px;
     color: rgb(91, 91, 91);
+    cursor: pointer;
   }
   .des {
     font-size: 13px;

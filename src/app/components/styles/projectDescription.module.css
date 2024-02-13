@@ -31,6 +31,7 @@
   .angle_up {
     font-size: 17px;
     color: rgb(91, 91, 91);
+    cursor: pointer;
   }
   .project_info_button {
     display: flex;

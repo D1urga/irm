@@ -76,6 +76,7 @@
   .angle_down {
     font-size: 17px;
     color: rgb(91, 91, 91);
+    cursor: pointer;
   }
   .preview {
     user-select: none;

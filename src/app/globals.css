@@ -88,6 +88,7 @@ body {
 body {
   button {
     user-select: none;
+    cursor: pointer;
   }
   P {
     user-select: none;
