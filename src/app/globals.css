@@ -86,6 +86,9 @@ body {
 }
 
 body {
+  button {
+    user-select: none;
+  }
   P {
     user-select: none;
   }

@@ -10,6 +10,7 @@ import PolicyParticulars from "./components/policyParticulars.js";
 import ObservationsAndVerifications from "./components/observationsAndVerifications.js";
 import CauseOfLoss from "./components/causeOfLoss";
 import AssessmentOfLoss from "./components/assessmentOfLoss";
+import Conclusion from "./components/conclusion";
 
 export default function Home() {
   const [list, setList] = useState(["anoop"]);
@@ -126,7 +127,12 @@ export default function Home() {
           <div className={styles.option_outer_div}>
             <div className={styles.option}>
               <p>Conclusion</p>
-              <FaAngleDown className={styles.angle_down} />
+              <FaAngleDown
+                className={styles.angle_down}
+                onClick={() => {
+                  setCurrentState(7);
+                }}
+              />
             </div>
           </div>
           <p className={styles.preview}>Preview</p>
@@ -248,6 +254,12 @@ export default function Home() {
         />
       ) : currentSection === 6 ? (
         <AssessmentOfLoss
+          onClickFun={() => {
+            setCurrentState(0);
+          }}
+        />
+      ) : currentSection === 7 ? (
+        <Conclusion
           onClickFun={() => {
             setCurrentState(0);
           }}
