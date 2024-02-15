@@ -14,29 +14,31 @@ export default function HeaderSection({
     });
   };
   return (
-    <div className={styles.outer_div}>
-      <div className={styles.title}>
-        <p>Header Section</p>
-        <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
-      </div>
-      <p className={styles.reason}>Reason</p>
-      <textarea
-        value={headerSectionData.reason}
-        name="reason"
-        onChange={handleChange}
-        className={styles.text_area}
-        placeholder="enter your reason here ..."
-        autoComplete="true"
-      ></textarea>
+    <div className={styles.main}>
+      <div className={styles.outer_div}>
+        <div className={styles.title}>
+          <p>Header Section</p>
+          <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
+        </div>
+        <p className={styles.reason}>Reason</p>
+        <textarea
+          value={headerSectionData.reason}
+          name="reason"
+          onChange={handleChange}
+          className={styles.text_area}
+          placeholder="enter your reason here ..."
+          autoComplete="true"
+        ></textarea>
 
-      <p className={styles.reason}>Name</p>
-      <input
-        value={headerSectionData.name}
-        name="name"
-        onChange={handleChange}
-        className={styles.input}
-        placeholder="enter your name here ..."
-      ></input>
+        <p className={styles.reason}>Name</p>
+        <input
+          value={headerSectionData.name}
+          name="name"
+          onChange={handleChange}
+          className={styles.input}
+          placeholder="enter your name here ..."
+        ></input>
+      </div>
     </div>
   );
 }

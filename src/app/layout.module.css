@@ -112,7 +112,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1px;
     height: 40px;
   }
@@ -121,7 +121,7 @@
     top: 12px;
     left: 12px;
     border-radius: 5px;
-    color: rgb(63, 63, 63);
+    color: rgb(255, 255, 255);
   }
   .logo {
     height: 30px;
@@ -135,9 +135,10 @@
     font-weight: 600;
     top: 8px;
     left: 50vw;
+    color: white;
   }
   .title_name::first-letter {
-    color: rgb(201, 41, 41);
+    color: rgb(255, 42, 42);
   }
   .name {
     font-size: 30px;
@@ -197,7 +198,7 @@
     width: 40vw;
     padding: 50px 0;
     background-color: rgb(255, 255, 255);
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1px;
+    box-shadow: rgb(215, 215, 215) 0px 0px 3px 1.1px;
   }
   .sidebar1 {
     position: fixed;
@@ -220,8 +221,8 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.6);
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: rgb(215, 215, 215) 0px 0px 3px 1.1px;
     height: 40px;
   }
   .menu {
@@ -229,7 +230,7 @@
     top: 12px;
     left: 20px;
     border-radius: 5px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
   }
   .title_name {
     position: fixed;
@@ -237,9 +238,10 @@
     font-weight: 600;
     top: 8px;
     left: 50vw;
+    color: white;
   }
   .title_name::first-letter {
-    color: rgb(201, 41, 41);
+    color: rgb(255, 22, 22);
   }
   .logo {
     height: 30px;
