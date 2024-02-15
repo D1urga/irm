@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
                 setIsSidebarOpen(!isSidebarOpen);
               }}
             />
+            <p className={styles.title_name}>irm</p>
           </div>
           <div className={isSidebarOpen ? styles.sidebar : styles.sidebar1}>
             {/* <Image src={logo} className={styles.logo} /> */}

@@ -129,6 +129,16 @@
     object-fit: cover;
     margin-bottom: 30px;
   }
+  .title_name {
+    position: fixed;
+    font-size: 18px;
+    font-weight: 600;
+    top: 8px;
+    left: 50vw;
+  }
+  .title_name::first-letter {
+    color: rgb(201, 41, 41);
+  }
   .name {
     font-size: 30px;
     font-weight: bold;
@@ -220,6 +230,16 @@
     left: 20px;
     border-radius: 5px;
     color: rgb(0, 0, 0);
+  }
+  .title_name {
+    position: fixed;
+    font-size: 17px;
+    font-weight: 600;
+    top: 8px;
+    left: 50vw;
+  }
+  .title_name::first-letter {
+    color: rgb(201, 41, 41);
   }
   .logo {
     height: 30px;
