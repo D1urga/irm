@@ -217,9 +217,9 @@
   .menu {
     position: fixed;
     top: 12px;
-    left: 12px;
+    left: 20px;
     border-radius: 5px;
-    color: rgb(63, 63, 63);
+    color: rgb(0, 0, 0);
   }
   .logo {
     height: 30px;
