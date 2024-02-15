@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Margin, Resolution, usePDF } from "react-to-pdf";
 import styles from "./page.module.css";
-import { FaAngleDown, FaArrowLeft } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp, FaArrowLeft } from "react-icons/fa";
 import HeaderSection from "./components/headerSection.js";
 import { useEffect, useState } from "react";
 import ProjectDescription from "./components/projectDescription.js";
@@ -11,14 +11,70 @@ import ObservationsAndVerifications from "./components/observationsAndVerificati
 import CauseOfLoss from "./components/causeOfLoss";
 import AssessmentOfLoss from "./components/assessmentOfLoss";
 import Conclusion from "./components/conclusion";
+import irmLogo from "./images/irm_logo.jpg";
+import ReactToPrint from "react-to-print";
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 
 export default function Home() {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+  // ////////////////////////////
+  const [headerSectionData, setHeaderSectionData] = useState({
+    reason: "",
+    name: "",
+  });
+
+  const [policyParticularsData, setPolicyParticularsData] = useState({
+    insurer: "",
+    insured: "",
+    typesOfPolicy: "",
+    policyNumber: "",
+    periodOfInsurance: "",
+    policyExcess: "",
+  });
+
+  const [projectDescriptionData, setProjectDescriptionData] = useState([
+    {
+      projectTitle: "",
+      client: "",
+      documentReference: "",
+    },
+    {
+      status: "",
+      author: "",
+      reviewer: "",
+      distribution: "",
+      mode: "",
+      date: "",
+    },
+    {
+      status: "",
+      author: "",
+      reviewer: "",
+      distribution: "",
+      mode: "",
+      date: "",
+    },
+    {
+      status: "",
+      author: "",
+      reviewer: "",
+      distribution: "",
+      mode: "",
+      date: "",
+    },
+  ]);
+  // /////////////////////////
   const [list, setList] = useState(["anoop"]);
   const [list1, setList1] = useState(0);
+  const [isPdfOpen, setIsPdfOpen] = useState(false);
   const { toPDF, targetRef } = usePDF({
     method: "save",
     filename: "multipage-example.pdf",
-    resolution: Resolution.LOW,
+    resolution: Resolution.MEDIUM,
     page: { margin: Margin.MEDIUM },
     overrides: {
       pdf: {
@@ -46,14 +102,18 @@ export default function Home() {
     <div className={styles.outer_div}>
       <div className={styles.topbar}>
         <p>Dashboard</p>
+        <p>{headerSectionData.reason}</p>
+        <p>{headerSectionData.name}</p>
         <div className={styles.btn_div}>
           <button className={styles.btn1}>Save</button>
           <button className={styles.btn2}>Delete</button>
-          <button className={styles.btn3}>Download</button>
+          <button className={styles.btn3} onClick={handlePrint}>
+            Download
+          </button>
         </div>
       </div>
       {currentSection === 0 ? (
-        <div>
+        <div className={styles.allPages}>
           <div className={styles.report}>
             <FaArrowLeft className={styles.arrow_left} />
             <p>Mr John report</p>
@@ -135,107 +195,37 @@ export default function Home() {
               />
             </div>
           </div>
-          <p className={styles.preview}>Preview</p>
-          {/* <p>{list.lenght}</p>
-          {list &&
-            list.map((val, index) => (
-              <p
-                key={index}
-                onClick={() => {
-                  const data = list.concat("kumar");
-                  setList(data);
-                  console.log(list);
-                }}
-              >
-                {val}
-              </p>
-            ))} */}
-
-          {/* <button onClick={toPDF}>Download PDF</button>
-          <div ref={targetRef} className={styles.test_div}>
-            <img
-              src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSb5YTP_Zfb9Aj9h3n79iDjofIAWbIRCn2mbRxjP04h8I7nDF1tj5DP_oCVy4xqRAyd5fxaiA9eZGJ0W4I"
-              height={200}
-              width={300}
-            ></img>
-            <img
-              src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSb5YTP_Zfb9Aj9h3n79iDjofIAWbIRCn2mbRxjP04h8I7nDF1tj5DP_oCVy4xqRAyd5fxaiA9eZGJ0W4I"
-              height={200}
-              width={300}
-            ></img>
-            <img
-              src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSb5YTP_Zfb9Aj9h3n79iDjofIAWbIRCn2mbRxjP04h8I7nDF1tj5DP_oCVy4xqRAyd5fxaiA9eZGJ0W4I"
-              height={200}
-              width={300}
-            ></img>
-            <img
-              src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSb5YTP_Zfb9Aj9h3n79iDjofIAWbIRCn2mbRxjP04h8I7nDF1tj5DP_oCVy4xqRAyd5fxaiA9eZGJ0W4I"
-              height={200}
-              width={300}
-            ></img>
-            <img
-              src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSb5YTP_Zfb9Aj9h3n79iDjofIAWbIRCn2mbRxjP04h8I7nDF1tj5DP_oCVy4xqRAyd5fxaiA9eZGJ0W4I"
-              height={200}
-              width={300}
-            ></img>
-            <img
-              src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSb5YTP_Zfb9Aj9h3n79iDjofIAWbIRCn2mbRxjP04h8I7nDF1tj5DP_oCVy4xqRAyd5fxaiA9eZGJ0W4I"
-              height={200}
-              width={300}
-            ></img>
-
-            <p className={styles.test}>
-              Paragraphs are the building blocks of papers. Many students define
-              paragraphs in terms of length: a paragraph is a group of at least
-              five sentences, a paragraph is half a page long, etc. In reality,
-              though, the unity and coherence of ideas among sentences is what
-              constitutes a paragraph. A paragraph is defined as “a group of
-              sentences or a single sentence that forms a unit” (Lunsford and
-              Connors 116). Length and appearance do not determine whether a
-              section in a paper is a paragraph. For instance, in some styles of
-              writing, particularly journalistic styles, a paragraph can be just
-              one sentence long. Ultimately, a paragraph is a sentence or group
-              of sentences that support one main idea. In this handout, we will
-              refer to this as the “controlling idea,” because it controls what
-              happens in the rest of the paragraph. How do I decide what to put
-              in a paragraph? Before you can begin to determine what the
-              composition of a particular paragraph will be, you must first
-              decide on an argument and a working thesis statement for your
-              paper. What is the most important idea that you are trying to
-              convey to your reader? The information in each paragraph must be
-              related to that idea. In other words, your paragraphs should
-              remind your reader that there is a recurrent relationship between
-              your thesis and the information in each paragraph. A working
-              thesis functions like a seed from which your paper, and your
-              ideas, will grow. The whole process is an organic one—a natural
-              progression from a seed to a full-blown paper where there are
-              direct, familial relationships between all of the ideas in the
-              paper. The decision about what to put into your paragraphs begins
-              with the germination of a seed of ideas; this “germination
-              process” is better known as brainstorming. There are many
-              techniques for brainstorming; whichever one you choose, this stage
-              of paragraph development cannot be skipped. Building paragraphs
-              can be like building a skyscraper: there must be a well-planned
-              foundation that supports what you are building. Any cracks,
-              inconsistencies, or other corruptions of the foundation can cause
-              your whole paper to crumble.
+          <div className={styles.preview_div}>
+            <p
+              className={styles.preview}
+              onClick={() => {
+                setIsPdfOpen(!isPdfOpen);
+              }}
+            >
+              Preview
             </p>
-          </div> */}
+          </div>
         </div>
       ) : currentSection === 1 ? (
         <HeaderSection
+          headerSectionData={headerSectionData}
+          setHeaderSectionData={setHeaderSectionData}
           onClickFun={() => {
             setCurrentState(0);
           }}
         />
       ) : currentSection == 2 ? (
         <ProjectDescription
+          projectDescriptionData={projectDescriptionData}
+          setProjectDescriptionData={setProjectDescriptionData}
           onClickFun={() => {
             setCurrentState(0);
           }}
         />
       ) : currentSection == 3 ? (
         <PolicyParticulars
+          policyParticularsData={policyParticularsData}
+          setPolicyParticularsData={setPolicyParticularsData}
           onClickFun={() => {
             setCurrentState(0);
           }}
@@ -265,6 +255,40 @@ export default function Home() {
           }}
         />
       ) : null}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+      <div
+        className={isPdfOpen ? styles.pdf : styles.pdf1}
+        onClick={() => {
+          setIsPdfOpen(!isPdfOpen);
+        }}
+      >
+        {/* <FaAngleUp
+          onClickFun={() => {
+            setIsPdfOpen(!isPdfOpen);
+          }}
+        /> */}
+        <div
+          ref={targetRef}
+          className={isPdfOpen ? styles.pdf_div : styles.pdf_div1}
+        >
+          <div className={styles.logo_div}>
+            <Image src={irmLogo} className={styles.irm_logo} />
+          </div>
+        </div>
+      </div>
+      <div>
+        <div ref={componentRef} className={styles.print_pdf}>
+          <Image src={irmLogo} className={styles.irm_logo} />
+          <p className={styles.para}>
+            aspbfasjfads;fds daspbfasjfads;fds daspbfasjfads;fds asjfads;fds
+            daspbfasjfads;fds daspbfasjfads;fds daspbfasjfads;fds
+            daspbfasjfads;fds daspbfasjfads;fds daspbfasjfads;fds
+          </p>
+          <div className={styles.testing}>anoop kumar</div>
+
+          <h1>bhcsogfbasfipgsbfyds</h1>
+        </div>
+      </div>
     </div>
   );
 }

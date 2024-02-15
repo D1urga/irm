@@ -6,6 +6,7 @@ import logo from "./images/irm1.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { FaBars } from "react-icons/fa";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
@@ -15,11 +16,20 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   const [isActive, setIsActive] = useState(1);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <html lang="en">
       <body className={inter.className}>
         <div>
-          <div className={styles.sidebar}>
+          <div className={styles.menu_div}>
+            <FaBars
+              className={styles.menu}
+              onClick={() => {
+                setIsSidebarOpen(!isSidebarOpen);
+              }}
+            />
+          </div>
+          <div className={isSidebarOpen ? styles.sidebar : styles.sidebar1}>
             {/* <Image src={logo} className={styles.logo} /> */}
             <p className={styles.name}>irm</p>
             <Link
@@ -37,7 +47,7 @@ export default function RootLayout({ children }) {
               <p>Dashboard</p>
             </Link>
           </div>
-          {children}
+          <div className={styles.children}> {children}</div>
         </div>
       </body>
     </html>
