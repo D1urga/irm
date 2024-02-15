@@ -382,14 +382,14 @@
   }
   .option {
     display: flex;
-    width: 94vw;
+    width: 93vw;
     align-items: center;
     justify-content: space-between;
     padding: 15px 5vw;
     margin: 6px 0;
     border-radius: 5px;
     background-color: #ffffff;
-    box-shadow: rgb(225, 225, 225) 0px 0px 4px 1.3px;
+    box-shadow: rgb(225, 225, 225) 0px 0px 4px 1.1px;
   }
   .option p {
     font-weight: 510;
