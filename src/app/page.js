@@ -15,6 +15,7 @@ import irmLogo from "./images/irm_logo.jpg";
 import ReactToPrint from "react-to-print";
 import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
+import { Table } from "@mui/material";
 
 export default function Home() {
   const componentRef = useRef();
@@ -36,28 +37,12 @@ export default function Home() {
     policyExcess: "",
   });
 
-  const [projectDescriptionData, setProjectDescriptionData] = useState([
-    {
-      projectTitle: "",
-      client: "",
-      documentReference: "",
-    },
-    {
-      status: "",
-      author: "",
-      reviewer: "",
-      distribution: "",
-      mode: "",
-      date: "",
-    },
-    {
-      status: "",
-      author: "",
-      reviewer: "",
-      distribution: "",
-      mode: "",
-      date: "",
-    },
+  const [projectDescriptionData, setProjectDescriptionData] = useState({
+    projectTitle: "",
+    client: "",
+    documentReference: "",
+  });
+  const [projectDescriptionTable, setProjectDescriptionTable] = useState([
     {
       status: "",
       author: "",
@@ -67,8 +52,35 @@ export default function Home() {
       date: "",
     },
   ]);
+
+  const [
+    observationsAndVerificationsData,
+    setObservationsAndVerificationsData,
+  ] = useState([
+    { introduction: "introduction data", conclusion: "conclusion data" },
+  ]);
+  const [
+    observationsAndVerificationsAttach,
+    setObservationsAndVerificationsAttach,
+  ] = useState([
+    {
+      description: "decs",
+      title: "title",
+      attachmentUrl: "attchmen",
+    },
+  ]);
+
+  const [assessmentLossDes, setAssessmentLossDes] = useState("dskhda");
+  const [assessmentLossTable, setAssessmentLossTable] = useState([]);
+  const [assessmentLossNotes, setAssessmentLossNotes] = useState([]);
+
+  const [conclusionDes, setConclusionDes] = useState("");
+  const [conclusionTable, setConclusionTable] = useState([
+    { title: "abdasd", attachmentUrl: "ashvhas" },
+  ]);
+
   // /////////////////////////
-  const [list, setList] = useState(["anoop"]);
+  const [list, setList] = useState(["anoop", "kumar"]);
   const [list1, setList1] = useState(0);
   const [isPdfOpen, setIsPdfOpen] = useState(false);
   const { toPDF, targetRef } = usePDF({
@@ -102,8 +114,8 @@ export default function Home() {
     <div className={styles.outer_div}>
       <div className={styles.topbar}>
         <p>Dashboard</p>
-        <p>{headerSectionData.reason}</p>
-        <p>{headerSectionData.name}</p>
+        {/* <p>{headerSectionData.reason}</p> */}
+        {/* <p>{headerSectionData.name}</p> */}
         <div className={styles.btn_div}>
           <button className={styles.btn1}>Save</button>
           <button className={styles.btn2}>Delete</button>
@@ -218,6 +230,8 @@ export default function Home() {
         <ProjectDescription
           projectDescriptionData={projectDescriptionData}
           setProjectDescriptionData={setProjectDescriptionData}
+          projectDescriptionTable={projectDescriptionTable}
+          setProjectDescriptionTable={setProjectDescriptionTable}
           onClickFun={() => {
             setCurrentState(0);
           }}
@@ -232,6 +246,16 @@ export default function Home() {
         />
       ) : currentSection === 4 ? (
         <ObservationsAndVerifications
+          observationsAndVerificationsData={observationsAndVerificationsData}
+          setObservationsAndVerificationsData={
+            setObservationsAndVerificationsData
+          }
+          observationsAndVerificationsAttach={
+            observationsAndVerificationsAttach
+          }
+          setObservationsAndVerificationsAttach={
+            setObservationsAndVerificationsAttach
+          }
           onClickFun={() => {
             setCurrentState(0);
           }}
@@ -244,12 +268,22 @@ export default function Home() {
         />
       ) : currentSection === 6 ? (
         <AssessmentOfLoss
+          assessmentLossDes={assessmentLossDes}
+          setAssessmentLossDes={setAssessmentLossDes}
+          assessmentLossTable={assessmentLossTable}
+          setAssessmentLossTable={setAssessmentLossTable}
+          assessmentLossNotes={assessmentLossNotes}
+          setAssessmentLossNotes={setAssessmentLossNotes}
           onClickFun={() => {
             setCurrentState(0);
           }}
         />
       ) : currentSection === 7 ? (
         <Conclusion
+          conclusionDes={conclusionDes}
+          setConclusionDes={setConclusionDes}
+          conclusionTable={conclusionTable}
+          setConclusionTable={setConclusionTable}
           onClickFun={() => {
             setCurrentState(0);
           }}
@@ -276,17 +310,54 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
-        <div ref={componentRef} className={styles.print_pdf}>
-          <Image src={irmLogo} className={styles.irm_logo} />
-          <p className={styles.para}>
-            aspbfasjfads;fds daspbfasjfads;fds daspbfasjfads;fds asjfads;fds
-            daspbfasjfads;fds daspbfasjfads;fds daspbfasjfads;fds
-            daspbfasjfads;fds daspbfasjfads;fds daspbfasjfads;fds
-          </p>
-          <div className={styles.testing}>anoop kumar</div>
 
-          <h1>bhcsogfbasfipgsbfyds</h1>
+      <div
+        style={{
+          display: "none",
+        }}
+      >
+        <div
+          ref={componentRef}
+          className={styles.print_pdf}
+          style={{
+            width: "100vw",
+
+            backgroundColor: "pink",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "red",
+            }}
+          >
+            <Image
+              src={irmLogo}
+              className={styles.irm_logo}
+              style={{ height: "100px", width: "400px" }}
+            />
+          </div>
+          <div
+            className="divi"
+            style={{
+              width: "100%",
+
+              borderRadius: "30px",
+              backgroundColor: "white",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p>
+              e elooo guy sheelooo guyheelooo guyshe elooo guy looo guyshe elooo
+              guy sheelooo guyheelooo she elooo guy sheelooo guyheelooo guyshe
+              elooo guy sheelooo guyheelooo guyshe elooo guy sheelooo guy
+            </p>
+          </div>
         </div>
       </div>
     </div>

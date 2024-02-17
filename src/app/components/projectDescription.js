@@ -6,18 +6,33 @@ import { useState } from "react";
 export default function ProjectDescription({
   projectDescriptionData,
   setProjectDescriptionData,
+  projectDescriptionTable,
+  setProjectDescriptionTable,
   onClickFun,
 }) {
   const [page, setPage] = useState(0);
+  const [isDescriptionShowing, setIsDescriptionShowing] = useState(true);
+  const [isDescriptionTableShowing, setIsDescriptionTableShowing] =
+    useState(false);
+  const [isDescriptionTableUploading, setIsDescriptionTableUploading] =
+    useState(false);
 
-  const handleChange = (event, id) => {
-    const clone = [...projectDescriptionData];
-    const obj = clone[id];
-
-    obj[`${event.target.name}`] = event.target.value;
-    clone[id] = obj;
-    setProjectDescriptionData([...clone]);
+  const [projectDescriptionTableData, setProjectDescriptionTableData] =
+    useState({
+      status: "sfsdgfsdgds",
+      author: "fsadfadsf",
+      reviewer: "fdsafdsf",
+      distribution: "sfasfasdf",
+      mode: "sfasfas",
+      date: "fasasfasd",
+    });
+  const handleChange = (event) => {
+    setProjectDescriptionTableData({
+      ...projectDescriptionTableData,
+      [event.target.name]: event.target.value,
+    });
   };
+
   return (
     <div className={styles.main_div}>
       <div className={styles.outer_div}>
@@ -28,77 +43,72 @@ export default function ProjectDescription({
           </div>
           <button
             className={
-              page === 0
+              setIsDescriptionShowing
                 ? styles.project_info_button
                 : styles.project_info_button1
             }
             onClick={() => {
-              setPage(0);
+              setIsDescriptionShowing(true);
+              setIsDescriptionTableShowing(false);
+              setIsDescriptionTableUploading(false);
             }}
           >
             Project Info
           </button>
           <p className={styles.issue_table}>Issues Table</p>
-          <div
-            className={page === 1 ? styles.tables : styles.tables1}
-            onClick={() => {
-              setPage(1);
-            }}
-          >
-            <p>item 1</p>
-            <div className={styles.logos}>
-              <FaPlusCircle className={styles.logo1} />
-              <FaEdit className={styles.logo2} />
-              <FaTrash className={styles.logo3} />
-            </div>
-          </div>
-          <div
-            className={page === 2 ? styles.tables : styles.tables1}
-            onClick={() => {
-              setPage(2);
-            }}
-          >
-            <p>item 2</p>
-            <div className={styles.logos}>
-              <FaPlusCircle className={styles.logo1} />
-              <FaEdit className={styles.logo2} />
-              <FaTrash className={styles.logo3} />
-            </div>
-          </div>
-          <div
-            className={page === 3 ? styles.tables : styles.tables1}
-            onClick={() => {
-              setPage(3);
-            }}
-          >
-            <p>item 3</p>
-            <div className={styles.logos}>
-              <FaPlusCircle className={styles.logo1} />
-              <FaEdit className={styles.logo2} />
-              <FaTrash className={styles.logo3} />
-            </div>
+          <div className={styles.description_table_div}>
+            {projectDescriptionTable.map((data, index) => (
+              <div>
+                <div
+                  className={
+                    setIsDescriptionTableShowing
+                      ? styles.tables
+                      : styles.tables1
+                  }
+                  onClick={() => {
+                    setIsDescriptionShowing(false);
+                    setIsDescriptionTableShowing(true);
+                    setIsDescriptionTableUploading(false);
+                    setPage(index);
+                  }}
+                >
+                  <p>item {index}</p>
+                  <div className={styles.logos}>
+                    <FaPlusCircle className={styles.logo1} />
+                    <FaEdit className={styles.logo2} />
+                    <FaTrash className={styles.logo3} />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         <div>
-          <button className={styles.add_issue_btn}>Add Issue</button>
+          <button
+            className={styles.add_issue_btn}
+            onClick={() => {
+              setIsDescriptionShowing(false);
+              setIsDescriptionTableShowing(false);
+              setIsDescriptionTableUploading(true);
+            }}
+          >
+            Add Issue
+          </button>
         </div>
       </div>
-      {page === 0 ? (
+      {isDescriptionShowing ? (
         <div className={styles.outer_div2}>
           <p className={styles.project_info}>Project Info</p>
           <p className={styles.project_title}>Project title</p>
           <textarea
-            value={projectDescriptionData[0].projectTitle}
+            // value={projectDescriptionData[0].projectTitle}
             name="projectTitle"
-            onChange={(e) => {
-              handleChange(e, 0);
-            }}
             className={styles.project_title_textarea}
             placeholder="project title ..."
           ></textarea>
           <p className={styles.project_title}>Client</p>
           <input
-            value={projectDescriptionData[0].client}
+            // value={projectDescriptionData[0].client}
             name="client"
             onChange={(e) => {
               handleChange(e, 0);
@@ -108,7 +118,7 @@ export default function ProjectDescription({
           ></input>
           <p className={styles.project_title}>Document Reference</p>
           <input
-            value={projectDescriptionData[0].documentReference}
+            // value={projectDescriptionData[0].documentReference}
             name="documentReference"
             onChange={(e) => {
               handleChange(e, 0);
@@ -117,12 +127,12 @@ export default function ProjectDescription({
             placeholder="document ref ..."
           ></input>
         </div>
-      ) : page === 1 ? (
+      ) : isDescriptionTableShowing ? (
         <div className={styles.outer_div3}>
           <p className={styles.add_issue_title}>Add Issues (1)</p>
           <p className={styles.fields}>Status</p>
           <input
-            value={projectDescriptionData[1].status}
+            value={projectDescriptionTable[page].status}
             name="status"
             onChange={(e) => {
               handleChange(e, 1);
@@ -132,7 +142,7 @@ export default function ProjectDescription({
           ></input>
           <p className={styles.fields}>Author</p>
           <input
-            value={projectDescriptionData[1].author}
+            value={projectDescriptionTable[page].author}
             name="author"
             onChange={(e) => {
               handleChange(e, 1);
@@ -142,7 +152,7 @@ export default function ProjectDescription({
           ></input>
           <p className={styles.fields}>Reviewer</p>
           <input
-            value={projectDescriptionData[1].reviewer}
+            value={projectDescriptionTable[page].reviewer}
             name="reviewer"
             onChange={(e) => {
               handleChange(e, 1);
@@ -152,7 +162,7 @@ export default function ProjectDescription({
           ></input>
           <p className={styles.fields}>Distribution</p>
           <input
-            value={projectDescriptionData[1].distribution}
+            value={projectDescriptionTable[page].distribution}
             name="distribution"
             onChange={(e) => {
               handleChange(e, 1);
@@ -162,7 +172,7 @@ export default function ProjectDescription({
           ></input>
           <p className={styles.fields}>Mode</p>
           <input
-            value={projectDescriptionData[1].mode}
+            value={projectDescriptionTable[page].mode}
             name="mode"
             onChange={(e) => {
               handleChange(e, 1);
@@ -172,7 +182,7 @@ export default function ProjectDescription({
           ></input>
           <p className={styles.fields}>Date</p>
           <input
-            value={projectDescriptionData[1].date}
+            value={projectDescriptionTable[page].date}
             name="date"
             onChange={(e) => {
               handleChange(e, 1);
@@ -180,144 +190,80 @@ export default function ProjectDescription({
             className={styles.add_issue_input}
             placeholder="Date..."
           ></input>
-          <div>
+          {/* <div>
             <button className={styles.add_btn}>Add</button>
             <button className={styles.delete_btn}>Delete</button>
-          </div>
+          </div> */}
         </div>
-      ) : page === 2 ? (
+      ) : isDescriptionTableUploading ? (
         <div className={styles.outer_div3}>
           <p className={styles.add_issue_title}>Add Issues (2)</p>
           <p className={styles.fields}>Status</p>
           <input
-            value={projectDescriptionData[2].status}
+            value={projectDescriptionTableData.status}
             name="status"
-            onChange={(e) => {
-              handleChange(e, 2);
-            }}
+            onChange={handleChange}
             className={styles.add_issue_input}
             placeholder="status..."
           ></input>
           <p className={styles.fields}>Author</p>
           <input
-            value={projectDescriptionData[2].author}
+            value={projectDescriptionTableData.author}
+            onChange={handleChange}
             name="author"
-            onChange={(e) => {
-              handleChange(e, 2);
-            }}
             className={styles.add_issue_input}
             placeholder="Author..."
           ></input>
           <p className={styles.fields}>Reviewer</p>
           <input
-            value={projectDescriptionData[2].reviewer}
+            value={projectDescriptionTableData.reviewer}
+            onChange={handleChange}
             name="reviewer"
-            onChange={(e) => {
-              handleChange(e, 2);
-            }}
             className={styles.add_issue_input}
             placeholder="Reviewer..."
           ></input>
           <p className={styles.fields}>Distribution</p>
           <input
-            value={projectDescriptionData[2].distribution}
+            value={projectDescriptionTableData.distribution}
+            onChange={handleChange}
             name="distribution"
-            onChange={(e) => {
-              handleChange(e, 2);
-            }}
             className={styles.add_issue_input}
             placeholder="Distribution..."
           ></input>
           <p className={styles.fields}>Mode</p>
           <input
-            value={projectDescriptionData[2].mode}
+            value={projectDescriptionTableData.mode}
+            onChange={handleChange}
             name="mode"
-            onChange={(e) => {
-              handleChange(e, 2);
-            }}
             className={styles.add_issue_input}
             placeholder="Mode..."
           ></input>
           <p className={styles.fields}>Date</p>
           <input
-            value={projectDescriptionData[2].date}
+            value={projectDescriptionTableData.date}
+            onChange={handleChange}
             name="date"
-            onChange={(e) => {
-              handleChange(e, 2);
-            }}
             className={styles.add_issue_input}
             placeholder="Date..."
           ></input>
           <div>
-            <button className={styles.add_btn}>Add</button>
-            <button className={styles.delete_btn}>Delete</button>
-          </div>
-        </div>
-      ) : page === 3 ? (
-        <div className={styles.outer_div3}>
-          <p className={styles.add_issue_title}>Add Issues (3)</p>
-          <p className={styles.fields}>Status</p>
-          <input
-            value={projectDescriptionData[3].status}
-            name="status"
-            onChange={(e) => {
-              handleChange(e, 3);
-            }}
-            className={styles.add_issue_input}
-            placeholder="status..."
-          ></input>
-          <p className={styles.fields}>Author</p>
-          <input
-            value={projectDescriptionData[3].author}
-            name="author"
-            onChange={(e) => {
-              handleChange(e, 3);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Author..."
-          ></input>
-          <p className={styles.fields}>Reviewer</p>
-          <input
-            value={projectDescriptionData[3].reviewer}
-            name="reviewer"
-            onChange={(e) => {
-              handleChange(e, 3);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Reviewer..."
-          ></input>
-          <p className={styles.fields}>Distribution</p>
-          <input
-            value={projectDescriptionData[3].distribution}
-            name="distribution"
-            onChange={(e) => {
-              handleChange(e, 3);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Distribution..."
-          ></input>
-          <p className={styles.fields}>Mode</p>
-          <input
-            value={projectDescriptionData[3].mode}
-            name="mode"
-            onChange={(e) => {
-              handleChange(e, 3);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Mode..."
-          ></input>
-          <p className={styles.fields}>Date</p>
-          <input
-            value={projectDescriptionData[3].date}
-            name="date"
-            onChange={(e) => {
-              handleChange(e, 3);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Date..."
-          ></input>
-          <div>
-            <button className={styles.add_btn}>Add</button>
+            <button
+              className={styles.add_btn}
+              onClick={() => {
+                const obj = {
+                  status: projectDescriptionTableData.status,
+                  author: projectDescriptionTableData.author,
+                  reviewer: projectDescriptionTableData.reviewer,
+                  distribution: projectDescriptionTableData.distribution,
+                  mode: projectDescriptionTableData.mode,
+                  date: projectDescriptionTableData.date,
+                };
+                const newData = projectDescriptionTable.concat(obj);
+                setProjectDescriptionTable(newData);
+              }}
+            >
+              Add
+            </button>
             <button className={styles.delete_btn}>Delete</button>
           </div>
         </div>

@@ -2,8 +2,22 @@ import React, { useState } from "react";
 import styles from "./styles/conclusion.module.css";
 import { FaAngleUp, FaTrash, FaEdit, FaPlusCircle } from "react-icons/fa";
 
-export default function Conclusion({ onClickFun }) {
+export default function Conclusion({
+  conclusionDes,
+  setConclusionDes,
+  conclusionTable,
+  setConclusionTable,
+  onClickFun,
+}) {
   const [page, setPage] = useState(0);
+  const [isShowingConclusion, setIsShowingConclusion] = useState(true);
+  const [isShowingAttachement, setIsShowingAttachement] = useState(false);
+  const [isuploadingAttachement, setUploadingAttachement] = useState(false);
+  const [avatar, setAvatar] = useState(null);
+
+  const handleAvatarchange = (e) => {
+    setAvatar(URL.createObjectURL(e.target.files[0]));
+  };
   return (
     <div className={styles.main}>
       <div className={styles.outer_div}>
@@ -12,71 +26,48 @@ export default function Conclusion({ onClickFun }) {
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
         <button
-          className={page === 0 ? styles.intro_btn : styles.intro_btn1}
+          className={isShowingConclusion ? styles.intro_btn : styles.intro_btn1}
           onClick={() => {
-            setPage(0);
+            setIsShowingConclusion(true);
+            setIsShowingAttachement(false);
+            setUploadingAttachement(false);
           }}
         >
           Conclusion Description
         </button>
         <p className={styles.add_attach}>Attachments</p>
-        <div
-          className={page === 1 ? styles.tables : styles.tables1}
+        <div className={styles.conclusion_table_div}>
+          {conclusionTable.map((data, index) => (
+            <div
+              className={isShowingAttachement ? styles.tables : styles.tables1}
+              onClick={() => {
+                setIsShowingConclusion(false);
+                setIsShowingAttachement(true);
+                setUploadingAttachement(false);
+                setPage(index);
+              }}
+            >
+              <p>item {index}</p>
+              <div className={styles.logos}>
+                <FaPlusCircle className={styles.logo1} />
+                <FaEdit className={styles.logo2} />
+                <FaTrash className={styles.logo3} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <button
+          className={styles.add_btn1}
           onClick={() => {
-            setPage(1);
+            setIsShowingConclusion(false);
+            setIsShowingAttachement(false);
+            setUploadingAttachement(true);
           }}
         >
-          <p>item 1</p>
-          <div className={styles.logos}>
-            <FaPlusCircle className={styles.logo1} />
-            <FaEdit className={styles.logo2} />
-            <FaTrash className={styles.logo3} />
-          </div>
-        </div>
-        <div
-          className={page === 2 ? styles.tables : styles.tables1}
-          onClick={() => {
-            setPage(2);
-          }}
-        >
-          <p>item 2</p>
-          <div className={styles.logos}>
-            <FaPlusCircle className={styles.logo1} />
-            <FaEdit className={styles.logo2} />
-            <FaTrash className={styles.logo3} />
-          </div>
-        </div>
-        <div
-          className={page === 3 ? styles.tables : styles.tables1}
-          onClick={() => {
-            setPage(3);
-          }}
-        >
-          <p>item 3</p>
-          <div className={styles.logos}>
-            <FaPlusCircle className={styles.logo1} />
-            <FaEdit className={styles.logo2} />
-            <FaTrash className={styles.logo3} />
-          </div>
-        </div>
-        <button className={styles.add_btn1}>Add Attachment</button>
-        {/* <p className={styles.add_attach}>notes</p> */}
-        {/* <div
-          className={page === 3 ? styles.tables : styles.tables1}
-          onClick={() => {
-            setPage(3);
-          }}
-        >
-          <p>a</p>
-          <div className={styles.logos}>
-            <FaPlusCircle className={styles.logo1} />
-            <FaEdit className={styles.logo2} />
-            <FaTrash className={styles.logo3} />
-          </div>
-        </div>
-        <button className={styles.add_btn1}>Add Note</button> */}
+          Add Attachment
+        </button>
       </div>
-      {page === 0 ? (
+      {isShowingConclusion ? (
         <div className={styles.outer_div2}>
           <p className={styles.des}>Conclusion Description</p>
           <textarea
@@ -84,7 +75,7 @@ export default function Conclusion({ onClickFun }) {
             placeholder="conclusion description ..."
           ></textarea>
         </div>
-      ) : page === 1 ? (
+      ) : isShowingAttachement ? (
         <div className={styles.items}>
           <p className={styles.add_attach_title}>Add Attachment (1)</p>
           <p className={styles.des}>Title</p>
@@ -93,15 +84,20 @@ export default function Conclusion({ onClickFun }) {
             placeholder="title ..."
           ></input>
           <p className={styles.des}>Attachment</p>
-          <div className={styles.img}></div>
-          <div>
+          <div className={styles.img}>
+            <img
+              src={conclusionTable[page].attachmentUrl}
+              className={styles.images}
+            ></img>
+          </div>
+          {/* <div>
             <div>
               <button className={styles.add_btn}>Add</button>
               <button className={styles.delete_btn}>Delete</button>
             </div>
-          </div>
+          </div> */}
         </div>
-      ) : page === 2 ? (
+      ) : isuploadingAttachement ? (
         <div className={styles.items}>
           <p className={styles.add_attach_title}>Add Attachment (2)</p>
           <p className={styles.des}>Title</p>
@@ -110,27 +106,27 @@ export default function Conclusion({ onClickFun }) {
             placeholder="title ..."
           ></input>
           <p className={styles.des}>Attachment</p>
-          <div className={styles.img}></div>
-          <div>
-            <div>
-              <button className={styles.add_btn}>Add</button>
-              <button className={styles.delete_btn}>Delete</button>
-            </div>
+          <div className={styles.img}>
+            <img src={avatar} className={styles.images}></img>
           </div>
-        </div>
-      ) : page === 3 ? (
-        <div className={styles.items}>
-          <p className={styles.add_attach_title}>Add Attachment (3)</p>
-          <p className={styles.des}>Title</p>
           <input
-            className={styles.client_input}
-            placeholder="title ..."
+            type="file"
+            name="avatar"
+            id="avatar"
+            onChange={handleAvatarchange}
           ></input>
-          <p className={styles.des}>Attachment</p>
-          <div className={styles.img}></div>
           <div>
             <div>
-              <button className={styles.add_btn}>Add</button>
+              <button
+                className={styles.add_btn}
+                onClick={() => {
+                  const obj = { title: "abdasd", attachmentUrl: avatar };
+                  const newData = conclusionTable.concat(obj);
+                  setConclusionTable(newData);
+                }}
+              >
+                Add
+              </button>
               <button className={styles.delete_btn}>Delete</button>
             </div>
           </div>

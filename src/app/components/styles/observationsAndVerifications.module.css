@@ -7,7 +7,7 @@
     flex-direction: column;
     margin-left: 5vw;
     width: 33vw;
-    height: 500px;
+    max-height: 500px;
     margin-top: 40px;
     border-radius: 8px;
     padding: 20px 40px;
@@ -65,6 +65,14 @@
     font-size: 13.5px;
     background-color: #f4f4f4;
     border-radius: 5px;
+  }
+  .add_attachment_div {
+    max-height: 200px;
+    padding: 0 2px;
+    overflow: scroll;
+  }
+  .prev_image {
+    height: 200px;
   }
   .conc_btn1 {
     display: flex;
@@ -180,7 +188,7 @@
     flex-direction: column;
     margin-left: 5vw;
     width: 33vw;
-    height: 500px;
+    /* height: 500px; */
     margin-top: 40px;
     border-radius: 8px;
     padding: 20px 40px;
@@ -208,10 +216,18 @@
     border-radius: 5px;
   }
   .img {
-    width: 24vw;
-    height: 100px;
-    border: 1px dashed #c0bfbf;
+    resize: both;
+    width: 12vw;
+    /* height: 150px; */
+    border: 1px dashed #ffffff;
     border-radius: 5px;
+  }
+  .avatar {
+    resize: both;
+    width: 14vw;
+    object-fit: cover;
+    height: 190px;
+    /* height: 150px; */
   }
   .add_btn,
   .delete_btn {

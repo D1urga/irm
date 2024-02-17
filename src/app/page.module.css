@@ -1,4 +1,9 @@
 @media screen and (min-width: 900px) {
+  @media print {
+    .print_pdf {
+      background-color: #cbb8b8;
+    }
+  }
   .outer_div {
     position: relative;
     height: 100vh;
@@ -126,12 +131,9 @@
     width: 100vw;
   }
   .print_pdf {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: pink;
-    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
   }
   .para {
     font-size: 80px;
@@ -140,7 +142,13 @@
   .testing {
     height: 200px;
     width: 300px;
-    background-color: #c1a8a8;
+    background-color: #837e7e;
+  }
+  .table {
+    border: 3px solid red;
+  }
+  .divi {
+    background-color: rgb(246, 13, 52);
   }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {
