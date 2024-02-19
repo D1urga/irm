@@ -87,29 +87,29 @@ export default function ProjectDescription({
                     setPage(index);
                   }}
                 >
-                  <p>item {index}</p>
+                  <p>item {index + 1}</p>
                   <div className={styles.logos}>
                     {/* <FaPlusCircle className={styles.logo1} />
                     <FaEdit className={styles.logo2} /> */}
                     <FaTrash
                       className={styles.logo3}
-                      onClick={() => {
-                        // const newData = projectDescriptionTable.un();
-                        const halfBeforeTheUnwantedElement =
-                          projectDescriptionTable.pop();
+                      // onClick={() => {
+                      //   // const newData = projectDescriptionTable.un();
+                      //   const halfBeforeTheUnwantedElement =
+                      //     projectDescriptionTable.pop();
 
-                        const halfAfterTheUnwantedElement =
-                          projectDescriptionTable.slice(index + 1);
-                        // setProjectDescriptionTable(
-                        //   halfBeforeTheUnwantedElement +
-                        //     halfAfterTheUnwantedElement
-                        // );
-                        console.log(projectDescriptionTable);
-                        // console.log(
-                        //   halfAfterTheUnwantedElement +
-                        //     halfBeforeTheUnwantedElement
-                        // );
-                      }}
+                      //   const halfAfterTheUnwantedElement =
+                      //     projectDescriptionTable.slice(index + 1);
+                      //   // setProjectDescriptionTable(
+                      //   //   halfBeforeTheUnwantedElement +
+                      //   //     halfAfterTheUnwantedElement
+                      //   // );
+                      //   console.log(projectDescriptionTable);
+                      //   // console.log(
+                      //   //   halfAfterTheUnwantedElement +
+                      //   //     halfBeforeTheUnwantedElement
+                      //   // );
+                      // }}
                     />
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default function ProjectDescription({
         </div>
       ) : isDescriptionTableShowing ? (
         <div className={styles.outer_div3}>
-          <p className={styles.add_issue_title}>Add Issues (1)</p>
+          <p className={styles.add_issue_title}>Issues {page + 1}</p>
           <p className={styles.fields}>Status</p>
           <input
             value={

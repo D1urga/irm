@@ -91,7 +91,7 @@ export default function Conclusion({
                 setPage(index);
               }}
             >
-              <p>item {index}</p>
+              <p>item {index + 1}</p>
               <div className={styles.logos}>
                 {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
@@ -124,7 +124,7 @@ export default function Conclusion({
         </div>
       ) : isShowingAttachement ? (
         <div className={styles.items}>
-          <p className={styles.add_attach_title}>Add Attachment (1)</p>
+          <p className={styles.add_attach_title}>Attachment {page}</p>
           <p className={styles.des}>Title</p>
           <input
             value={conclusionTable[page].title}
@@ -170,7 +170,7 @@ export default function Conclusion({
         </div>
       ) : isuploadingAttachement ? (
         <div className={styles.items}>
-          <p className={styles.add_attach_title}>Add Attachment (2)</p>
+          <p className={styles.add_attach_title}>Add Attachment</p>
           <p className={styles.des}>Title</p>
           <input
             value={title.title}

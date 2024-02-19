@@ -91,7 +91,7 @@ export default function AssessmentOfLoss({
                 setTablePage(index);
               }}
             >
-              <p>item {index}</p>
+              <p>item {index + 1}</p>
               <div className={styles.logos}>
                 {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
@@ -127,7 +127,7 @@ export default function AssessmentOfLoss({
                 setCurentNotePage(index);
               }}
             >
-              <p>note {index}</p>
+              <p>note {index + 1}</p>
               <div className={styles.logos}>
                 {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
@@ -159,7 +159,7 @@ export default function AssessmentOfLoss({
         </div>
       ) : isShowingTable ? (
         <div className={styles.outer_div3}>
-          <p className={styles.des}>Add Item (1)</p>
+          <p className={styles.des}>Item {tablePage + 1}</p>
           <p className={styles.des_title}>Description</p>
           <textarea
             value={assessmentLossTable[tablePage].description}
@@ -199,7 +199,7 @@ export default function AssessmentOfLoss({
         </div>
       ) : isUploadingTable ? (
         <div className={styles.outer_div3}>
-          <p className={styles.des}>Add Item (1)</p>
+          <p className={styles.des}>Add Item </p>
           <p className={styles.des_title}>Description</p>
           <textarea
             value={des.des}
@@ -246,7 +246,7 @@ export default function AssessmentOfLoss({
         </div>
       ) : isShowingNote ? (
         <div className={styles.outer_div3}>
-          <p className={styles.des}>Add Note</p>
+          <p className={styles.des}>Note {curentNotePage + 1}</p>
           <p className={styles.des_title}>Ref</p>
           <input
             onChange={(e) => {

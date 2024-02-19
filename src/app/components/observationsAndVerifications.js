@@ -119,10 +119,10 @@ export default function ObservationsAndVerifications({
                 setPage(index);
               }}
             >
-              <p>item {index}</p>
+              <p>item {index + 1}</p>
               <div className={styles.logos}>
-                <FaPlusCircle className={styles.logo1} />
-                <FaEdit className={styles.logo2} />
+                {/* <FaPlusCircle className={styles.logo1} />
+                <FaEdit className={styles.logo2} /> */}
                 <FaTrash
                   className={styles.logo3}
                   // onClick={() => {
@@ -178,7 +178,7 @@ export default function ObservationsAndVerifications({
         </div>
       ) : isUploading ? (
         <div className={styles.items}>
-          <p className={styles.add_attach_title}>Add Attachment (1)</p>
+          <p className={styles.add_attach_title}>Add Attachment </p>
           <p className={styles.des}>Description</p>
           <input
             value={itemsData.description}
@@ -227,7 +227,7 @@ export default function ObservationsAndVerifications({
         </div>
       ) : isShowing ? (
         <div className={styles.items}>
-          <p className={styles.add_attach_title}>Add Attachment ({page})</p>
+          <p className={styles.add_attach_title}>Attachment {page + 1}</p>
           <p className={styles.des}>Description</p>
           <input
             value={observationsAndVerificationsAttach[page].description}
