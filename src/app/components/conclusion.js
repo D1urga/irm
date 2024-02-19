@@ -93,8 +93,8 @@ export default function Conclusion({
             >
               <p>item {index}</p>
               <div className={styles.logos}>
-                <FaPlusCircle className={styles.logo1} />
-                <FaEdit className={styles.logo2} />
+                {/* <FaPlusCircle className={styles.logo1} />
+                <FaEdit className={styles.logo2} /> */}
                 <FaTrash className={styles.logo3} />
               </div>
             </div>
