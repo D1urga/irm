@@ -115,80 +115,80 @@ export default function Home() {
             <p>Mr John report</p>
           </div>
           <div className={styles.option_outer_div}>
-            <div className={styles.option}>
+            <div
+              className={styles.option}
+              onClick={() => {
+                setCurrentState(1);
+              }}
+            >
               <p>Header Section</p>
-              <FaAngleDown
-                className={styles.angle_down}
-                onClick={() => {
-                  setCurrentState(1);
-                }}
-              />
+              <FaAngleDown className={styles.angle_down} />
             </div>
           </div>
           <div className={styles.option_outer_div}>
-            <div className={styles.option}>
+            <div
+              className={styles.option}
+              onClick={() => {
+                setCurrentState(2);
+              }}
+            >
               <p>Project Description</p>
-              <FaAngleDown
-                className={styles.angle_down}
-                onClick={() => {
-                  setCurrentState(2);
-                }}
-              />
+              <FaAngleDown className={styles.angle_down} />
             </div>
           </div>
           <div className={styles.option_outer_div}>
-            <div className={styles.option}>
+            <div
+              className={styles.option}
+              onClick={() => {
+                setCurrentState(3);
+              }}
+            >
               <p>Policy Particulars</p>
-              <FaAngleDown
-                className={styles.angle_down}
-                onClick={() => {
-                  setCurrentState(3);
-                }}
-              />
+              <FaAngleDown className={styles.angle_down} />
             </div>
           </div>
           <div className={styles.option_outer_div}>
-            <div className={styles.option}>
+            <div
+              className={styles.option}
+              onClick={() => {
+                setCurrentState(4);
+              }}
+            >
               <p>Observations and Verifications</p>
-              <FaAngleDown
-                className={styles.angle_down}
-                onClick={() => {
-                  setCurrentState(4);
-                }}
-              />
+              <FaAngleDown className={styles.angle_down} />
             </div>
           </div>
           <div className={styles.option_outer_div}>
-            <div className={styles.option}>
+            <div
+              className={styles.option}
+              onClick={() => {
+                setCurrentState(5);
+              }}
+            >
               <p>Cause of Loss</p>
-              <FaAngleDown
-                className={styles.angle_down}
-                onClick={() => {
-                  setCurrentState(5);
-                }}
-              />
+              <FaAngleDown className={styles.angle_down} />
             </div>
           </div>
           <div className={styles.option_outer_div}>
-            <div className={styles.option}>
+            <div
+              className={styles.option}
+              onClick={() => {
+                setCurrentState(6);
+              }}
+            >
               <p>Assessment of Loss</p>
-              <FaAngleDown
-                className={styles.angle_down}
-                onClick={() => {
-                  setCurrentState(6);
-                }}
-              />
+              <FaAngleDown className={styles.angle_down} />
             </div>
           </div>
           <div className={styles.option_outer_div}>
-            <div className={styles.option}>
+            <div
+              className={styles.option}
+              onClick={() => {
+                setCurrentState(7);
+              }}
+            >
               <p>Conclusion</p>
-              <FaAngleDown
-                className={styles.angle_down}
-                onClick={() => {
-                  setCurrentState(7);
-                }}
-              />
+              <FaAngleDown className={styles.angle_down} />
             </div>
           </div>
           <div className={styles.preview_div}>

@@ -70,6 +70,7 @@
     justify-content: space-between;
     padding: 17px 40px;
     margin: 6px 0;
+    cursor: pointer;
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
@@ -85,12 +86,12 @@
     cursor: pointer;
   }
   .preview {
+    display: none;
     user-select: none;
     padding: 10px 5vw;
     font-weight: 540;
     font-size: 14px;
     margin-top: 20px;
-    cursor: pointer;
   }
   .pdf {
     position: fixed;
