@@ -80,6 +80,7 @@ export default function AssessmentOfLoss({
         <div className={styles.assessment_loss_table}>
           {assessmentLossTable.map((data, index) => (
             <div
+              key={index}
               className={isShowingTable ? styles.tables : styles.tables1}
               onClick={() => {
                 setIsUploadingNote(false);
