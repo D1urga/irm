@@ -124,7 +124,7 @@ export default function Conclusion({
         </div>
       ) : isShowingAttachement ? (
         <div className={styles.items}>
-          <p className={styles.add_attach_title}>Attachment {page}</p>
+          <p className={styles.add_attach_title}>Attachment {page + 1}</p>
           <p className={styles.des}>Title</p>
           <input
             value={conclusionTable[page].title}
