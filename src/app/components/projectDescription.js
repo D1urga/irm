@@ -19,18 +19,33 @@ export default function ProjectDescription({
 
   const [projectDescriptionTableData, setProjectDescriptionTableData] =
     useState({
-      status: "sfsdgfsdgds",
-      author: "fsadfadsf",
-      reviewer: "fdsafdsf",
-      distribution: "sfasfasdf",
-      mode: "sfasfas",
-      date: "fasasfasd",
+      status: "",
+      author: "",
+      reviewer: "",
+      distribution: "",
+      mode: "",
+      date: "",
     });
   const handleChange = (event) => {
     setProjectDescriptionTableData({
       ...projectDescriptionTableData,
       [event.target.name]: event.target.value,
     });
+  };
+  const handleDataChange = (event) => {
+    setProjectDescriptionData({
+      ...projectDescriptionData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleShowingChange = (event, id) => {
+    const clone = [...projectDescriptionTable];
+    const obj = clone[id];
+
+    obj[`${event.target.name}`] = event.target.value;
+    clone[id] = obj;
+    setProjectDescriptionTable([...clone]);
   };
 
   return (
@@ -58,7 +73,7 @@ export default function ProjectDescription({
           <p className={styles.issue_table}>Issues Table</p>
           <div className={styles.description_table_div}>
             {projectDescriptionTable.map((data, index) => (
-              <div>
+              <div key={index}>
                 <div
                   className={
                     setIsDescriptionTableShowing
@@ -74,9 +89,28 @@ export default function ProjectDescription({
                 >
                   <p>item {index}</p>
                   <div className={styles.logos}>
-                    <FaPlusCircle className={styles.logo1} />
-                    <FaEdit className={styles.logo2} />
-                    <FaTrash className={styles.logo3} />
+                    {/* <FaPlusCircle className={styles.logo1} />
+                    <FaEdit className={styles.logo2} /> */}
+                    <FaTrash
+                      className={styles.logo3}
+                      onClick={() => {
+                        // const newData = projectDescriptionTable.un();
+                        const halfBeforeTheUnwantedElement =
+                          projectDescriptionTable.pop();
+
+                        const halfAfterTheUnwantedElement =
+                          projectDescriptionTable.slice(index + 1);
+                        // setProjectDescriptionTable(
+                        //   halfBeforeTheUnwantedElement +
+                        //     halfAfterTheUnwantedElement
+                        // );
+                        console.log(projectDescriptionTable);
+                        // console.log(
+                        //   halfAfterTheUnwantedElement +
+                        //     halfBeforeTheUnwantedElement
+                        // );
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -101,28 +135,25 @@ export default function ProjectDescription({
           <p className={styles.project_info}>Project Info</p>
           <p className={styles.project_title}>Project title</p>
           <textarea
-            // value={projectDescriptionData[0].projectTitle}
+            value={projectDescriptionData.projectTitle}
+            onChange={handleDataChange}
             name="projectTitle"
             className={styles.project_title_textarea}
             placeholder="project title ..."
           ></textarea>
           <p className={styles.project_title}>Client</p>
           <input
-            // value={projectDescriptionData[0].client}
+            value={projectDescriptionData.client}
+            onChange={handleDataChange}
             name="client"
-            onChange={(e) => {
-              handleChange(e, 0);
-            }}
             className={styles.client_input}
             placeholder="client ..."
           ></input>
           <p className={styles.project_title}>Document Reference</p>
           <input
-            // value={projectDescriptionData[0].documentReference}
+            value={projectDescriptionData.documentReference}
+            onChange={handleDataChange}
             name="documentReference"
-            onChange={(e) => {
-              handleChange(e, 0);
-            }}
             className={styles.document_refrence}
             placeholder="document ref ..."
           ></input>
@@ -132,10 +163,12 @@ export default function ProjectDescription({
           <p className={styles.add_issue_title}>Add Issues (1)</p>
           <p className={styles.fields}>Status</p>
           <input
-            value={projectDescriptionTable[page].status}
+            value={
+              projectDescriptionTable && projectDescriptionTable[page].status
+            }
             name="status"
             onChange={(e) => {
-              handleChange(e, 1);
+              handleShowingChange(e, page);
             }}
             className={styles.add_issue_input}
             placeholder="status..."
@@ -145,7 +178,7 @@ export default function ProjectDescription({
             value={projectDescriptionTable[page].author}
             name="author"
             onChange={(e) => {
-              handleChange(e, 1);
+              handleShowingChange(e, page);
             }}
             className={styles.add_issue_input}
             placeholder="Author..."
@@ -155,7 +188,7 @@ export default function ProjectDescription({
             value={projectDescriptionTable[page].reviewer}
             name="reviewer"
             onChange={(e) => {
-              handleChange(e, 1);
+              handleShowingChange(e, page);
             }}
             className={styles.add_issue_input}
             placeholder="Reviewer..."
@@ -165,7 +198,7 @@ export default function ProjectDescription({
             value={projectDescriptionTable[page].distribution}
             name="distribution"
             onChange={(e) => {
-              handleChange(e, 1);
+              handleShowingChange(e, page);
             }}
             className={styles.add_issue_input}
             placeholder="Distribution..."
@@ -175,7 +208,7 @@ export default function ProjectDescription({
             value={projectDescriptionTable[page].mode}
             name="mode"
             onChange={(e) => {
-              handleChange(e, 1);
+              handleShowingChange(e, page);
             }}
             className={styles.add_issue_input}
             placeholder="Mode..."
@@ -185,7 +218,7 @@ export default function ProjectDescription({
             value={projectDescriptionTable[page].date}
             name="date"
             onChange={(e) => {
-              handleChange(e, 1);
+              handleShowingChange(e, page);
             }}
             className={styles.add_issue_input}
             placeholder="Date..."

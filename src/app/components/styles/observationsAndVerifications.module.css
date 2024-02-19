@@ -72,7 +72,12 @@
     overflow: scroll;
   }
   .prev_image {
-    height: 200px;
+    resize: both;
+    width: 14vw;
+    object-fit: contain;
+    height: 190px;
+    border-radius: 5px;
+    margin-bottom: 10px;
   }
   .conc_btn1 {
     display: flex;
@@ -217,16 +222,23 @@
   }
   .img {
     resize: both;
-    width: 12vw;
-    /* height: 150px; */
-    border: 1px dashed #ffffff;
+    width: 14vw;
+    object-fit: cover;
+    height: 190px;
+    margin-bottom: 10px;
     border-radius: 5px;
+    /* background-color: #dcdcdc; */
+    border: 1px dashed black;
+    /* height: 150px; */
   }
   .avatar {
     resize: both;
     width: 14vw;
-    object-fit: cover;
+    object-fit: contain;
     height: 190px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
     /* height: 150px; */
   }
   .add_btn,

@@ -15,8 +15,51 @@ export default function Conclusion({
   const [isuploadingAttachement, setUploadingAttachement] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
+  const [title, setTitle] = useState({ title: "ahdlvah" });
+
+  const [newtitle, setnewTitle] = useState({ title: "ahdlvah" });
+
+  const handleChangeTitle = (event) => {
+    setTitle({
+      ...title,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleChangenewTitle = (event) => {
+    setnewTitle({
+      ...newtitle,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const handleAvatarchange = (e) => {
     setAvatar(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleChange = (event) => {
+    setConclusionDes({
+      ...conclusionDes,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleShowingImageChange = (event, id) => {
+    const clone = [...conclusionTable];
+    const obj = clone[id];
+    clone[id] = {
+      title: title.title,
+      attachmentUrl: avatar,
+    };
+    setConclusionTable([...clone]);
+  };
+  const handleShowingImageTitleChange = (event, id) => {
+    const clone = [...conclusionTable];
+    const obj = clone[id];
+    clone[id] = {
+      title: title.title,
+      attachmentUrl: avatar,
+    };
+    setConclusionTable([...clone]);
   };
   return (
     <div className={styles.main}>
@@ -39,6 +82,7 @@ export default function Conclusion({
         <div className={styles.conclusion_table_div}>
           {conclusionTable.map((data, index) => (
             <div
+              key={index}
               className={isShowingAttachement ? styles.tables : styles.tables1}
               onClick={() => {
                 setIsShowingConclusion(false);
@@ -71,6 +115,9 @@ export default function Conclusion({
         <div className={styles.outer_div2}>
           <p className={styles.des}>Conclusion Description</p>
           <textarea
+            value={conclusionDes.conclusionDes}
+            onChange={handleChange}
+            name="conclusionDes"
             className={styles.intro_textarea}
             placeholder="conclusion description ..."
           ></textarea>
@@ -80,6 +127,11 @@ export default function Conclusion({
           <p className={styles.add_attach_title}>Add Attachment (1)</p>
           <p className={styles.des}>Title</p>
           <input
+            value={conclusionTable[page].title}
+            name="title"
+            onChange={(e) => {
+              handleShowingImageTitleChange(page);
+            }}
             className={styles.client_input}
             placeholder="title ..."
           ></input>
@@ -89,6 +141,25 @@ export default function Conclusion({
               src={conclusionTable[page].attachmentUrl}
               className={styles.images}
             ></img>
+          </div>{" "}
+          <input
+            type="file"
+            name="avatar"
+            id="avatar"
+            onChange={handleAvatarchange}
+          ></input>
+          <div>
+            <div>
+              <button
+                className={styles.add_btn}
+                onClick={(e) => {
+                  handleShowingImageChange(e, page);
+                }}
+              >
+                Update
+              </button>
+              {/* <button className={styles.delete_btn}>Delete</button> */}
+            </div>
           </div>
           {/* <div>
             <div>
@@ -102,6 +173,9 @@ export default function Conclusion({
           <p className={styles.add_attach_title}>Add Attachment (2)</p>
           <p className={styles.des}>Title</p>
           <input
+            value={title.title}
+            name="title"
+            onChange={handleChangeTitle}
             className={styles.client_input}
             placeholder="title ..."
           ></input>
@@ -120,7 +194,7 @@ export default function Conclusion({
               <button
                 className={styles.add_btn}
                 onClick={() => {
-                  const obj = { title: "abdasd", attachmentUrl: avatar };
+                  const obj = { title: title.title, attachmentUrl: avatar };
                   const newData = conclusionTable.concat(obj);
                   setConclusionTable(newData);
                 }}

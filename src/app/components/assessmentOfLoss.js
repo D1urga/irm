@@ -22,7 +22,25 @@ export default function AssessmentOfLoss({
   const [des, setDes] = useState({
     des: "",
     claimAm: "",
+    assessAm: "",
   });
+
+  const handleShowingChange = (event, id) => {
+    const clone = [...assessmentLossTable];
+    const obj = clone[id];
+
+    obj[`${event.target.name}`] = event.target.value;
+    clone[id] = obj;
+    setAssessmentLossTable([...clone]);
+  };
+  const handleShowingNoteChange = (event, id) => {
+    const clone = [...assessmentLossNotes];
+    const obj = clone[id];
+
+    obj[`${event.target.name}`] = event.target.value;
+    clone[id] = obj;
+    setAssessmentLossNotes([...clone]);
+  };
   const handleChange = (event) => {
     setDes({
       ...des,
@@ -74,8 +92,8 @@ export default function AssessmentOfLoss({
             >
               <p>item {index}</p>
               <div className={styles.logos}>
-                <FaPlusCircle className={styles.logo1} />
-                <FaEdit className={styles.logo2} />
+                {/* <FaPlusCircle className={styles.logo1} />
+                <FaEdit className={styles.logo2} /> */}
                 <FaTrash className={styles.logo3} />
               </div>
             </div>
@@ -97,6 +115,7 @@ export default function AssessmentOfLoss({
         <div className={styles.note_div}>
           {assessmentLossNotes.map((data, index) => (
             <div
+              key={index}
               className={isShowingNote ? styles.tables : styles.tables1}
               onClick={() => {
                 setIsUploadingNote(false);
@@ -109,8 +128,8 @@ export default function AssessmentOfLoss({
             >
               <p>note {index}</p>
               <div className={styles.logos}>
-                <FaPlusCircle className={styles.logo1} />
-                <FaEdit className={styles.logo2} />
+                {/* <FaPlusCircle className={styles.logo1} />
+                <FaEdit className={styles.logo2} /> */}
                 <FaTrash className={styles.logo3} />
               </div>
             </div>
@@ -143,13 +162,31 @@ export default function AssessmentOfLoss({
           <p className={styles.des_title}>Description</p>
           <textarea
             value={assessmentLossTable[tablePage].description}
+            onChange={(e) => {
+              handleShowingChange(e, tablePage);
+            }}
+            name="description"
             className={styles.dec_textarea}
             placeholder="description..."
           ></textarea>{" "}
-          <p className={styles.des_title}>claim , Rs Exclusive of VAT</p>
+          <p className={styles.des_title}>claim Rs</p>
           <input
             className={styles.claim_input}
+            onChange={(e) => {
+              handleShowingChange(e, tablePage);
+            }}
+            name="claimAmout"
             value={assessmentLossTable[tablePage].claimAmout}
+            placeholder="claim..."
+          ></input>
+          <p className={styles.des_title}>assessment Rs</p>
+          <input
+            onChange={(e) => {
+              handleShowingChange(e, tablePage);
+            }}
+            name="assessmentAmount"
+            className={styles.claim_input}
+            value={assessmentLossTable[tablePage].assessmentAmount}
             placeholder="claim..."
           ></input>
           {/* <div>
@@ -170,7 +207,15 @@ export default function AssessmentOfLoss({
             className={styles.dec_textarea}
             placeholder="description..."
           ></textarea>{" "}
-          <p className={styles.des_title}>claim , Rs Exclusive of VAT</p>
+          <p className={styles.des_title}>claim Rs</p>
+          <input
+            className={styles.claim_input}
+            value={des.assessAm}
+            name="assessAm"
+            onChange={handleChange}
+            placeholder="claim..."
+          ></input>
+          <p className={styles.des_title}>Assessment RS</p>
           <input
             className={styles.claim_input}
             value={des.claimAm}
@@ -183,7 +228,11 @@ export default function AssessmentOfLoss({
               <button
                 className={styles.add_btn}
                 onClick={() => {
-                  const obj = { description: des.des, claimAmout: des.claimAm };
+                  const obj = {
+                    description: des.des,
+                    claimAmout: des.claimAm,
+                    assessmentAmount: des.assessAm,
+                  };
                   const newData = assessmentLossTable.concat(obj);
                   setAssessmentLossTable(newData);
                 }}
@@ -199,12 +248,20 @@ export default function AssessmentOfLoss({
           <p className={styles.des}>Add Note</p>
           <p className={styles.des_title}>Ref</p>
           <input
+            onChange={(e) => {
+              handleShowingNoteChange(e, curentNotePage);
+            }}
+            name="ref"
             className={styles.claim_input}
             value={assessmentLossNotes[curentNotePage].ref}
             placeholder="ref..."
           ></input>
           <p className={styles.des_title}>Note</p>
           <textarea
+            onChange={(e) => {
+              handleShowingNoteChange(e, curentNotePage);
+            }}
+            name="note"
             value={assessmentLossNotes[curentNotePage].note}
             className={styles.dec_textarea}
             placeholder="note..."

@@ -29,6 +29,26 @@ export default function ObservationsAndVerifications({
     });
   };
 
+  const handleShowingChange = (event, id) => {
+    const clone = [...observationsAndVerificationsAttach];
+    const obj = clone[id];
+
+    obj[`${event.target.name}`] = event.target.value;
+    clone[id] = obj;
+    setObservationsAndVerificationsAttach([...clone]);
+  };
+  const handleShowingImageChange = (event, id) => {
+    const clone = [...observationsAndVerificationsAttach];
+    const obj = clone[id];
+
+    // obj[`${event.target.name}`] = avatar;
+    clone[id] = {
+      description: itemsData.description,
+      title: itemsData.title,
+      attachmentUrl: avatar,
+    };
+    setObservationsAndVerificationsAttach([...clone]);
+  };
   const addAttachments = () => {
     const obj = {
       description: itemsData.description,
@@ -44,20 +64,6 @@ export default function ObservationsAndVerifications({
 
   const handleAvatarchange = (e) => {
     setAvatar(URL.createObjectURL(e.target.files[0]));
-  };
-
-  const add = () => {
-    const data = {
-      description: "decs",
-      title: "title",
-      attachmentUrl: "attchmen",
-    };
-    const newData = observationsAndVerificationsData[1].concat({
-      description: "decs",
-      title: "title",
-      attachmentUrl: "attchmen",
-    });
-    setObservationsAndVerificationsData(newData);
   };
 
   const [image, setImage] = useState("ghvgh");
@@ -225,6 +231,9 @@ export default function ObservationsAndVerifications({
           <p className={styles.des}>Description</p>
           <input
             value={observationsAndVerificationsAttach[page].description}
+            onChange={(e) => {
+              handleShowingChange(e, page);
+            }}
             name="description"
             className={styles.client_input}
             placeholder="description ..."
@@ -232,6 +241,10 @@ export default function ObservationsAndVerifications({
           <p className={styles.des}>Title</p>
           <input
             value={observationsAndVerificationsAttach[page].title}
+            onChange={(e) => {
+              handleShowingChange(e, page);
+            }}
+            name="title"
             className={styles.client_input}
             placeholder="title ..."
           ></input>
@@ -242,12 +255,36 @@ export default function ObservationsAndVerifications({
               src={observationsAndVerificationsAttach[page].attachmentUrl}
             ></img>
           </div>
-          {/* <div>
+          <div>
+            <input
+              className={styles.input2}
+              type="file"
+              name="avatar"
+              id="avatar"
+              placeholder="avatar"
+              // value={registerData.avatar}
+              onChange={handleAvatarchange}
+              autoComplete="true"
+            ></input>
             <div>
-              <button className={styles.add_btn}>Add</button>
-              <button className={styles.delete_btn}>Delete</button>
+              <button
+                className={styles.add_btn}
+                onClick={(e) => {
+                  handleShowingImageChange(e, page);
+                }}
+              >
+                Update
+              </button>
+              {/* <input
+                type="file"
+                name="image"
+                autoComplete="true"
+                onChange={handleImageChange}
+              ></input> */}
+
+              {/* <button className={styles.delete_btn}>Delete</button> */}
             </div>
-          </div> */}
+          </div>
         </div>
       ) : null}
     </div>
