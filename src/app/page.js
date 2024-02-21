@@ -58,6 +58,7 @@ export default function Home() {
   const [assessmentLossDes, setAssessmentLossDes] = useState("dskhda");
   const [assessmentLossTable, setAssessmentLossTable] = useState([]);
   const [assessmentLossNotes, setAssessmentLossNotes] = useState([]);
+  const [assessmentLossFields, setAssessmentLossFields] = useState([]);
 
   const [conclusionDes, setConclusionDes] = useState({ conclusionDes: "" });
   const [conclusionTable, setConclusionTable] = useState([]);
@@ -260,6 +261,8 @@ export default function Home() {
           setAssessmentLossTable={setAssessmentLossTable}
           assessmentLossNotes={assessmentLossNotes}
           setAssessmentLossNotes={setAssessmentLossNotes}
+          assessmentLossFields={assessmentLossFields}
+          setAssessmentLossFields={setAssessmentLossFields}
           onClickFun={() => {
             setCurrentState(0);
           }}
@@ -1306,26 +1309,104 @@ export default function Home() {
               // border: "1px solid black",
             }}
           >
-            <div
-              style={{
-                width: "30%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "1px solid black",
-              }}
-            >
-              <p
+            {assessmentLossFields[0] && assessmentLossFields[0].name != "" ? (
+              <div
                 style={{
-                  fontSize: "11px",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid black",
                 }}
               >
-                Items
-              </p>
-            </div>
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  {assessmentLossFields[0].name}
+                </p>
+              </div>
+            ) : null}
+            {assessmentLossFields[1] && assessmentLossFields[1].name != "" ? (
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid black",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  {assessmentLossFields[1].name}
+                </p>
+              </div>
+            ) : null}
+            {assessmentLossFields[2] && assessmentLossFields[2].name != "" ? (
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid black",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  {assessmentLossFields[2].name}
+                </p>
+              </div>
+            ) : null}
+            {assessmentLossFields[3] && assessmentLossFields[3].name != "" ? (
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid black",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  {assessmentLossFields[3].name}
+                </p>
+              </div>
+            ) : null}
+            {assessmentLossFields[4] && assessmentLossFields[4].name != "" ? (
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid black",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  {assessmentLossFields[4].name}
+                </p>
+              </div>
+            ) : null}
             <div
               style={{
-                width: "30%",
+                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1342,7 +1423,7 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "20%",
+                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1359,7 +1440,7 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "20%",
+                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1375,7 +1456,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div j>
+          <div>
+            {/* ////////////////////////////////////////////////////////////////////////////////////////// */}
             {assessmentLossTable &&
               assessmentLossTable.map((data, index) => (
                 <div
@@ -1383,31 +1465,114 @@ export default function Home() {
                   style={{
                     display: "flex",
                     alignItems: "stretch",
-                    justifyContent: "center",
+                    // justifyContent: "inherit",
                     // marginTop: "20px",
                     // border: "1px solid black",
                   }}
                 >
-                  <div
-                    style={{
-                      width: "30%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: "1px solid black",
-                    }}
-                  >
-                    <p
+                  {assessmentLossFields[0] &&
+                  assessmentLossFields[0].name != "" ? (
+                    <div
                       style={{
-                        fontSize: "8px",
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: "1px solid black",
                       }}
                     >
-                      ---
-                    </p>
-                  </div>
+                      <p
+                        style={{
+                          fontSize: "8px",
+                        }}
+                      >
+                        {data[`field${0}`]}
+                      </p>
+                    </div>
+                  ) : null}
+                  {assessmentLossFields[1] &&
+                  assessmentLossFields[1].name != "" ? (
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: "1px solid black",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "8px",
+                        }}
+                      >
+                        {data[`field${1}`]}
+                      </p>
+                    </div>
+                  ) : null}
+                  {assessmentLossFields[2] &&
+                  assessmentLossFields[2].name != "" ? (
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: "1px solid black",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "8px",
+                        }}
+                      >
+                        {data[`field${2}`]}
+                      </p>
+                    </div>
+                  ) : null}
+                  {assessmentLossFields[3] &&
+                  assessmentLossFields[3].name != "" ? (
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: "1px solid black",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "8px",
+                        }}
+                      >
+                        {data[`field${3}`]}
+                      </p>
+                    </div>
+                  ) : null}
+                  {assessmentLossFields[4] &&
+                  assessmentLossFields[4].name != "" ? (
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: "1px solid black",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "8px",
+                        }}
+                      >
+                        {data[`field${4}`]}
+                      </p>
+                    </div>
+                  ) : null}
                   <div
                     style={{
-                      width: "30%",
+                      width: "100%",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -1422,9 +1587,10 @@ export default function Home() {
                       {data.description}
                     </p>
                   </div>
+
                   <div
                     style={{
-                      width: "20%",
+                      width: "100%",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -1441,7 +1607,7 @@ export default function Home() {
                   </div>
                   <div
                     style={{
-                      width: "20%",
+                      width: "100%",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",

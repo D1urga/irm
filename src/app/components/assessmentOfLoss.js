@@ -1,6 +1,12 @@
 import React, { use, useState } from "react";
 import styles from "./styles/assessmentOfLoss.module.css";
-import { FaAngleUp, FaTrash, FaEdit, FaPlusCircle } from "react-icons/fa";
+import {
+  FaAngleUp,
+  FaTrash,
+  FaEdit,
+  FaPlusCircle,
+  FaPlus,
+} from "react-icons/fa";
 
 export default function AssessmentOfLoss({
   assessmentLossDes,
@@ -9,6 +15,8 @@ export default function AssessmentOfLoss({
   setAssessmentLossTable,
   assessmentLossNotes,
   setAssessmentLossNotes,
+  assessmentLossFields,
+  setAssessmentLossFields,
   onClickFun,
 }) {
   const [tablePage, setTablePage] = useState(0);
@@ -19,12 +27,28 @@ export default function AssessmentOfLoss({
   const [isUploadingTable, setIsUploadingTable] = useState(false);
   const [isShowingNote, setIsShowingNote] = useState(false);
   const [isUploadingNote, setIsUploadingNote] = useState(false);
+  const [isNewFieldShowing, setIsNewFieldShowing] = useState(false);
   const [des, setDes] = useState({
     des: "",
     claimAm: "",
     assessAm: "",
   });
 
+  const [addField, setAddField] = useState({ name: "" });
+  const [addFieldData, setAddFieldData] = useState({
+    field0: "",
+    field1: "",
+    field2: "",
+    field3: "",
+    field4: "",
+  });
+
+  const handleAddFieldChange = (event) => {
+    setAddFieldData({
+      ...addFieldData,
+      [event.target.name]: event.target.value,
+    });
+  };
   const handleShowingChange = (event, id) => {
     const clone = [...assessmentLossTable];
     const obj = clone[id];
@@ -47,6 +71,12 @@ export default function AssessmentOfLoss({
       [event.target.name]: event.target.value,
     });
   };
+  const handleAddChange = (event) => {
+    setAddField({
+      ...addField,
+      [event.target.name]: event.target.value,
+    });
+  };
   const [ref, setRef] = useState({
     ref: "asjvasdfasda",
     note: "fahsfvashd",
@@ -64,41 +94,49 @@ export default function AssessmentOfLoss({
           <p>Assessment Loss</p>
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
-        <button
-          className={isShowingDes ? styles.intro_btn : styles.intro_btn1}
-          onClick={() => {
-            setIsUploadingNote(false);
-            setIsUploadingTable(false);
-            setIsShowingDes(true);
-            setIsShowingNote(false);
-            setIsShowingTable(false);
-          }}
-        >
-          Description
-        </button>
+        <div>
+          <button
+            className={isShowingDes ? styles.intro_btn : styles.intro_btn1}
+            onClick={() => {
+              setIsUploadingNote(false);
+              setIsUploadingTable(false);
+              setIsShowingDes(true);
+              setIsShowingNote(false);
+              setIsShowingTable(false);
+            }}
+          >
+            Description
+          </button>
+        </div>
         <p className={styles.add_attach}>Assessment Table</p>
-        <div className={styles.assessment_loss_table}>
-          {assessmentLossTable.map((data, index) => (
-            <div
-              key={index}
-              className={isShowingTable ? styles.tables : styles.tables1}
-              onClick={() => {
-                setIsUploadingNote(false);
-                setIsUploadingTable(false);
-                setIsShowingDes(false);
-                setIsShowingNote(false);
-                setIsShowingTable(true);
-                setTablePage(index);
-              }}
-            >
-              <p>item {index + 1}</p>
-              <div className={styles.logos}>
-                {/* <FaPlusCircle className={styles.logo1} />
+        <div>
+          {assessmentLossTable.length != 0 ? (
+            <div className={styles.assessment_loss_table}>
+              <div>
+                {assessmentLossTable.map((data, index) => (
+                  <div
+                    key={index}
+                    className={isShowingTable ? styles.tables : styles.tables1}
+                    onClick={() => {
+                      setIsUploadingNote(false);
+                      setIsUploadingTable(false);
+                      setIsShowingDes(false);
+                      setIsShowingNote(false);
+                      setIsShowingTable(true);
+                      setTablePage(index);
+                    }}
+                  >
+                    <p>item {index + 1}</p>
+                    <div className={styles.logos}>
+                      {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                <FaTrash className={styles.logo3} />
+                      <FaTrash className={styles.logo3} />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          ) : null}
         </div>
         <button
           className={styles.add_btn1}
@@ -113,28 +151,35 @@ export default function AssessmentOfLoss({
           Add Item
         </button>
         <p className={styles.add_attach}>notes</p>
-        <div className={styles.note_div}>
-          {assessmentLossNotes.map((data, index) => (
-            <div
-              key={index}
-              className={isShowingNote ? styles.tables : styles.tables1}
-              onClick={() => {
-                setIsUploadingNote(false);
-                setIsUploadingTable(false);
-                setIsShowingDes(false);
-                setIsShowingNote(true);
-                setIsShowingTable(false);
-                setCurentNotePage(index);
-              }}
-            >
-              <p>note {index + 1}</p>
-              <div className={styles.logos}>
-                {/* <FaPlusCircle className={styles.logo1} />
+        <div>
+          {assessmentLossNotes.length != 0 ? (
+            <div>
+              {" "}
+              <div className={styles.note_div}>
+                {assessmentLossNotes.map((data, index) => (
+                  <div
+                    key={index}
+                    className={isShowingNote ? styles.tables : styles.tables1}
+                    onClick={() => {
+                      setIsUploadingNote(false);
+                      setIsUploadingTable(false);
+                      setIsShowingDes(false);
+                      setIsShowingNote(true);
+                      setIsShowingTable(false);
+                      setCurentNotePage(index);
+                    }}
+                  >
+                    <p>note {index + 1}</p>
+                    <div className={styles.logos}>
+                      {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                <FaTrash className={styles.logo3} />
+                      <FaTrash className={styles.logo3} />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          ) : null}
         </div>
         <button
           className={styles.add_btn1}
@@ -161,35 +206,55 @@ export default function AssessmentOfLoss({
         <div className={styles.outer_div3}>
           <p className={styles.des}>Item {tablePage + 1}</p>
           <p className={styles.des_title}>Description</p>
-          <textarea
-            value={assessmentLossTable[tablePage].description}
-            onChange={(e) => {
-              handleShowingChange(e, tablePage);
-            }}
-            name="description"
-            className={styles.dec_textarea}
-            placeholder="description..."
-          ></textarea>{" "}
+          <div>
+            <textarea
+              value={assessmentLossTable[tablePage].description}
+              onChange={(e) => {
+                handleShowingChange(e, tablePage);
+              }}
+              name="description"
+              className={styles.dec_textarea}
+              placeholder="description..."
+            ></textarea>
+          </div>
           <p className={styles.des_title}>claim Rs</p>
-          <input
-            className={styles.claim_input}
-            onChange={(e) => {
-              handleShowingChange(e, tablePage);
-            }}
-            name="claimAmout"
-            value={assessmentLossTable[tablePage].claimAmout}
-            placeholder="claim..."
-          ></input>
+          <div>
+            <input
+              className={styles.claim_input}
+              onChange={(e) => {
+                handleShowingChange(e, tablePage);
+              }}
+              name="claimAmout"
+              value={assessmentLossTable[tablePage].claimAmout}
+              placeholder="claim..."
+            ></input>
+          </div>
           <p className={styles.des_title}>assessment Rs</p>
-          <input
-            onChange={(e) => {
-              handleShowingChange(e, tablePage);
-            }}
-            name="assessmentAmount"
-            className={styles.claim_input}
-            value={assessmentLossTable[tablePage].assessmentAmount}
-            placeholder="claim..."
-          ></input>
+          <div>
+            <input
+              onChange={(e) => {
+                handleShowingChange(e, tablePage);
+              }}
+              name="assessmentAmount"
+              className={styles.claim_input}
+              value={assessmentLossTable[tablePage].assessmentAmount}
+              placeholder="claim..."
+            ></input>
+          </div>
+          {assessmentLossFields.map((data, index) => (
+            <div>
+              <p className={styles.des_title}>{data.name}</p>
+              <textarea
+                value={assessmentLossTable[tablePage][`field${index}`]}
+                onChange={(e) => {
+                  handleShowingChange(e, tablePage);
+                }}
+                name={`field${index}`}
+                className={styles.add_textarea}
+                placeholder={data.name}
+              ></textarea>
+            </div>
+          ))}
           {/* <div>
             <div>
               <button className={styles.add_btn}>Add</button>
@@ -199,31 +264,57 @@ export default function AssessmentOfLoss({
         </div>
       ) : isUploadingTable ? (
         <div className={styles.outer_div3}>
-          <p className={styles.des}>Add Item </p>
+          <div className={styles.more_fields}>
+            <p className={styles.des}>Add Item </p>
+            <FaPlusCircle
+              className={styles.add}
+              onClick={() => {
+                setIsNewFieldShowing(!isNewFieldShowing);
+              }}
+            />
+          </div>
           <p className={styles.des_title}>Description</p>
-          <textarea
-            value={des.des}
-            name="des"
-            onChange={handleChange}
-            className={styles.dec_textarea}
-            placeholder="description..."
-          ></textarea>{" "}
+          <div>
+            <textarea
+              value={des.des}
+              name="des"
+              onChange={handleChange}
+              className={styles.dec_textarea}
+              placeholder="description..."
+            ></textarea>
+          </div>
           <p className={styles.des_title}>claim Rs</p>
-          <input
-            className={styles.claim_input}
-            value={des.assessAm}
-            name="assessAm"
-            onChange={handleChange}
-            placeholder="claim..."
-          ></input>
+          <div>
+            <input
+              className={styles.claim_input}
+              value={des.assessAm}
+              name="assessAm"
+              onChange={handleChange}
+              placeholder="claim..."
+            ></input>
+          </div>
           <p className={styles.des_title}>Assessment RS</p>
-          <input
-            className={styles.claim_input}
-            value={des.claimAm}
-            name="claimAm"
-            onChange={handleChange}
-            placeholder="claim..."
-          ></input>
+          <div>
+            <input
+              className={styles.claim_input}
+              value={des.claimAm}
+              name="claimAm"
+              onChange={handleChange}
+              placeholder="claim..."
+            ></input>
+          </div>
+          {assessmentLossFields.map((data, index) => (
+            <div>
+              <p className={styles.des_title}>{data.name}</p>
+              <textarea
+                value={addFieldData[`field${index}`]}
+                onChange={handleAddFieldChange}
+                name={`field${index}`}
+                className={styles.add_textarea}
+                placeholder={data.name}
+              ></textarea>
+            </div>
+          ))}
           <div>
             <div>
               <button
@@ -233,7 +324,13 @@ export default function AssessmentOfLoss({
                     description: des.des,
                     claimAmout: des.claimAm,
                     assessmentAmount: des.assessAm,
+                    field0: addFieldData.field0,
+                    field1: addFieldData.field1,
+                    field2: addFieldData.field2,
+                    field3: addFieldData.field3,
+                    field4: addFieldData.field4,
                   };
+                  console.log(assessmentLossTable);
                   const newData = assessmentLossTable.concat(obj);
                   setAssessmentLossTable(newData);
                 }}
@@ -310,6 +407,34 @@ export default function AssessmentOfLoss({
           </div>
         </div>
       ) : null}
+
+      <div>
+        <div
+          className={
+            isNewFieldShowing ? styles.add_field_name : styles.add_field_name1
+          }
+        >
+          <p>Add New Field</p>
+          <input
+            value={addField.name}
+            name="name"
+            onChange={handleAddChange}
+            placeholder="new field name"
+          ></input>
+          <button
+            onClick={() => {
+              if (assessmentLossFields.length < 5) {
+                console.log(assessmentLossFields);
+                const obj = { name: addField.name };
+                const newdata = assessmentLossFields.concat(obj);
+                setAssessmentLossFields(newdata);
+              }
+            }}
+          >
+            add
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
