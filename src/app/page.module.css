@@ -398,9 +398,9 @@
     padding: 15px 5vw;
     margin: 6px 0;
     border-radius: 5px;
-    background-color: #ffffff;
-    border: 1.5px solid rgb(190, 190, 190);
-    box-shadow: rgb(215, 215, 215) 0px 0px 2px 1.1px;
+    background-color: #f9f9f9;
+    border: 2px solid rgb(190, 190, 190);
+    /* box-shadow: rgb(215, 215, 215) 0px 0px 2px 1.1px; */
   }
   .option p {
     font-weight: 510;
