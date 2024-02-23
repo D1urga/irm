@@ -72,49 +72,59 @@ export default function ProjectDescription({
           </button>
           <p className={styles.issue_table}>Issues Table</p>
           <div className={styles.description_table_div}>
-            {projectDescriptionTable.map((data, index) => (
-              <div key={index}>
-                <div
-                  className={
-                    setIsDescriptionTableShowing
-                      ? styles.tables
-                      : styles.tables1
-                  }
-                  onClick={() => {
-                    setIsDescriptionShowing(false);
-                    setIsDescriptionTableShowing(true);
-                    setIsDescriptionTableUploading(false);
-                    setPage(index);
-                  }}
-                >
-                  <p>item {index + 1}</p>
-                  <div className={styles.logos}>
-                    {/* <FaPlusCircle className={styles.logo1} />
+            {projectDescriptionTable.length != 0 ? (
+              <div>
+                {projectDescriptionTable.map((data, index) => (
+                  <div key={index}>
+                    <div
+                      className={
+                        setIsDescriptionTableShowing
+                          ? styles.tables
+                          : styles.tables1
+                      }
+                      onClick={() => {
+                        setIsDescriptionShowing(false);
+                        setIsDescriptionTableShowing(true);
+                        setIsDescriptionTableUploading(false);
+                        setPage(index);
+                      }}
+                    >
+                      <p>item {index + 1}</p>
+                      <div className={styles.logos}>
+                        {/* <FaPlusCircle className={styles.logo1} />
                     <FaEdit className={styles.logo2} /> */}
-                    <FaTrash
-                      className={styles.logo3}
-                      // onClick={() => {
-                      //   // const newData = projectDescriptionTable.un();
-                      //   const halfBeforeTheUnwantedElement =
-                      //     projectDescriptionTable.pop();
+                        <FaTrash
+                          className={styles.logo3}
+                          // onClick={() => {
+                          //   // const newData = projectDescriptionTable.un();
+                          //   const halfBeforeTheUnwantedElement =
+                          //     projectDescriptionTable.pop();
 
-                      //   const halfAfterTheUnwantedElement =
-                      //     projectDescriptionTable.slice(index + 1);
-                      //   // setProjectDescriptionTable(
-                      //   //   halfBeforeTheUnwantedElement +
-                      //   //     halfAfterTheUnwantedElement
-                      //   // );
-                      //   console.log(projectDescriptionTable);
-                      //   // console.log(
-                      //   //   halfAfterTheUnwantedElement +
-                      //   //     halfBeforeTheUnwantedElement
-                      //   // );
-                      // }}
-                    />
+                          //   const halfAfterTheUnwantedElement =
+                          //     projectDescriptionTable.slice(index + 1);
+                          //   // setProjectDescriptionTable(
+                          //   //   halfBeforeTheUnwantedElement +
+                          //   //     halfAfterTheUnwantedElement
+                          //   // );
+                          //   console.log(projectDescriptionTable);
+                          //   // console.log(
+                          //   //   halfAfterTheUnwantedElement +
+                          //   //     halfBeforeTheUnwantedElement
+                          //   // );
+                          // }}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              <p
+                style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}
+              >
+                no data available click "Add Issue" to fill
+              </p>
+            )}
           </div>
         </div>
         <div>
@@ -162,67 +172,83 @@ export default function ProjectDescription({
         <div className={styles.outer_div3}>
           <p className={styles.add_issue_title}>Issues {page + 1}</p>
           <p className={styles.fields}>Status</p>
-          <input
-            value={
-              projectDescriptionTable && projectDescriptionTable[page].status
-            }
-            name="status"
-            onChange={(e) => {
-              handleShowingChange(e, page);
-            }}
-            className={styles.add_issue_input}
-            placeholder="status..."
-          ></input>
+          <div>
+            <input
+              value={
+                projectDescriptionTable && projectDescriptionTable[page].status
+              }
+              name="status"
+              onChange={(e) => {
+                handleShowingChange(e, page);
+              }}
+              className={styles.add_issue_input}
+              placeholder="status..."
+            ></input>
+          </div>
           <p className={styles.fields}>Author</p>
-          <input
-            value={projectDescriptionTable[page].author}
-            name="author"
-            onChange={(e) => {
-              handleShowingChange(e, page);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Author..."
-          ></input>
+          <div>
+            {" "}
+            <input
+              value={projectDescriptionTable[page].author}
+              name="author"
+              onChange={(e) => {
+                handleShowingChange(e, page);
+              }}
+              className={styles.add_issue_input}
+              placeholder="Author..."
+            ></input>
+          </div>
           <p className={styles.fields}>Reviewer</p>
-          <input
-            value={projectDescriptionTable[page].reviewer}
-            name="reviewer"
-            onChange={(e) => {
-              handleShowingChange(e, page);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Reviewer..."
-          ></input>
+          <div>
+            {" "}
+            <input
+              value={projectDescriptionTable[page].reviewer}
+              name="reviewer"
+              onChange={(e) => {
+                handleShowingChange(e, page);
+              }}
+              className={styles.add_issue_input}
+              placeholder="Reviewer..."
+            ></input>
+          </div>
           <p className={styles.fields}>Distribution</p>
-          <input
-            value={projectDescriptionTable[page].distribution}
-            name="distribution"
-            onChange={(e) => {
-              handleShowingChange(e, page);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Distribution..."
-          ></input>
+          <div>
+            <input
+              value={projectDescriptionTable[page].distribution}
+              name="distribution"
+              onChange={(e) => {
+                handleShowingChange(e, page);
+              }}
+              className={styles.add_issue_input}
+              placeholder="Distribution..."
+            ></input>
+          </div>
           <p className={styles.fields}>Mode</p>
-          <input
-            value={projectDescriptionTable[page].mode}
-            name="mode"
-            onChange={(e) => {
-              handleShowingChange(e, page);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Mode..."
-          ></input>
+          <div>
+            {" "}
+            <input
+              value={projectDescriptionTable[page].mode}
+              name="mode"
+              onChange={(e) => {
+                handleShowingChange(e, page);
+              }}
+              className={styles.add_issue_input}
+              placeholder="Mode..."
+            ></input>
+          </div>
           <p className={styles.fields}>Date</p>
-          <input
-            value={projectDescriptionTable[page].date}
-            name="date"
-            onChange={(e) => {
-              handleShowingChange(e, page);
-            }}
-            className={styles.add_issue_input}
-            placeholder="Date..."
-          ></input>
+          <div>
+            {" "}
+            <input
+              value={projectDescriptionTable[page].date}
+              name="date"
+              onChange={(e) => {
+                handleShowingChange(e, page);
+              }}
+              className={styles.add_issue_input}
+              placeholder="Date..."
+            ></input>
+          </div>
           {/* <div>
             <button className={styles.add_btn}>Add</button>
             <button className={styles.delete_btn}>Delete</button>
@@ -230,7 +256,7 @@ export default function ProjectDescription({
         </div>
       ) : isDescriptionTableUploading ? (
         <div className={styles.outer_div3}>
-          <p className={styles.add_issue_title}>Add Issues (2)</p>
+          <p className={styles.add_issue_title}>Add Issues</p>
           <p className={styles.fields}>Status</p>
           <input
             value={projectDescriptionTableData.status}

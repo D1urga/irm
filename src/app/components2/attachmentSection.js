@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "./styles/conclusion.module.css";
+import styles from "./styles/attachmentSection.module.css";
 import { FaAngleUp, FaTrash, FaEdit, FaPlusCircle } from "react-icons/fa";
 
-export default function Conclusion({
+export default function AttachmentSection({
   conclusionDes,
   setConclusionDes,
   conclusionTable,
@@ -65,20 +65,10 @@ export default function Conclusion({
     <div className={styles.main}>
       <div className={styles.outer_div}>
         <div className={styles.title}>
-          <p>Conclusion</p>
+          <p>AttachmentSection</p>
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
-        <button
-          className={isShowingConclusion ? styles.intro_btn : styles.intro_btn1}
-          onClick={() => {
-            setIsShowingConclusion(true);
-            setIsShowingAttachement(false);
-            setUploadingAttachement(false);
-          }}
-        >
-          Conclusion Description
-        </button>
-        <p className={styles.add_attach}>Attachments</p>
+
         <div className={styles.conclusion_table_div}>
           {conclusionTable.length != 0 ? (
             <div>
@@ -122,18 +112,7 @@ export default function Conclusion({
           Add Attachment
         </button>
       </div>
-      {isShowingConclusion ? (
-        <div className={styles.outer_div2}>
-          <p className={styles.des}>Conclusion Description</p>
-          <textarea
-            value={conclusionDes.conclusionDes}
-            onChange={handleChange}
-            name="conclusionDes"
-            className={styles.intro_textarea}
-            placeholder="conclusion description ..."
-          ></textarea>
-        </div>
-      ) : isShowingAttachement ? (
+      {isShowingAttachement ? (
         <div className={styles.items}>
           <p className={styles.add_attach_title}>Attachment {page + 1}</p>
           <p className={styles.des}>Title</p>

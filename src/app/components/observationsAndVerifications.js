@@ -107,36 +107,44 @@ export default function ObservationsAndVerifications({
         </button>
         <p className={styles.add_attach}>Add Attachments</p>
         <div className={styles.add_attachment_div}>
-          {observationsAndVerificationsAttach.map((data, index) => (
-            <div
-              className={page === page ? styles.tables : styles.tables1}
-              key={index}
-              onClick={() => {
-                setIntro(false);
-                setConc(false);
-                setIsShowing(true);
-                setIsUploading(false);
-                setPage(index);
-              }}
-            >
-              <p>item {index + 1}</p>
-              <div className={styles.logos}>
-                {/* <FaPlusCircle className={styles.logo1} />
+          {observationsAndVerificationsAttach.length != 0 ? (
+            <div>
+              {observationsAndVerificationsAttach.map((data, index) => (
+                <div
+                  className={page === page ? styles.tables : styles.tables1}
+                  key={index}
+                  onClick={() => {
+                    setIntro(false);
+                    setConc(false);
+                    setIsShowing(true);
+                    setIsUploading(false);
+                    setPage(index);
+                  }}
+                >
+                  <p>item {index + 1}</p>
+                  <div className={styles.logos}>
+                    {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                <FaTrash
-                  className={styles.logo3}
-                  // onClick={() => {
-                  //   const newData = observationsAndVerificationsAttach.splice(
-                  //     index,
-                  //     1
-                  //   );
-                  //   // setObservationsAndVerificationsAttach(newData);
-                  //   console.log(newData);
-                  // }}
-                />
-              </div>
+                    <FaTrash
+                      className={styles.logo3}
+                      // onClick={() => {
+                      //   const newData = observationsAndVerificationsAttach.splice(
+                      //     index,
+                      //     1
+                      //   );
+                      //   // setObservationsAndVerificationsAttach(newData);
+                      //   console.log(newData);
+                      // }}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <p style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}>
+              no data available click "button" to fill
+            </p>
+          )}
         </div>
         <button
           className={styles.add_attach_button}

@@ -6,14 +6,21 @@
     display: flex;
     flex-direction: column;
     margin-left: 5vw;
-    margin-top: 40px;
-
-    /* height: 700px; */
+    margin-top: 20px;
+    height: 84vh;
+    overflow: hidden;
     width: 600px;
     border-radius: 8px;
     padding: 20px 40px;
     background-color: #ffffff;
+    border-top: 9px solid white;
+    border-bottom: 9px solid white;
+    border-right: 9px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .outer_div:hover {
+    overflow: scroll;
+    padding: 20px 37.7px 20px 40px;
   }
   .title {
     display: flex;

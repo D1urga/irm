@@ -10,10 +10,11 @@
     flex-direction: column;
     margin-left: 5vw;
     width: 33vw;
-    height: 500px;
-    margin-top: 40px;
+    /* height: 500px; */
+    margin-top: 20px;
     border-radius: 8px;
     padding: 10px 0;
+    padding-bottom: 20px;
     background-color: #ffffff;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
@@ -67,19 +68,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 227px;
+    max-height: 328px;
     min-height: 50px;
     width: 24vw;
     margin-left: 40px;
     padding: 4px 0px;
     border-radius: 5px;
-    overflow: scroll;
+    overflow: hidden;
     background-color: #ffffff;
+    border: 9px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .description_table_div:hover {
+    overflow: scroll;
+    padding: 4px 0px 1.7px 2.4px;
   }
   .tables {
     display: flex;
-    width: 23vw;
+    width: 21vw;
     align-items: center;
     justify-content: space-between;
     /* height: 50px; */
@@ -91,7 +97,7 @@
   }
   .tables1 {
     display: flex;
-    width: 23vw;
+    width: 21vw;
     align-items: center;
     justify-content: space-between;
     /* height: 50px; */
@@ -143,8 +149,8 @@
     flex-direction: column;
     margin-left: 2vw;
     width: 40vw;
-    height: 500px;
-    margin-top: 40px;
+    /* height: 500px; */
+    margin-top: 20px;
     border-radius: 8px;
     padding: 20px 40px;
     /* background-color: #ece1e1; */
@@ -198,8 +204,9 @@
     flex-direction: column;
     margin-left: 2vw;
     width: 40vw;
-    /* height: 500px; */
-    margin-top: 40px;
+    max-height: 84vh;
+    overflow: scroll;
+    margin-top: 20px;
     border-radius: 8px;
     padding: 20px 40px;
     background-color: #ffffff;

@@ -34,14 +34,14 @@ export default function RootLayout({ children }) {
             {/* <Image src={logo} className={styles.logo} /> */}
             <p className={styles.name}>irm</p>
             <Link
-              href=""
+              href="/typeB"
               onClick={() => setIsActive(0)}
               className={isActive === 0 ? styles.links_active : styles.links}
             >
               <p>Home</p>
             </Link>
             <Link
-              href=""
+              href="/"
               onClick={() => setIsActive(1)}
               className={isActive === 1 ? styles.links_active : styles.links}
             >

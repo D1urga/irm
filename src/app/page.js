@@ -63,6 +63,16 @@ export default function Home() {
   const [conclusionDes, setConclusionDes] = useState({ conclusionDes: "" });
   const [conclusionTable, setConclusionTable] = useState([]);
 
+  const [totalClaimAm, setTotalClaimAm] = useState(0);
+
+  const countClaimAm = () => {
+    let value = 0;
+    for (let i = 0; i < assessmentLossTable.length; i++) {
+      value = value + Number(assessmentLossTable[i].claimAmout);
+    }
+    setTotalClaimAm(value);
+  };
+
   // /////////////////////////
   const [list, setList] = useState(["anoop", "kumar"]);
   const [list1, setList1] = useState(0);
@@ -83,16 +93,17 @@ export default function Home() {
   });
   const sections = [];
   const [currentSection, setCurrentState] = useState(0);
-  // useEffect(() => {
-  //   const unloadCallback = (event) => {
-  //     event.preventDefault();
-  //     event.returnValue = "";
-  //     return "";
-  //   };
+  useEffect(() => {
+    // const unloadCallback = (event) => {
+    //   event.preventDefault();
+    //   event.returnValue = "";
+    //   return "";
+    // };
 
-  //   window.addEventListener("beforeunload", unloadCallback);
-  //   return () => window.removeEventListener("beforeunload", unloadCallback);
-  // }, []);
+    // window.addEventListener("beforeunload", unloadCallback);
+    // return () => window.removeEventListener("beforeunload", unloadCallback);
+    countClaimAm;
+  }, [assessmentLossTable]);
 
   return (
     <div className={styles.outer_div}>
@@ -114,6 +125,10 @@ export default function Home() {
           <div className={styles.report}>
             <FaArrowLeft className={styles.arrow_left} />
             <p>Mr John report</p>
+            {/* <p>{totalClaimAm}</p>
+            <p>
+              {assessmentLossTable.reduce((a, v) => (a = a + v.claimAmout), 0)}
+            </p> */}
           </div>
           <div className={styles.option_outer_div}>
             <div
@@ -327,7 +342,7 @@ export default function Home() {
             <Image
               src={irmLogo}
               className={styles.irm_logo}
-              style={{ height: "100px", width: "400px" }}
+              style={{ height: "190px", width: "600px" }}
             />
           </div>
           <div
@@ -342,7 +357,7 @@ export default function Home() {
             <p
               style={{
                 width: "100%",
-                fontSize: "8px",
+                fontSize: "15px",
                 display: "flex",
                 alignItems: "center",
                 padding: "5px 10px",
@@ -373,7 +388,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "8px",
+                    fontSize: "15px",
                   }}
                 >
                   Project
@@ -392,7 +407,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "8px",
+                    fontSize: "15px",
                   }}
                 >
                   {projectDescriptionData.projectTitle}
@@ -420,7 +435,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "8px",
+                    fontSize: "15px",
                   }}
                 >
                   client
@@ -438,7 +453,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "8px",
+                    fontSize: "15px",
                   }}
                 >
                   {projectDescriptionData.client}
@@ -449,7 +464,6 @@ export default function Home() {
           <div
             style={{
               width: "100%",
-
               display: "flex",
               alignItems: "stretch",
               justifyContent: "center",
@@ -477,7 +491,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "8px",
+                    fontSize: "15px",
                   }}
                 >
                   IRM’s Document Reference
@@ -496,7 +510,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "8px",
+                    fontSize: "15px",
                   }}
                 >
                   {projectDescriptionData.documentReference}
@@ -528,7 +542,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                 }}
               >
                 Issue
@@ -547,7 +561,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                 }}
               >
                 Status
@@ -566,7 +580,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                 }}
               >
                 Author
@@ -585,7 +599,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                 }}
               >
                 Reviwer
@@ -604,7 +618,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                 }}
               >
                 Distribution
@@ -623,7 +637,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                 }}
               >
                 Mode
@@ -642,7 +656,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                 }}
               >
                 Date
@@ -678,7 +692,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "8px",
+                      fontSize: "13px",
                     }}
                   >
                     {index}
@@ -698,7 +712,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "8px",
+                      fontSize: "13px",
                     }}
                   >
                     {data.status}
@@ -718,7 +732,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "8px",
+                      fontSize: "13px",
                     }}
                   >
                     {data.author}
@@ -738,7 +752,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "8px",
+                      fontSize: "13px",
                     }}
                   >
                     {data.reviewer}
@@ -758,7 +772,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "8px",
+                      fontSize: "13px",
                     }}
                   >
                     {data.distribution}
@@ -778,7 +792,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "8px",
+                      fontSize: "13px",
                     }}
                   >
                     {data.mode}
@@ -798,7 +812,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "8px",
+                      fontSize: "13px",
                     }}
                   >
                     {data.date}
@@ -809,7 +823,7 @@ export default function Home() {
           </div>
           <p
             style={{
-              fontSize: "9px",
+              fontSize: "17px",
               fontWeight: "600",
               marginTop: "20px",
             }}
@@ -818,7 +832,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "8px",
+              fontSize: "13px",
               marginTop: "20px",
             }}
           >
@@ -829,7 +843,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "9px",
+              fontSize: "12px",
               marginTop: "20px",
             }}
           >
@@ -837,7 +851,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "9px",
+              fontSize: "17px",
               fontWeight: "600",
               marginTop: "20px",
             }}
@@ -863,7 +877,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -889,7 +903,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -916,7 +930,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -924,7 +938,7 @@ export default function Home() {
               </p>
               <p
                 style={{
-                  fontSize: "11px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -942,7 +956,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -969,7 +983,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -995,7 +1009,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1022,7 +1036,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1030,7 +1044,7 @@ export default function Home() {
               </p>
               <p
                 style={{
-                  fontSize: "11px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1048,7 +1062,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1075,7 +1089,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1101,7 +1115,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1128,7 +1142,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1154,7 +1168,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "8px",
+                  fontSize: "13px",
                   marginTop: "5px",
                 }}
               >
@@ -1164,7 +1178,7 @@ export default function Home() {
           </div>
           <p
             style={{
-              fontSize: "9px",
+              fontSize: "17px",
               fontWeight: "600",
               marginTop: "20px",
             }}
@@ -1173,7 +1187,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "8px",
+              fontSize: "13px",
               marginTop: "20px",
             }}
           >
@@ -1212,8 +1226,8 @@ export default function Home() {
                     <img
                       src={data.attachmentUrl}
                       style={{
-                        height: "175px",
-                        width: "200px",
+                        height: "330px",
+                        width: "350px",
                         objectFit: "contain",
                         display: "grid",
                         gridTemplateColumns: "repeat(2,1fr)",
@@ -1238,7 +1252,7 @@ export default function Home() {
           </div>
           <p
             style={{
-              fontSize: "8px",
+              fontSize: "13px",
               marginTop: "20px",
             }}
           >
@@ -1246,7 +1260,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "11px",
+              fontSize: "17px",
               marginTop: "20px",
             }}
           >
@@ -1254,7 +1268,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "10px",
+              fontSize: "13px",
               marginTop: "20px",
             }}
           >
@@ -1262,7 +1276,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "11px",
+              fontSize: "17px",
               marginTop: "20px",
             }}
           >
@@ -1270,7 +1284,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "11px",
+              fontSize: "13px",
               marginTop: "20px",
             }}
           >
@@ -1294,7 +1308,7 @@ export default function Home() {
           >
             <p
               style={{
-                fontSize: "9px",
+                fontSize: "13px",
               }}
             >
               Site : CHEBEL, KOSOVO SPORTS COMPLEX (CLOAKROOM)
@@ -1321,7 +1335,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "11px",
+                    fontSize: "13px",
                   }}
                 >
                   {assessmentLossFields[0].name}
@@ -1340,7 +1354,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "11px",
+                    fontSize: "13px",
                   }}
                 >
                   {assessmentLossFields[1].name}
@@ -1359,7 +1373,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "11px",
+                    fontSize: "13px",
                   }}
                 >
                   {assessmentLossFields[2].name}
@@ -1378,7 +1392,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "11px",
+                    fontSize: "13px",
                   }}
                 >
                   {assessmentLossFields[3].name}
@@ -1397,7 +1411,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "11px",
+                    fontSize: "13px",
                   }}
                 >
                   {assessmentLossFields[4].name}
@@ -1415,7 +1429,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "11px",
+                  fontSize: "13px",
                 }}
               >
                 Description
@@ -1432,7 +1446,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "11px",
+                  fontSize: "13px",
                 }}
               >
                 Claim, Rs
@@ -1449,7 +1463,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "11px",
+                  fontSize: "13px",
                 }}
               >
                 Asse, Rs
@@ -1483,7 +1497,7 @@ export default function Home() {
                     >
                       <p
                         style={{
-                          fontSize: "8px",
+                          fontSize: "13px",
                         }}
                       >
                         {data[`field${0}`]}
@@ -1503,7 +1517,7 @@ export default function Home() {
                     >
                       <p
                         style={{
-                          fontSize: "8px",
+                          fontSize: "13px",
                         }}
                       >
                         {data[`field${1}`]}
@@ -1523,7 +1537,7 @@ export default function Home() {
                     >
                       <p
                         style={{
-                          fontSize: "8px",
+                          fontSize: "13px",
                         }}
                       >
                         {data[`field${2}`]}
@@ -1543,7 +1557,7 @@ export default function Home() {
                     >
                       <p
                         style={{
-                          fontSize: "8px",
+                          fontSize: "13px",
                         }}
                       >
                         {data[`field${3}`]}
@@ -1563,7 +1577,7 @@ export default function Home() {
                     >
                       <p
                         style={{
-                          fontSize: "8px",
+                          fontSize: "13px",
                         }}
                       >
                         {data[`field${4}`]}
@@ -1581,7 +1595,7 @@ export default function Home() {
                   >
                     <p
                       style={{
-                        fontSize: "8px",
+                        fontSize: "13px",
                       }}
                     >
                       {data.description}
@@ -1599,7 +1613,7 @@ export default function Home() {
                   >
                     <p
                       style={{
-                        fontSize: "8px",
+                        fontSize: "13px",
                       }}
                     >
                       {data.claimAmout}
@@ -1616,7 +1630,7 @@ export default function Home() {
                   >
                     <p
                       style={{
-                        fontSize: "8px",
+                        fontSize: "13px",
                       }}
                     >
                       {data.assessmentAmount}
@@ -1627,7 +1641,7 @@ export default function Home() {
           </div>
           <p
             style={{
-              fontSize: "11px",
+              fontSize: "17px",
               marginTop: "20px",
             }}
           >
@@ -1635,7 +1649,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "8px",
+              fontSize: "13px",
               marginTop: "20px",
             }}
           >
@@ -1675,8 +1689,8 @@ export default function Home() {
                     <img
                       src={data.attachmentUrl}
                       style={{
-                        height: "175px",
-                        width: "200px",
+                        height: "330px",
+                        width: "350px",
                         objectFit: "contain",
                         display: "grid",
                         gridTemplateColumns: "repeat(2,1fr)",
@@ -1689,7 +1703,7 @@ export default function Home() {
                     ></img>
                     <p
                       style={{
-                        fontSize: "8px",
+                        fontSize: "13px",
                         marginTop: "5px",
                       }}
                     >

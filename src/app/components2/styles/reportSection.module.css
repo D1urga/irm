@@ -4,18 +4,24 @@
     align-items: flex-start;
   }
   .outer_div {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     margin-left: 5vw;
     width: 33vw;
-    /* max-height: 500px; */
+
+    max-height: 84vh;
     margin-top: 20px;
-    margin-bottom: 20px;
     border-radius: 8px;
     padding: 20px 40px;
-
     background-color: #ffffff;
+    border-top: 8px solid white;
+    border-bottom: 8px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .outer_div:hover {
+    overflow: scroll;
+    padding: 20px 37.5px 18px 40px;
   }
   .title {
     display: flex;
@@ -44,6 +50,15 @@
     background-color: #f4f4f4;
     border-radius: 5px;
   }
+  .more_fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .add {
+    font-size: 17px;
+    color: rgb(100, 100, 100);
+  }
   .intro_btn1 {
     display: flex;
     align-items: center;
@@ -57,62 +72,46 @@
     border-radius: 5px;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
-  .conc_btn {
-    display: flex;
-    align-items: center;
-    border: none;
-    height: 45px;
-    margin: 5px 0px 5px 0px;
-    width: 24vw;
-    padding: 2px 40px;
-    font-size: 13.5px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
+  .add_attach {
+    font-size: 13px;
+    font-weight: 510px;
+    padding: 10px 0;
   }
-  .add_attachment_div {
+  .assessment_loss_table {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 260px;
+    max-height: 190px;
+    min-height: 50px;
+    padding: 4px 2.4px;
+    width: 24vw;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 9px solid rgb(255, 255, 255);
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .assessment_loss_table:hover {
+    overflow: scroll;
+    padding: 4px 0px 1.7px 2.4px;
+  }
+  .note_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 197px;
     min-height: 50px;
     width: 24vw;
-    /* margin-left: 40px; */
-    padding: 4px 0px;
+    padding: 4px 2.4px;
     border-radius: 5px;
     overflow: hidden;
     background-color: #ffffff;
     border: 9px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
-  .add_attachment_div:hover {
+  .note_div:hover {
     overflow: scroll;
     padding: 4px 0px 1.7px 2.4px;
-  }
-  .prev_image {
-    resize: both;
-    width: 14vw;
-    object-fit: contain;
-    height: 190px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  .conc_btn1 {
-    display: flex;
-    align-items: center;
-    border: none;
-    height: 45px;
-    margin: 5px 0px 5px 0px;
-    width: 24vw;
-    padding: 2px 40px;
-    font-size: 13.5px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
-  }
-  .add_attach {
-    font-size: 13px;
-    font-weight: 510px;
-    padding: 10px 0;
   }
   .tables {
     display: flex;
@@ -122,8 +121,8 @@
     /* height: 50px; */
     margin: 2px 0px;
     border-radius: 5px;
-    padding: 15px 40px;
-    background-color: #f4f4f4;
+    padding: 12px 30px;
+    background-color: #f3f8f8;
     /* box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px; */
   }
   .tables1 {
@@ -134,9 +133,10 @@
     /* height: 50px; */
     margin: 2px 0px;
     border-radius: 5px;
-    padding: 15px 40px;
-    background-color: #ffffff;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    padding: 12px 30px;
+    background-color: #f3f8f8;
+    /* border: 1px solid gray; */
+    /* box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px; */
   }
   .tables p,
   .tables1 p {
@@ -163,101 +163,6 @@
   .logo3 {
     color: rgb(198, 84, 84);
   }
-  .add_attach_button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 5px;
-    color: white;
-    font-size: 13px;
-    margin: 10px 0;
-    width: 12vw;
-    height: 45px;
-    background-color: rgb(66, 189, 161);
-  }
-  .outer_div2 {
-    display: flex;
-    flex-direction: column;
-    margin-left: 5vw;
-    width: 33vw;
-    height: 300px;
-    margin-top: 20px;
-    border-radius: 8px;
-    padding: 20px 40px;
-    background-color: #ffffff;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
-  }
-  .introduction {
-    font-size: 14px;
-    font-weight: 510;
-  }
-  .intro_textarea {
-    outline: 0;
-    resize: none;
-    border: none;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    margin: 15px 0px 5px 0px;
-    width: 26vw;
-    padding: 10px;
-    font-size: 14px;
-    height: 200px;
-  }
-  .items {
-    display: flex;
-    flex-direction: column;
-    margin-left: 5vw;
-    width: 33vw;
-    /* height: 500px; */
-    margin-top: 20px;
-    border-radius: 8px;
-    padding: 20px 40px;
-    background-color: #ffffff;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
-  }
-  .add_attach_title {
-    font-size: 14px;
-    font-weight: 510;
-  }
-  .des {
-    font-size: 13px;
-    font-weight: 510;
-    padding: 10px 0;
-  }
-  .client_input,
-  .client_input:focus {
-    border: none;
-    height: 45px;
-    margin: 0px 0px 5px 0px;
-    width: 24vw;
-    padding: 2px 10px;
-    font-size: 13px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-  }
-  .img {
-    resize: both;
-    width: 14vw;
-    object-fit: cover;
-    height: 190px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    /* background-color: #dcdcdc; */
-    border: 1px dashed black;
-    /* height: 150px; */
-  }
-  .avatar {
-    resize: both;
-    width: 14vw;
-    object-fit: contain;
-    height: 190px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-
-    /* height: 150px; */
-  }
   .add_btn,
   .delete_btn {
     border: none;
@@ -273,6 +178,174 @@
   }
   .delete_btn {
     background-color: rgb(188, 58, 58);
+  }
+  .add_btn1 {
+    border: none;
+    margin-right: 10px;
+    width: 8vw;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: white;
+  }
+  .add_btn1 {
+    background-color: rgb(66, 189, 161);
+  }
+  .outer_div2 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+    width: 33vw;
+    height: 350px;
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title p {
+    font-size: 14px;
+    font-weight: 510;
+  }
+  .angle_up {
+    font-size: 17px;
+    color: rgb(91, 91, 91);
+  }
+  .des {
+    font-size: 14px;
+    font-weight: 510;
+    padding: 0 0 10px 0;
+  }
+  .des_title {
+    font-size: 13px;
+    font-weight: 510;
+    padding: 10px 0;
+  }
+  .intro_textarea {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 26vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 230px;
+  }
+  .outer_div3 {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-left: 2vw;
+    width: 33vw;
+    /* min-height: 450px; */
+    max-height: 84vh;
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 20px 31px;
+    background-color: #ffffff;
+    border: 9px solid white;
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .outer_div3:hover {
+    overflow: scroll;
+    padding: 20px 29px 20px 31px;
+  }
+  .dec_textarea {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 24vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 45px;
+  }
+  .dec_textarea1 {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 24vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 100px;
+  }
+  .add_textarea {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 24vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 45px;
+  }
+  .claim_input {
+    border: none;
+    height: 45px;
+    margin: 0px 0px 5px 0px;
+    width: 24vw;
+    padding: 2px 10px;
+    font-size: 13px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+  }
+
+  .add_field_name {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    border-radius: 5px;
+    right: 10px;
+    top: 77px;
+    background-color: #ffffff;
+    height: 160px;
+    width: 200px;
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .add_field_name1 {
+    display: none;
+  }
+  .add_field_name p {
+    font-size: 13px;
+    font-weight: 520;
+    margin-bottom: 10px;
+  }
+  .add_field_name input {
+    border: none;
+    height: 45px;
+    margin: 0px 0px 5px 0px;
+    width: 160px;
+    padding: 2px 10px;
+    font-size: 13px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+  }
+  .add_field_name button {
+    border: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(66, 189, 161);
   }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {
