@@ -126,7 +126,7 @@ export default function NotesSection({
               <p
                 style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}
               >
-                no data available click "Add Note" to fill
+                no data available click Add Note to fill
               </p>
             )}
           </div>

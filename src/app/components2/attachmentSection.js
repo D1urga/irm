@@ -97,7 +97,7 @@ export default function AttachmentSection({
             </div>
           ) : (
             <p style={{ fontSize: "12.2px", marginTop: "6px", color: "gray" }}>
-              no data available click "Add Issue" to fill
+              no data available click Add Issue to fill
             </p>
           )}
         </div>

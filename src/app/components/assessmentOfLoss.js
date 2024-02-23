@@ -139,7 +139,7 @@ export default function AssessmentOfLoss({
               <p
                 style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}
               >
-                no data available click "Add Item" to fill
+                no data available click Add Item to fill
               </p>
             )}
           </div>
@@ -187,7 +187,7 @@ export default function AssessmentOfLoss({
               <p
                 style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}
               >
-                no data available click "Add Note" to fill
+                no data available click Add Note to fill
               </p>
             )}
           </div>
@@ -253,7 +253,7 @@ export default function AssessmentOfLoss({
             ></input>
           </div>
           {assessmentLossFields.map((data, index) => (
-            <div>
+            <div key={index}>
               <p className={styles.des_title}>{data.name}</p>
               <textarea
                 value={assessmentLossTable[tablePage][`field${index}`]}
@@ -315,7 +315,7 @@ export default function AssessmentOfLoss({
             ></input>
           </div>
           {assessmentLossFields.map((data, index) => (
-            <div>
+            <div key={index}>
               <p className={styles.des_title}>{data.name}</p>
               <textarea
                 value={addFieldData[`field${index}`]}

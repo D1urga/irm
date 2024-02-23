@@ -331,6 +331,7 @@ export default function TypeB() {
           >
             {assessmentLossTable.map((data, index) => (
               <div
+                key={index}
                 style={{
                   width: "100%",
                   display: "flex",
@@ -525,7 +526,7 @@ export default function TypeB() {
             </div>
           </div>
           {notesSection.map((data, index) => (
-            <div>
+            <div key={index}>
               <div
                 style={{
                   width: "100%",

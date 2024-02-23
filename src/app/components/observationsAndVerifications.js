@@ -142,7 +142,7 @@ export default function ObservationsAndVerifications({
             </div>
           ) : (
             <p style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}>
-              no data available click "button" to fill
+              no data available click button to fill
             </p>
           )}
         </div>

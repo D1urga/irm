@@ -128,7 +128,7 @@ export default function ReportSection({
               <p
                 style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}
               >
-                no data available click "Add Item" to fill
+                no data available click Add Item to fill
               </p>
             )}
           </div>

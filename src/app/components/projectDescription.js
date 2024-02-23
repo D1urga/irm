@@ -122,7 +122,7 @@ export default function ProjectDescription({
               <p
                 style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}
               >
-                no data available click "Add Issue" to fill
+                no data available click Add Issue to fill
               </p>
             )}
           </div>
