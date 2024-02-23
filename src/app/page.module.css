@@ -339,21 +339,28 @@
   .btn3 {
     border: none;
     padding: 7px 10px;
-    /* border-radius: 20px; */
+    border-radius: 20px;
     margin: 0 3px;
     font-size: 12px;
-    color: white;
+
+    background-color: #fff;
 
     /* font-weight: 500; */
   }
   .btn1 {
-    background-color: rgb(66, 189, 161);
+    color: rgb(66, 189, 161);
+    font-weight: 600;
+    border: 1.5px solid rgb(190, 190, 190);
   }
   .btn2 {
-    background-color: rgb(188, 58, 58);
+    color: rgb(188, 58, 58);
+    font-weight: 600;
+    border: 1.5px solid rgb(190, 190, 190);
   }
   .btn3 {
-    background-color: rgb(92, 128, 220);
+    color: rgb(92, 128, 220);
+    font-weight: 600;
+    border: 1.5px solid rgb(190, 190, 190);
   }
   .allPages {
     display: flex;
@@ -398,8 +405,8 @@
     padding: 15px 5vw;
     margin: 6px 0;
     border-radius: 5px;
-    background-color: #f9f9f9;
-    border: 2px solid rgb(190, 190, 190);
+    background-color: #f9f6f6;
+    border: 1px solid rgb(190, 190, 190);
     /* box-shadow: rgb(215, 215, 215) 0px 0px 2px 1.1px; */
   }
   .option p {
