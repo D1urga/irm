@@ -222,7 +222,7 @@ export default function ReportSection({
             ></input>
           </div>
           {assessmentLossFields.map((data, index) => (
-            <div>
+            <div key={index}>
               <p className={styles.des_title}>{data.name}</p>
               <textarea
                 value={assessmentLossTable[tablePage][`field${index}`]}
