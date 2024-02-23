@@ -84,7 +84,7 @@
     overflow: hidden;
     width: 93vw;
     border-radius: 8px;
-    padding: 20px 30px;
+    padding: 20px 20px;
     background-color: #f6f6f6;
     border-top: 9px solid white;
     border-bottom: 9px solid white;
@@ -117,7 +117,7 @@
     border: none;
     height: 45px;
     margin: 0px 0px 5px 0px;
-    width: 75vw;
+    width: 80vw;
     padding: 2px 10px;
     font-size: 13.5px;
     background-color: #e6e6e6;
@@ -131,7 +131,7 @@
     background-color: #e6e6e6;
     border-radius: 5px;
     margin: 0px 0px 5px 0px;
-    width: 75vw;
+    width: 80vw;
     padding: 10px;
     font-size: 14px;
     height: 100px;
