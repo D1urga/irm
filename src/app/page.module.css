@@ -351,17 +351,17 @@
   .btn1 {
     color: rgb(82, 158, 141);
     font-weight: 600;
-    border: 1.5px solid rgb(190, 190, 190);
+    border: 1.5px solid rgb(229, 229, 229);
   }
   .btn2 {
     color: rgb(152, 84, 84);
     font-weight: 600;
-    border: 1.5px solid rgb(190, 190, 190);
+    border: 1.5px solid rgb(229, 229, 229);
   }
   .btn3 {
     color: rgb(85, 104, 152);
     font-weight: 600;
-    border: 1.5px solid rgb(190, 190, 190);
+    border: 1.5px solid rgb(229, 229, 229);
   }
   .allPages {
     display: flex;
