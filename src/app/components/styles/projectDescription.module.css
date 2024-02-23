@@ -560,11 +560,11 @@
   }
   .tables {
     display: flex;
-    width: 73vw;
+    width: 75vw;
     align-items: center;
     justify-content: space-between;
     /* height: 50px; */
-    margin: 2px 1.5vw;
+    margin: 2px 1vw;
     border-radius: 5px;
     padding: 15px 20px;
     background-color: #f6f6f6;
@@ -592,7 +592,7 @@
     align-items: center;
     justify-content: space-between;
     /* height: 50px; */
-    margin: 2px 5vw;
+    margin: 2px 1vw;
     border-radius: 5px;
     padding: 15px 40px;
     background-color: #f6f6f6;
@@ -628,11 +628,14 @@
     margin-top: 10px;
     padding: 7px 10px;
     border: none;
-    border-radius: 20px;
-    background-color: rgb(66, 189, 161);
-    color: white;
+    border-radius: 5px;
+    color: rgb(93, 175, 156);
+    /* color: white; */
     font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgb(217, 217, 217);
     width: 100px;
+    background-color: #e5e5e5;
     /* height: 35px; */
   }
   .outer_div2 {
@@ -716,17 +719,19 @@
   .delete_btn {
     border: none;
     margin-right: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 7px 20px;
     font-size: 13px;
+    font-weight: 600;
     margin-top: 10px;
-    color: white;
+    background-color: #e5e5e5;
+    border: 1px solid rgb(217, 217, 217);
   }
   .add_btn {
-    background-color: rgb(66, 189, 161);
+    color: rgb(95, 175, 156);
   }
   .delete_btn {
-    background-color: rgb(188, 58, 58);
+    color: rgb(165, 98, 98);
   }
   .fields {
     font-size: 13px;
