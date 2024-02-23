@@ -328,6 +328,7 @@
     justify-content: space-between;
     background-color: #ffffff;
     padding: 0 5vw;
+    margin-top: 15px;
   }
   .topbar p {
     font-size: 16px;
@@ -376,7 +377,7 @@
     background-color: #ffffff;
   }
   .preview_div {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -405,7 +406,7 @@
     padding: 15px 5vw;
     margin: 6px 0;
     border-radius: 5px;
-    background-color: #f9f6f6;
+    background-color: #f6f6f6;
     border: 1px solid rgb(190, 190, 190);
     /* box-shadow: rgb(215, 215, 215) 0px 0px 2px 1.1px; */
   }
