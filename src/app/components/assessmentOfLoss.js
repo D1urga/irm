@@ -130,7 +130,18 @@ export default function AssessmentOfLoss({
                     <div className={styles.logos}>
                       {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                      <FaTrash className={styles.logo3} />
+                      <FaTrash
+                        className={styles.logo3}
+                        onClick={() => {
+                          const subarr1 = assessmentLossTable.slice(0, index);
+                          const subarr2 = assessmentLossTable.slice(
+                            index + 1,
+                            assessmentLossTable.length
+                          );
+                          const newData = [...subarr1, ...subarr2];
+                          setAssessmentLossTable(newData);
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -178,7 +189,18 @@ export default function AssessmentOfLoss({
                     <div className={styles.logos}>
                       {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                      <FaTrash className={styles.logo3} />
+                      <FaTrash
+                        className={styles.logo3}
+                        onClick={() => {
+                          const subarr1 = assessmentLossNotes.slice(0, index);
+                          const subarr2 = assessmentLossNotes.slice(
+                            index + 1,
+                            assessmentLossNotes.length
+                          );
+                          const newData = [...subarr1, ...subarr2];
+                          setAssessmentLossNotes(newData);
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -219,7 +241,12 @@ export default function AssessmentOfLoss({
           <p className={styles.des_title}>Description</p>
           <div>
             <textarea
-              value={assessmentLossTable[tablePage].description}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].description
+                  : ""
+              }
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
               }}
@@ -236,7 +263,12 @@ export default function AssessmentOfLoss({
                 handleShowingChange(e, tablePage);
               }}
               name="claimAmout"
-              value={assessmentLossTable[tablePage].claimAmout}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].claimAmout
+                  : ""
+              }
               placeholder="claim..."
             ></input>
           </div>
@@ -248,7 +280,12 @@ export default function AssessmentOfLoss({
               }}
               name="assessmentAmount"
               className={styles.claim_input}
-              value={assessmentLossTable[tablePage].assessmentAmount}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].assessmentAmount
+                  : ""
+              }
               placeholder="assessmentAmount..."
             ></input>
           </div>
@@ -256,7 +293,12 @@ export default function AssessmentOfLoss({
             <div key={index}>
               <p className={styles.des_title}>{data.name}</p>
               <textarea
-                value={assessmentLossTable[tablePage][`field${index}`]}
+                value={
+                  assessmentLossTable.length != 0
+                    ? assessmentLossTable[tablePage] &&
+                      assessmentLossTable[tablePage][`field${index}`]
+                    : ""
+                }
                 onChange={(e) => {
                   handleShowingChange(e, tablePage);
                 }}
@@ -362,7 +404,12 @@ export default function AssessmentOfLoss({
             }}
             name="ref"
             className={styles.claim_input}
-            value={assessmentLossNotes[curentNotePage].ref}
+            value={
+              assessmentLossNotes.length != 0
+                ? assessmentLossNotes[curentNotePage] &&
+                  assessmentLossNotes[curentNotePage].ref
+                : ""
+            }
             placeholder="ref..."
           ></input>
           <p className={styles.des_title}>Note</p>
@@ -371,7 +418,12 @@ export default function AssessmentOfLoss({
               handleShowingNoteChange(e, curentNotePage);
             }}
             name="note"
-            value={assessmentLossNotes[curentNotePage].note}
+            value={
+              assessmentLossNotes.length != 0
+                ? assessmentLossNotes[curentNotePage] &&
+                  assessmentLossNotes[curentNotePage].note
+                : ""
+            }
             className={styles.dec_textarea}
             placeholder="note..."
           ></textarea>

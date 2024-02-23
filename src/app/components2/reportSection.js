@@ -119,7 +119,18 @@ export default function ReportSection({
                     <div className={styles.logos}>
                       {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                      <FaTrash className={styles.logo3} />
+                      <FaTrash
+                        className={styles.logo3}
+                        onClick={() => {
+                          const subarr1 = assessmentLossTable.slice(0, index);
+                          const subarr2 = assessmentLossTable.slice(
+                            index + 1,
+                            assessmentLossTable.length
+                          );
+                          const newData = [...subarr1, ...subarr2];
+                          setAssessmentLossTable(newData);
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -152,7 +163,12 @@ export default function ReportSection({
           <p className={styles.des_title}>Description</p>
           <div>
             <textarea
-              value={assessmentLossTable[tablePage].description}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].description
+                  : ""
+              }
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
               }}
@@ -164,7 +180,12 @@ export default function ReportSection({
           <p className={styles.des_title}>Report</p>
           <div>
             <textarea
-              value={assessmentLossTable[tablePage].report}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].report
+                  : ""
+              }
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
               }}
@@ -181,7 +202,12 @@ export default function ReportSection({
                 handleShowingChange(e, tablePage);
               }}
               name="action"
-              value={assessmentLossTable[tablePage].action}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].action
+                  : ""
+              }
               placeholder="action..."
             ></input>
           </div>
@@ -193,7 +219,12 @@ export default function ReportSection({
                 handleShowingChange(e, tablePage);
               }}
               name="replacement"
-              value={assessmentLossTable[tablePage].replacement}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].replacement
+                  : ""
+              }
               placeholder="replacement..."
             ></input>
           </div>
@@ -205,7 +236,12 @@ export default function ReportSection({
                 handleShowingChange(e, tablePage);
               }}
               name="depreciation"
-              value={assessmentLossTable[tablePage].depreciation}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].depreciation
+                  : ""
+              }
               placeholder="depreciation..."
             ></input>
           </div>
@@ -217,7 +253,12 @@ export default function ReportSection({
                 handleShowingChange(e, tablePage);
               }}
               name="assessment"
-              value={assessmentLossTable[tablePage].assessment}
+              value={
+                assessmentLossTable.length != 0
+                  ? assessmentLossTable[tablePage] &&
+                    assessmentLossTable[tablePage].assessment
+                  : ""
+              }
               placeholder="assessment..."
             ></input>
           </div>
@@ -225,7 +266,12 @@ export default function ReportSection({
             <div key={index}>
               <p className={styles.des_title}>{data.name}</p>
               <textarea
-                value={assessmentLossTable[tablePage][`field${index}`]}
+                value={
+                  assessmentLossTable.length != 0
+                    ? assessmentLossTable[tablePage] &&
+                      assessmentLossTable[tablePage][`field${index}`]
+                    : ""
+                }
                 onChange={(e) => {
                   handleShowingChange(e, tablePage);
                 }}

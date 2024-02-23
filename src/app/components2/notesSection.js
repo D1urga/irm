@@ -117,7 +117,18 @@ export default function NotesSection({
                     <div className={styles.logos}>
                       {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                      <FaTrash className={styles.logo3} />
+                      <FaTrash
+                        className={styles.logo3}
+                        onClick={() => {
+                          const subarr1 = assessmentLossNotes.slice(0, index);
+                          const subarr2 = assessmentLossNotes.slice(
+                            index + 1,
+                            assessmentLossNotes.length
+                          );
+                          const newData = [...subarr1, ...subarr2];
+                          setAssessmentLossNotes(newData);
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -154,7 +165,12 @@ export default function NotesSection({
             }}
             name="ref"
             className={styles.claim_input}
-            value={assessmentLossNotes[curentNotePage].ref}
+            value={
+              assessmentLossNotes.length != 0
+                ? assessmentLossNotes[curentNotePage] &&
+                  assessmentLossNotes[curentNotePage].ref
+                : ""
+            }
             placeholder="ref..."
           ></input>
           <p className={styles.des_title}>Note</p>
@@ -163,7 +179,12 @@ export default function NotesSection({
               handleShowingNoteChange(e, curentNotePage);
             }}
             name="note"
-            value={assessmentLossNotes[curentNotePage].note}
+            value={
+              assessmentLossNotes.length != 0
+                ? assessmentLossNotes[curentNotePage] &&
+                  assessmentLossNotes[curentNotePage].note
+                : ""
+            }
             className={styles.dec_textarea}
             placeholder="note..."
           ></textarea>

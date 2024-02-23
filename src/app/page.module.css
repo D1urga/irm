@@ -398,6 +398,7 @@
     margin: 6px 0;
     border-radius: 5px;
     background-color: #ffffff;
+    border: 1px solid rgb(190, 190, 190);
     box-shadow: rgb(215, 215, 215) 0px 0px 3px 1.1px;
   }
   .option p {

@@ -90,7 +90,18 @@ export default function AttachmentSection({
                   <div className={styles.logos}>
                     {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                    <FaTrash className={styles.logo3} />
+                    <FaTrash
+                      className={styles.logo3}
+                      onClick={() => {
+                        const subarr1 = conclusionTable.slice(0, index);
+                        const subarr2 = conclusionTable.slice(
+                          index + 1,
+                          conclusionTable.length
+                        );
+                        const newData = [...subarr1, ...subarr2];
+                        setConclusionTable(newData);
+                      }}
+                    />
                   </div>
                 </div>
               ))}
@@ -117,7 +128,11 @@ export default function AttachmentSection({
           <p className={styles.add_attach_title}>Attachment {page + 1}</p>
           <p className={styles.des}>Title</p>
           <input
-            value={conclusionTable[page].title}
+            value={
+              conclusionTable.length != 0
+                ? conclusionTable[page] && conclusionTable[page].title
+                : ""
+            }
             name="title"
             onChange={(e) => {
               handleShowingImageTitleChange(page);
@@ -128,7 +143,11 @@ export default function AttachmentSection({
           <p className={styles.des}>Attachment</p>
           <div className={styles.img}>
             <img
-              src={conclusionTable[page].attachmentUrl}
+              src={
+                conclusionTable.length != 0
+                  ? conclusionTable[page] && conclusionTable[page].attachmentUrl
+                  : ""
+              }
               className={styles.images}
             ></img>
           </div>{" "}

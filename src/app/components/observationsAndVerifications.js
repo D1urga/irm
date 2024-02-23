@@ -127,14 +127,17 @@ export default function ObservationsAndVerifications({
                 <FaEdit className={styles.logo2} /> */}
                     <FaTrash
                       className={styles.logo3}
-                      // onClick={() => {
-                      //   const newData = observationsAndVerificationsAttach.splice(
-                      //     index,
-                      //     1
-                      //   );
-                      //   // setObservationsAndVerificationsAttach(newData);
-                      //   console.log(newData);
-                      // }}
+                      onClick={() => {
+                        const subarr1 =
+                          observationsAndVerificationsAttach.slice(0, index);
+                        const subarr2 =
+                          observationsAndVerificationsAttach.slice(
+                            index + 1,
+                            observationsAndVerificationsAttach.length
+                          );
+                        const newData = [...subarr1, ...subarr2];
+                        setObservationsAndVerificationsAttach(newData);
+                      }}
                     />
                   </div>
                 </div>
@@ -238,7 +241,12 @@ export default function ObservationsAndVerifications({
           <p className={styles.add_attach_title}>Attachment {page + 1}</p>
           <p className={styles.des}>Description</p>
           <input
-            value={observationsAndVerificationsAttach[page].description}
+            value={
+              observationsAndVerificationsAttach.length != 0
+                ? observationsAndVerificationsAttach[page] &&
+                  observationsAndVerificationsAttach[page].description
+                : ""
+            }
             onChange={(e) => {
               handleShowingChange(e, page);
             }}
@@ -248,7 +256,12 @@ export default function ObservationsAndVerifications({
           ></input>
           <p className={styles.des}>Title</p>
           <input
-            value={observationsAndVerificationsAttach[page].title}
+            value={
+              observationsAndVerificationsAttach.length != 0
+                ? observationsAndVerificationsAttach[page] &&
+                  observationsAndVerificationsAttach[page].title
+                : ""
+            }
             onChange={(e) => {
               handleShowingChange(e, page);
             }}
@@ -260,7 +273,12 @@ export default function ObservationsAndVerifications({
           <div className={styles.img}>
             <img
               className={styles.prev_image}
-              src={observationsAndVerificationsAttach[page].attachmentUrl}
+              src={
+                observationsAndVerificationsAttach.length != 0
+                  ? observationsAndVerificationsAttach[page] &&
+                    observationsAndVerificationsAttach[page].attachmentUrl
+                  : ""
+              }
             ></img>
           </div>
           <div>

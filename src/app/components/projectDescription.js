@@ -95,23 +95,18 @@ export default function ProjectDescription({
                     <FaEdit className={styles.logo2} /> */}
                         <FaTrash
                           className={styles.logo3}
-                          // onClick={() => {
-                          //   // const newData = projectDescriptionTable.un();
-                          //   const halfBeforeTheUnwantedElement =
-                          //     projectDescriptionTable.pop();
-
-                          //   const halfAfterTheUnwantedElement =
-                          //     projectDescriptionTable.slice(index + 1);
-                          //   // setProjectDescriptionTable(
-                          //   //   halfBeforeTheUnwantedElement +
-                          //   //     halfAfterTheUnwantedElement
-                          //   // );
-                          //   console.log(projectDescriptionTable);
-                          //   // console.log(
-                          //   //   halfAfterTheUnwantedElement +
-                          //   //     halfBeforeTheUnwantedElement
-                          //   // );
-                          // }}
+                          onClick={() => {
+                            const subarr1 = projectDescriptionTable.slice(
+                              0,
+                              index
+                            );
+                            const subarr2 = projectDescriptionTable.slice(
+                              index + 1,
+                              projectDescriptionTable.length
+                            );
+                            const newData = [...subarr1, ...subarr2];
+                            setProjectDescriptionTable(newData);
+                          }}
                         />
                       </div>
                     </div>
@@ -175,7 +170,10 @@ export default function ProjectDescription({
           <div>
             <input
               value={
-                projectDescriptionTable && projectDescriptionTable[page].status
+                projectDescriptionTable.length != 0
+                  ? projectDescriptionTable[page] &&
+                    projectDescriptionTable[page].status
+                  : ""
               }
               name="status"
               onChange={(e) => {
@@ -189,7 +187,12 @@ export default function ProjectDescription({
           <div>
             {" "}
             <input
-              value={projectDescriptionTable[page].author}
+              value={
+                projectDescriptionTable.length != 0
+                  ? projectDescriptionTable[page] &&
+                    projectDescriptionTable[page].author
+                  : ""
+              }
               name="author"
               onChange={(e) => {
                 handleShowingChange(e, page);
@@ -202,7 +205,12 @@ export default function ProjectDescription({
           <div>
             {" "}
             <input
-              value={projectDescriptionTable[page].reviewer}
+              value={
+                projectDescriptionTable.length != 0
+                  ? projectDescriptionTable[page] &&
+                    projectDescriptionTable[page].reviewer
+                  : ""
+              }
               name="reviewer"
               onChange={(e) => {
                 handleShowingChange(e, page);
@@ -214,7 +222,12 @@ export default function ProjectDescription({
           <p className={styles.fields}>Distribution</p>
           <div>
             <input
-              value={projectDescriptionTable[page].distribution}
+              value={
+                projectDescriptionTable.length != 0
+                  ? projectDescriptionTable[page] &&
+                    projectDescriptionTable[page].distribution
+                  : ""
+              }
               name="distribution"
               onChange={(e) => {
                 handleShowingChange(e, page);
@@ -227,7 +240,12 @@ export default function ProjectDescription({
           <div>
             {" "}
             <input
-              value={projectDescriptionTable[page].mode}
+              value={
+                projectDescriptionTable.length != 0
+                  ? projectDescriptionTable[page] &&
+                    projectDescriptionTable[page].mode
+                  : ""
+              }
               name="mode"
               onChange={(e) => {
                 handleShowingChange(e, page);
@@ -240,7 +258,12 @@ export default function ProjectDescription({
           <div>
             {" "}
             <input
-              value={projectDescriptionTable[page].date}
+              value={
+                projectDescriptionTable.length != 0
+                  ? projectDescriptionTable[page] &&
+                    projectDescriptionTable[page].date
+                  : ""
+              }
               name="date"
               onChange={(e) => {
                 handleShowingChange(e, page);
