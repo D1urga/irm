@@ -100,7 +100,7 @@ P {
   height: 3px;
 }
 *::-webkit-scrollbar-track {
-  background: rgb(255, 255, 255);
+  background: transparent;
   border-radius: 1px;
   height: 0px;
 }
