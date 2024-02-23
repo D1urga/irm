@@ -152,7 +152,6 @@
     align-items: center;
     justify-content: space-between;
     margin: 10px 5vw;
-    /* background-color: #ffffff; */
   }
   .title p {
     font-size: 14px;
@@ -173,7 +172,7 @@
     outline: 0;
     resize: none;
     border: none;
-    background-color: #e6e6e6;
+    background-color: var(--inputcolor);
     border-radius: 5px;
     margin: 5px 80px 5px 5vw;
     width: 75vw;

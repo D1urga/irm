@@ -497,21 +497,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 30px;
-    margin-right: 4.5vw;
+    padding-bottom: 20px;
     background-color: rgb(255, 255, 255);
   }
   .outer_div {
     display: flex;
     flex-direction: column;
-
     width: 93vw;
-    height: 380px;
-    margin-top: 40px;
+    height: 400px;
+    margin-top: 23px;
     border-radius: 8px;
     padding: 10px 0;
-    background-color: #ffffff;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    background-color: var(--bgcolor);
+    border: 1px solid rgb(229, 229, 229);
   }
   .title {
     display: flex;
@@ -519,7 +517,7 @@
     width: 80vw;
     justify-content: space-between;
     margin: 10px 5vw;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
   }
   .title p {
     font-size: 14px;
@@ -539,7 +537,7 @@
     width: 80vw;
     padding: 2px 40px;
     font-size: 13.5px;
-    background-color: #f4f4f4;
+    background-color: #e6e6e6;
     border-radius: 5px;
   }
   .project_info_button1 {
@@ -562,26 +560,42 @@
   }
   .tables {
     display: flex;
-    width: 80vw;
+    width: 73vw;
     align-items: center;
     justify-content: space-between;
     /* height: 50px; */
-    margin: 10px 5vw;
+    margin: 2px 1.5vw;
     border-radius: 5px;
-    padding: 15px 40px;
-    background-color: #f4f4f4;
+    padding: 15px 20px;
+    background-color: #f6f6f6;
     /* box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px; */
   }
+  .description_table_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 206px;
+    min-height: 50px;
+    width: 80vw;
+    margin-left: 5vw;
+    padding: 4px 0px;
+    border-radius: 5px;
+    overflow: scroll;
+    background-color: #e6e6e6;
+    border: 4px solid #e6e6e6;
+    /* box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px; */
+  }
+
   .tables1 {
     display: flex;
-    width: 80vw;
+    width: 75vw;
     align-items: center;
     justify-content: space-between;
     /* height: 50px; */
-    margin: 10px 5vw;
+    margin: 2px 5vw;
     border-radius: 5px;
     padding: 15px 40px;
-    background-color: #ffffff;
+    background-color: #f6f6f6;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
   .tables p,
@@ -612,9 +626,9 @@
   .add_issue_btn {
     margin-left: 5vw;
     margin-top: 10px;
-    padding: 10px 0px;
+    padding: 7px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: rgb(66, 189, 161);
     color: white;
     font-size: 13px;
@@ -627,11 +641,12 @@
 
     width: 93vw;
     height: 400px;
-    margin-top: 40px;
+    margin-top: 20px;
     border-radius: 8px;
     padding: 20px 5vw;
-    /* background-color: #ece1e1; */
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    background-color: #f6f6f6;
+    border: 1px solid rgb(229, 229, 229);
+    /* box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px; */
   }
   .project_info {
     font-size: 14px;
@@ -647,7 +662,7 @@
     outline: 0;
     resize: none;
     border: none;
-    background-color: #f4f4f4;
+    background-color: #e6e6e6;
     border-radius: 5px;
     margin: 5px 0px 5px 0px;
     width: 80vw;
@@ -663,7 +678,7 @@
     width: 80vw;
     padding: 2px 10px;
     font-size: 13px;
-    background-color: #f4f4f4;
+    background-color: #e6e6e6;
     border-radius: 5px;
   }
   .document_refrence {
@@ -673,7 +688,7 @@
     width: 80vw;
     padding: 2px 10px;
     font-size: 13px;
-    background-color: #f4f4f4;
+    background-color: #e5e5e5;
     border-radius: 5px;
   }
   .outer_div3 {
@@ -682,11 +697,12 @@
 
     width: 93vw;
     /* height: 500px; */
-    margin-top: 40px;
+    margin-top: 20px;
     border-radius: 8px;
     padding: 20px 5vw;
-    background-color: #ffffff;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    background-color: #f6f6f6;
+    border: 1px solid rgb(229, 229, 229);
+    /* box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px; */
   }
   .add_issue_title {
     display: flex;
@@ -700,8 +716,8 @@
   .delete_btn {
     border: none;
     margin-right: 10px;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius: 20px;
+    padding: 7px 20px;
     font-size: 13px;
     margin-top: 10px;
     color: white;
@@ -725,7 +741,7 @@
     width: 80vw;
     padding: 2px 10px;
     font-size: 13px;
-    background-color: #f4f4f4;
+    background-color: #e6e6e6;
     border-radius: 5px;
   }
 }
