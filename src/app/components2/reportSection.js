@@ -315,7 +315,7 @@ export default function ReportSection({
               value={des.report}
               name="report"
               onChange={handleChange}
-              className={styles.dec_textarea1}
+              className={styles.dec_textarea}
               placeholder="report..."
             ></textarea>
           </div>

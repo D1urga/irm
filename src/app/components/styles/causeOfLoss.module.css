@@ -47,4 +47,50 @@
 @media screen and (max-width: 900px) and (min-width: 520px) {
 }
 @media screen and (max-width: 520px) {
+  .outer_div {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 3.5vw; */
+    margin: auto;
+    width: 93vw;
+    /* height: 350px; */
+    margin-top: 40px;
+    border-radius: 8px;
+    padding: 20px 20px;
+    background-color: #f6f6f6;
+    border: 1px solid rgb(229, 229, 229);
+    /* box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px; */
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title p {
+    font-size: 14px;
+    font-weight: 510;
+  }
+  .angle_up {
+    font-size: 17px;
+    color: rgb(91, 91, 91);
+    cursor: pointer;
+  }
+  .des {
+    font-size: 13px;
+    font-weight: 510;
+    padding: 10px 0;
+  }
+  .intro_textarea {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 80vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 230px;
+  }
 }

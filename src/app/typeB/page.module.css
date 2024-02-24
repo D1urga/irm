@@ -328,6 +328,7 @@
     justify-content: space-between;
     background-color: #ffffff;
     padding: 0 5vw;
+    margin-top: 15px;
   }
   .topbar p {
     font-size: 16px;
@@ -342,17 +343,25 @@
     border-radius: 20px;
     margin: 0 3px;
     font-size: 12px;
-    color: white;
+
+    background-color: #fff;
+
     /* font-weight: 500; */
   }
   .btn1 {
-    background-color: rgb(66, 189, 161);
+    color: rgb(82, 158, 141);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
   }
   .btn2 {
-    background-color: rgb(188, 58, 58);
+    color: rgb(152, 84, 84);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
   }
   .btn3 {
-    background-color: rgb(92, 128, 220);
+    color: rgb(85, 104, 152);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
   }
   .allPages {
     display: flex;
@@ -368,7 +377,7 @@
     background-color: #ffffff;
   }
   .preview_div {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -397,8 +406,9 @@
     padding: 15px 5vw;
     margin: 6px 0;
     border-radius: 5px;
-    background-color: #ffffff;
-    box-shadow: rgb(215, 215, 215) 0px 0px 3px 1.1px;
+    background-color: #f6f6f6;
+    border: 1px solid rgb(229, 229, 229);
+    /* box-shadow: rgb(215, 215, 215) 0px 0px 2px 1.1px; */
   }
   .option p {
     font-weight: 510;
