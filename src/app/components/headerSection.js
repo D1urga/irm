@@ -20,6 +20,14 @@ export default function HeaderSection({
           <p>Header Section</p>
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
+        <p className={styles.reason}>Name</p>
+        <input
+          value={headerSectionData.name}
+          name="name"
+          onChange={handleChange}
+          className={styles.input}
+          placeholder="enter your name here ..."
+        ></input>
         <p className={styles.reason}>Reason</p>
         <textarea
           value={headerSectionData.reason}
@@ -29,15 +37,6 @@ export default function HeaderSection({
           placeholder="enter your reason here ..."
           autoComplete="true"
         ></textarea>
-
-        <p className={styles.reason}>Name</p>
-        <input
-          value={headerSectionData.name}
-          name="name"
-          onChange={handleChange}
-          className={styles.input}
-          placeholder="enter your name here ..."
-        ></input>
       </div>
     </div>
   );

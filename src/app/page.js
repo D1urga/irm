@@ -334,6 +334,61 @@ export default function Home() {
             style={{
               width: "100%",
               display: "flex",
+              height: "1000px",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                backgroundColor: "white",
+              }}
+            >
+              <Image
+                src={irmLogo}
+                className={styles.irm_logo}
+                style={{
+                  height: "200px",
+                  width: "700px",
+                  objectFit: "cover",
+                  marginBottom: "150px",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                paddingLeft: "25vw",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "37px",
+                  marginBottom: "20px",
+                  color: "blue",
+                  textAlign: "center",
+                  fontWeight: "300",
+                }}
+              >
+                {headerSectionData.name}
+              </p>
+              <br></br>
+              <p style={{ fontSize: "40px", textAlign: "center" }}>
+                {headerSectionData.reason}
+              </p>
+            </div>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
               flexDirection: "column",
               alignItems: "center",
               backgroundColor: "white",
@@ -342,7 +397,7 @@ export default function Home() {
             <Image
               src={irmLogo}
               className={styles.irm_logo}
-              style={{ height: "190px", width: "600px" }}
+              style={{ height: "200px", width: "700px", objectFit: "cover" }}
             />
           </div>
           <div
