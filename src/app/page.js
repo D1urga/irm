@@ -2145,7 +2145,7 @@ export default function Home() {
             </p>
             <div style={{ width: "100%" }}>
               {assessmentLossNotes.map((data, index) => (
-                <div style={{ display: "flex" }}>
+                <div key={index} style={{ display: "flex" }}>
                   <p
                     style={{
                       width: "10%",
