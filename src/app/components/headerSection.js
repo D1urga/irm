@@ -13,6 +13,8 @@ export default function HeaderSection({
       [event.target.name]: event.target.value,
     });
   };
+
+  const suggestions = ["a", "b", "c", "d", "e"];
   return (
     <div className={styles.main}>
       <div className={styles.outer_div}>
@@ -38,6 +40,7 @@ export default function HeaderSection({
           autoComplete="true"
         ></textarea>
       </div>
+      <div className={styles.suggestion}></div>
     </div>
   );
 }
