@@ -6,9 +6,13 @@ import {
   FaEdit,
   FaPlusCircle,
   FaPlus,
+  FaCross,
+  FaCut,
+  FaTimesCircle,
 } from "react-icons/fa";
 
 export default function AssessmentOfLoss({
+  assessmentLossDescription,
   assessmentLossDes,
   setAssessmentLossDes,
   assessmentLossTable,
@@ -66,6 +70,12 @@ export default function AssessmentOfLoss({
     setAssessmentLossNotes([...clone]);
   };
   const handleChange = (event) => {
+    setAssessmentLossDes({
+      ...assessmentLossDes,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleChange1 = (event) => {
     setDes({
       ...des,
       [event.target.name]: event.target.value,
@@ -231,6 +241,9 @@ export default function AssessmentOfLoss({
         <div className={styles.outer_div2}>
           <p className={styles.des}>Assessment of Loss Description</p>
           <textarea
+            value={assessmentLossDes.des}
+            onChange={handleChange}
+            name="des"
             className={styles.intro_textarea}
             placeholder="Assessment of Loss Description ..."
           ></textarea>
@@ -331,7 +344,7 @@ export default function AssessmentOfLoss({
             <textarea
               value={des.des}
               name="des"
-              onChange={handleChange}
+              onChange={handleChange1}
               className={styles.dec_textarea}
               placeholder="description..."
             ></textarea>
@@ -342,7 +355,7 @@ export default function AssessmentOfLoss({
               className={styles.claim_input}
               value={des.claimAm}
               name="claimAm"
-              onChange={handleChange}
+              onChange={handleChange1}
               placeholder="claim..."
             ></input>
           </div>
@@ -352,13 +365,27 @@ export default function AssessmentOfLoss({
               className={styles.claim_input}
               value={des.assessAm}
               name="assessAm"
-              onChange={handleChange}
+              onChange={handleChange1}
               placeholder="claim..."
             ></input>
           </div>
           {assessmentLossFields.map((data, index) => (
             <div key={index}>
-              <p className={styles.des_title}>{data.name}</p>
+              <div className={styles.icon_div1}>
+                <p className={styles.des_title}>{data.name}</p>
+                <FaTrash
+                  className={styles.del}
+                  onClick={() => {
+                    const subarr1 = assessmentLossFields.slice(0, index);
+                    const subarr2 = assessmentLossFields.slice(
+                      index + 1,
+                      assessmentLossFields.length
+                    );
+                    const newData = [...subarr1, ...subarr2];
+                    setAssessmentLossFields(newData);
+                  }}
+                />
+              </div>
               <textarea
                 value={addFieldData[`field${index}`]}
                 onChange={handleAddFieldChange}
@@ -391,6 +418,42 @@ export default function AssessmentOfLoss({
                 Add
               </button>
               <button className={styles.delete_btn}>Delete</button>
+            </div>
+          </div>
+          <div>
+            <div
+              className={
+                isNewFieldShowing
+                  ? styles.add_field_name
+                  : styles.add_field_name1
+              }
+            >
+              <div className={styles.icon_div}>
+                <p>Add New Field</p>
+                <FaTimesCircle
+                  onClick={() => {
+                    setIsNewFieldShowing(!isNewFieldShowing);
+                  }}
+                />
+              </div>
+              <input
+                value={addField.name}
+                name="name"
+                onChange={handleAddChange}
+                placeholder="new field name"
+              ></input>
+              <button
+                onClick={() => {
+                  if (assessmentLossFields.length < 5) {
+                    console.log(assessmentLossFields);
+                    const obj = { name: addField.name };
+                    const newdata = assessmentLossFields.concat(obj);
+                    setAssessmentLossFields(newdata);
+                  }
+                }}
+              >
+                add
+              </button>
             </div>
           </div>
         </div>
@@ -470,34 +533,6 @@ export default function AssessmentOfLoss({
           </div>
         </div>
       ) : null}
-
-      <div>
-        <div
-          className={
-            isNewFieldShowing ? styles.add_field_name : styles.add_field_name1
-          }
-        >
-          <p>Add New Field</p>
-          <input
-            value={addField.name}
-            name="name"
-            onChange={handleAddChange}
-            placeholder="new field name"
-          ></input>
-          <button
-            onClick={() => {
-              if (assessmentLossFields.length < 5) {
-                console.log(assessmentLossFields);
-                const obj = { name: addField.name };
-                const newdata = assessmentLossFields.concat(obj);
-                setAssessmentLossFields(newdata);
-              }
-            }}
-          >
-            add
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

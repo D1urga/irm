@@ -12,8 +12,11 @@ import CauseOfLoss from "./components/causeOfLoss";
 import AssessmentOfLoss from "./components/assessmentOfLoss";
 import Conclusion from "./components/conclusion";
 import irmLogo from "./images/irm_logo.jpg";
+import irmPng from "./images/irmPng.png";
 import ReactToPrint from "react-to-print";
 import { useReactToPrint } from "react-to-print";
+import { Currency } from "react-intl-number-format";
+import Intl from "intl";
 import { useRef } from "react";
 import { Table } from "@mui/material";
 
@@ -39,6 +42,8 @@ export default function Home() {
     policyExcess: "",
   });
 
+  const [policyParticularsFields, setPolicyParticularsFields] = useState([]);
+
   const [projectDescriptionData, setProjectDescriptionData] = useState({
     projectTitle: "",
     client: "",
@@ -55,7 +60,17 @@ export default function Home() {
     setObservationsAndVerificationsAttach,
   ] = useState([]);
 
-  const [assessmentLossDes, setAssessmentLossDes] = useState("dskhda");
+  const [assessmentLossDes, setAssessmentLossDes] = useState({ des: "adad" });
+  const [assessmentLossDescription, setAssessmentLossDescription] = useState({
+    description: "adad",
+  });
+  const [addFieldData, setAddFieldData] = useState({
+    field0: "",
+    field1: "",
+    field2: "",
+    field3: "",
+    field4: "",
+  });
   const [assessmentLossTable, setAssessmentLossTable] = useState([]);
   const [assessmentLossNotes, setAssessmentLossNotes] = useState([]);
   const [assessmentLossFields, setAssessmentLossFields] = useState([]);
@@ -64,6 +79,7 @@ export default function Home() {
   const [conclusionTable, setConclusionTable] = useState([]);
 
   const [totalClaimAm, setTotalClaimAm] = useState(0);
+  const [totalAssessmentAm, setTotalAssessmentAm] = useState(0);
 
   const countClaimAm = () => {
     let value = 0;
@@ -72,8 +88,16 @@ export default function Home() {
     }
     setTotalClaimAm(value);
   };
+  const countAssessAm = () => {
+    let value = 0;
+    for (let i = 0; i < assessmentLossTable.length; i++) {
+      value = value + Number(assessmentLossTable[i].assessmentAmount);
+    }
+    setTotalAssessmentAm(value);
+  };
 
   // /////////////////////////
+
   const [list, setList] = useState(["anoop", "kumar"]);
   const [list1, setList1] = useState(0);
   const [isPdfOpen, setIsPdfOpen] = useState(false);
@@ -102,14 +126,22 @@ export default function Home() {
 
     // window.addEventListener("beforeunload", unloadCallback);
     // return () => window.removeEventListener("beforeunload", unloadCallback);
-    countClaimAm;
+    countClaimAm();
+    countAssessAm();
   }, [assessmentLossTable]);
 
   return (
     <div className={styles.outer_div}>
       <div className={styles.topbar}>
         <p>Dashboard</p>
-        {/* <p>{headerSectionData.reason}</p> */}
+        {/* <p>
+          {(assessmentLossTable[0] &&
+            typeof Number(assessmentLossTable[0].claimAmout)) ||
+            "ghvh"}
+        </p> */}
+        {/* <p>{totalClaimAm}</p> */}
+        {/* <p>{Intl.NumberFormat("en-IN").format(1000)}</p> */}
+
         {/* <p>{headerSectionData.name}</p> */}
         {/* {projectDescriptionData.documentReference} */}
         <div className={styles.btn_div}>
@@ -238,6 +270,10 @@ export default function Home() {
         />
       ) : currentSection == 3 ? (
         <PolicyParticulars
+          addFieldData={addFieldData}
+          setAddFieldData={setAddFieldData}
+          policyParticularsFields={policyParticularsFields}
+          setPolicyParticularsFields={setPolicyParticularsFields}
           policyParticularsData={policyParticularsData}
           setPolicyParticularsData={setPolicyParticularsData}
           onClickFun={() => {
@@ -270,6 +306,7 @@ export default function Home() {
         />
       ) : currentSection === 6 ? (
         <AssessmentOfLoss
+          assessmentLossDescription={assessmentLossDescription}
           assessmentLossDes={assessmentLossDes}
           setAssessmentLossDes={setAssessmentLossDes}
           assessmentLossTable={assessmentLossTable}
@@ -346,14 +383,13 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                backgroundColor: "white",
               }}
             >
               <Image
-                src={irmLogo}
+                src={irmPng}
                 className={styles.irm_logo}
                 style={{
-                  height: "200px",
+                  height: "105px",
                   width: "700px",
                   objectFit: "cover",
                   marginBottom: "150px",
@@ -370,7 +406,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "37px",
+                  fontSize: "27px",
                   marginBottom: "20px",
                   color: "blue",
                   textAlign: "center",
@@ -380,7 +416,13 @@ export default function Home() {
                 {headerSectionData.name}
               </p>
               <br></br>
-              <p style={{ fontSize: "40px", textAlign: "center" }}>
+              <p
+                style={{
+                  fontSize: "27px",
+                  textAlign: "center",
+                  lineHeight: "1.5",
+                }}
+              >
                 {headerSectionData.reason}
               </p>
             </div>
@@ -388,6 +430,7 @@ export default function Home() {
           <div
             style={{
               width: "100%",
+              paddingTop: "40px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -395,9 +438,14 @@ export default function Home() {
             }}
           >
             <Image
-              src={irmLogo}
+              src={irmPng}
               className={styles.irm_logo}
-              style={{ height: "200px", width: "700px", objectFit: "cover" }}
+              style={{
+                height: "70px",
+                width: "500px",
+                objectFit: "cover",
+                margin: "50px 0",
+              }}
             />
           </div>
           <div
@@ -417,8 +465,9 @@ export default function Home() {
                 alignItems: "center",
                 padding: "5px 10px",
                 justifyContent: "center",
+                fontWeight: "600",
                 border: "0.5px solid black",
-                backgroundColor: "lightgreen",
+                backgroundColor: "rgb(128, 177, 128)",
               }}
             >
               DOCUMENT CONTROL SHEET
@@ -434,7 +483,7 @@ export default function Home() {
               <div
                 style={{
                   width: "25%",
-                  padding: "7px 10px",
+                  padding: "10px 10px",
                   display: "flex",
                   alignItems: "stretch",
                   justifyContent: "center",
@@ -454,7 +503,7 @@ export default function Home() {
                   width: "75%",
                   display: "flex",
 
-                  padding: "7px 10px",
+                  padding: "10px 10px",
                   alignItems: "center",
                   justifyContent: "center",
                   border: "0.5px solid black",
@@ -463,6 +512,7 @@ export default function Home() {
                 <p
                   style={{
                     fontSize: "15px",
+                    fontWeight: "580",
                   }}
                 >
                   {projectDescriptionData.projectTitle}
@@ -481,7 +531,7 @@ export default function Home() {
               <div
                 style={{
                   width: "25%",
-                  padding: "7px 10px",
+                  padding: "10px 10px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -501,7 +551,7 @@ export default function Home() {
                   width: "75%",
                   display: "flex",
                   alignItems: "center",
-                  padding: "7px 10px",
+                  padding: "10px 10px",
                   justifyContent: "center",
                   border: "0.5px solid black",
                 }}
@@ -509,6 +559,7 @@ export default function Home() {
                 <p
                   style={{
                     fontSize: "15px",
+                    fontWeight: "580",
                   }}
                 >
                   {projectDescriptionData.client}
@@ -538,7 +589,7 @@ export default function Home() {
                   width: "25%",
                   display: "flex",
                   alignItems: "center",
-                  padding: "7px 10px",
+                  padding: "10px 10px",
                   justifyContent: "center",
                   textAlign: "center",
                   border: "1pt solid black",
@@ -558,7 +609,7 @@ export default function Home() {
                   display: "flex",
                   textAlign: "center",
                   alignItems: "center",
-                  padding: "7px 10px",
+                  padding: "10px 10px",
                   justifyContent: "center",
                   border: "0.1px solid black",
                 }}
@@ -566,6 +617,7 @@ export default function Home() {
                 <p
                   style={{
                     fontSize: "15px",
+                    fontWeight: "580",
                   }}
                 >
                   {projectDescriptionData.documentReference}
@@ -597,7 +649,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Issue
@@ -616,7 +668,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Status
@@ -635,7 +687,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Author
@@ -654,7 +706,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Reviwer
@@ -673,7 +725,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Distribution
@@ -692,7 +744,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Mode
@@ -711,7 +763,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Date
@@ -747,7 +799,8 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
+                      fontWeight: "540",
                     }}
                   >
                     {index}
@@ -767,7 +820,8 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
+                      fontWeight: "540",
                     }}
                   >
                     {data.status}
@@ -787,7 +841,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
                     }}
                   >
                     {data.author}
@@ -807,7 +861,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
                     }}
                   >
                     {data.reviewer}
@@ -827,7 +881,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
                     }}
                   >
                     {data.distribution}
@@ -847,7 +901,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
                     }}
                   >
                     {data.mode}
@@ -867,7 +921,7 @@ export default function Home() {
                 >
                   <p
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
                     }}
                   >
                     {data.date}
@@ -880,14 +934,15 @@ export default function Home() {
             style={{
               fontSize: "17px",
               fontWeight: "600",
-              marginTop: "20px",
+              marginTop: "30px",
+              marginBottom: "30px",
             }}
           >
             1.0 INTRODUCTION
           </p>
           <p
             style={{
-              fontSize: "13px",
+              fontSize: "14px",
               marginTop: "20px",
             }}
           >
@@ -908,7 +963,8 @@ export default function Home() {
             style={{
               fontSize: "17px",
               fontWeight: "600",
-              marginTop: "20px",
+              marginTop: "30px",
+              marginBottom: "30px",
             }}
           >
             2.0 POLICY PARTICULARS
@@ -916,14 +972,14 @@ export default function Home() {
           <div
             style={{
               display: "flex",
-              textAlign: "center",
+              textAlign: "stretch",
               alignItems: "center",
               justifyContent: "space-between",
             }}
           >
             <div
               style={{
-                width: "35%",
+                width: "30%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
@@ -933,7 +989,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 THE INSURED
@@ -941,7 +996,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "11px",
-                  marginTop: "5px",
                 }}
               >
                 :
@@ -949,17 +1003,17 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "65%",
+                width: "70%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
                 justifyContent: "center",
+                padding: "10px 20px",
               }}
             >
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 {policyParticularsData.insured}
@@ -976,7 +1030,7 @@ export default function Home() {
           >
             <div
               style={{
-                width: "35%",
+                width: "30%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
@@ -986,7 +1040,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 THE INSURER
@@ -994,7 +1047,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 :
@@ -1002,9 +1054,10 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "65%",
+                width: "70%",
                 display: "flex",
                 textAlign: "center",
+                padding: "10px 20px",
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -1012,7 +1065,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 {policyParticularsData.insurer}
@@ -1029,7 +1081,7 @@ export default function Home() {
           >
             <div
               style={{
-                width: "35%",
+                width: "30%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
@@ -1039,7 +1091,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 TYPE OF POLICY
@@ -1047,7 +1098,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "11px",
-                  marginTop: "5px",
                 }}
               >
                 :
@@ -1055,17 +1105,17 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "65%",
+                width: "70%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
                 justifyContent: "center",
+                padding: "10px 20px",
               }}
             >
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 {policyParticularsData.typesOfPolicy}
@@ -1082,7 +1132,7 @@ export default function Home() {
           >
             <div
               style={{
-                width: "35%",
+                width: "30%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
@@ -1092,7 +1142,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 POLICY NUMBER
@@ -1108,9 +1157,10 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "65%",
+                width: "70%",
                 display: "flex",
                 textAlign: "center",
+                padding: "10px 20px",
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -1118,7 +1168,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 {policyParticularsData.policyNumber}
@@ -1135,7 +1184,7 @@ export default function Home() {
           >
             <div
               style={{
-                width: "35%",
+                width: "30%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
@@ -1145,7 +1194,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 PERIOD OF INSURANCE
@@ -1153,7 +1201,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "11px",
-                  marginTop: "5px",
                 }}
               >
                 :
@@ -1161,9 +1208,10 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "65%",
+                width: "70%",
                 display: "flex",
                 textAlign: "center",
+                padding: "10px 20px",
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -1171,7 +1219,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "13px",
-                  marginTop: "5px",
                 }}
               >
                 {policyParticularsData.periodOfInsurance}
@@ -1188,7 +1235,7 @@ export default function Home() {
           >
             <div
               style={{
-                width: "35%",
+                width: "30%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
@@ -1197,8 +1244,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
-                  marginTop: "5px",
+                  fontSize: "14px",
                 }}
               >
                 POLICY EXCESS
@@ -1206,7 +1252,6 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "11px",
-                  marginTop: "5px",
                 }}
               >
                 :
@@ -1214,23 +1259,293 @@ export default function Home() {
             </div>
             <div
               style={{
-                width: "65%",
+                width: "70%",
                 display: "flex",
                 textAlign: "center",
                 alignItems: "center",
+                padding: "10px 20px",
                 justifyContent: "center",
               }}
             >
               <p
                 style={{
-                  fontSize: "13px",
-                  marginTop: "5px",
+                  fontSize: "14px",
                 }}
               >
                 {policyParticularsData.policyExcess}
               </p>
             </div>
           </div>
+          {policyParticularsFields[0] &&
+          policyParticularsFields[0].name != "" ? (
+            <div
+              style={{
+                display: "flex",
+                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  width: "30%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {policyParticularsFields[0].name.toUpperCase()}
+                </p>
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  :
+                </p>
+              </div>
+              <div
+                style={{
+                  width: "70%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  padding: "10px 20px",
+                  justifyContent: "center",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {addFieldData.field0}
+                </p>
+              </div>
+            </div>
+          ) : null}
+          {policyParticularsFields[1] &&
+          policyParticularsFields[1].name != "" ? (
+            <div
+              style={{
+                display: "flex",
+                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  width: "30%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {policyParticularsFields[1].name.toUpperCase()}
+                </p>
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  :
+                </p>
+              </div>
+              <div
+                style={{
+                  width: "70%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  padding: "10px 20px",
+                  justifyContent: "center",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {addFieldData.field1}
+                </p>
+              </div>
+            </div>
+          ) : null}
+          {policyParticularsFields[2] &&
+          policyParticularsFields[2].name != "" ? (
+            <div
+              style={{
+                display: "flex",
+                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  width: "30%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {policyParticularsFields[2].name.toUpperCase()}
+                </p>
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  :
+                </p>
+              </div>
+              <div
+                style={{
+                  width: "70%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  padding: "10px 20px",
+                  justifyContent: "center",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {addFieldData.field2}
+                </p>
+              </div>
+            </div>
+          ) : null}
+          {policyParticularsFields[3] &&
+          policyParticularsFields[3].name != "" ? (
+            <div
+              style={{
+                display: "flex",
+                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  width: "30%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {policyParticularsFields[3].name.toUpperCase()}
+                </p>
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  :
+                </p>
+              </div>
+              <div
+                style={{
+                  width: "70%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  padding: "10px 20px",
+                  justifyContent: "center",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {addFieldData.field3}
+                </p>
+              </div>
+            </div>
+          ) : null}
+          {policyParticularsFields[4] &&
+          policyParticularsFields[4].name != "" ? (
+            <div
+              style={{
+                display: "flex",
+                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  width: "30%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {policyParticularsFields[4].name.toUpperCase()}
+                </p>
+                <p
+                  style={{
+                    fontSize: "11px",
+                  }}
+                >
+                  :
+                </p>
+              </div>
+              <div
+                style={{
+                  width: "70%",
+                  display: "flex",
+                  textAlign: "center",
+                  alignItems: "center",
+                  padding: "10px 20px",
+                  justifyContent: "center",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {addFieldData.field4}
+                </p>
+              </div>
+            </div>
+          ) : null}
           <p
             style={{
               fontSize: "17px",
@@ -1242,7 +1557,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "13px",
+              fontSize: "14px",
               marginTop: "20px",
             }}
           >
@@ -1255,6 +1570,7 @@ export default function Home() {
               gridTemplateColumns: "repeat(2,1fr)",
               alignItems: "stretch",
               justifyContent: "center",
+              marginTop: "30px",
             }}
           >
             {observationsAndVerificationsAttach &&
@@ -1307,7 +1623,7 @@ export default function Home() {
           </div>
           <p
             style={{
-              fontSize: "13px",
+              fontSize: "14px",
               marginTop: "20px",
             }}
           >
@@ -1316,6 +1632,7 @@ export default function Home() {
           <p
             style={{
               fontSize: "17px",
+              fontWeight: "600",
               marginTop: "20px",
             }}
           >
@@ -1323,7 +1640,7 @@ export default function Home() {
           </p>
           <p
             style={{
-              fontSize: "13px",
+              fontSize: "14px",
               marginTop: "20px",
             }}
           >
@@ -1333,24 +1650,18 @@ export default function Home() {
             style={{
               fontSize: "17px",
               marginTop: "20px",
+              fontWeight: "600",
             }}
           >
             5.0 ASSESSMENT
           </p>
           <p
             style={{
-              fontSize: "13px",
+              fontSize: "14px",
               marginTop: "20px",
             }}
           >
-            Below tables details our observations and assessment to restore
-            surveyed premises to the condition before incidence. Our assessment
-            is based on our survey, the quantities measured on site and as per
-            current market rates for the required repairs/ replacement. Acts of
-            Vandalism and Theft Industrial Risk Managers Co. Ltd. 8 Insured
-            provided overall cost of re-instatement. Our assessment, as
-            presented in below table, details all losses encountered at Chebel
-            Kosovo cloakroom
+            {assessmentLossDes.des}
           </p>
           <div
             style={{
@@ -1374,7 +1685,7 @@ export default function Home() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              // marginTop: "20px",
+              marginTop: "20px",
               // border: "1px solid black",
             }}
           >
@@ -1385,12 +1696,13 @@ export default function Home() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  padding: "7px",
                   border: "1px solid black",
                 }}
               >
                 <p
                   style={{
-                    fontSize: "13px",
+                    fontSize: "14px",
                   }}
                 >
                   {assessmentLossFields[0].name}
@@ -1402,6 +1714,7 @@ export default function Home() {
                 style={{
                   width: "100%",
                   display: "flex",
+                  padding: "7px",
                   alignItems: "center",
                   justifyContent: "center",
                   border: "1px solid black",
@@ -1409,7 +1722,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "13px",
+                    fontSize: "14px",
                   }}
                 >
                   {assessmentLossFields[1].name}
@@ -1424,11 +1737,12 @@ export default function Home() {
                   alignItems: "center",
                   justifyContent: "center",
                   border: "1px solid black",
+                  padding: "7px",
                 }}
               >
                 <p
                   style={{
-                    fontSize: "13px",
+                    fontSize: "14px",
                   }}
                 >
                   {assessmentLossFields[2].name}
@@ -1439,6 +1753,7 @@ export default function Home() {
               <div
                 style={{
                   width: "100%",
+                  padding: "7px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -1447,7 +1762,7 @@ export default function Home() {
               >
                 <p
                   style={{
-                    fontSize: "13px",
+                    fontSize: "14px",
                   }}
                 >
                   {assessmentLossFields[3].name}
@@ -1460,13 +1775,14 @@ export default function Home() {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
+                  padding: "7px",
                   justifyContent: "center",
                   border: "1px solid black",
                 }}
               >
                 <p
                   style={{
-                    fontSize: "13px",
+                    fontSize: "14px",
                   }}
                 >
                   {assessmentLossFields[4].name}
@@ -1478,13 +1794,14 @@ export default function Home() {
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
+                padding: "7px",
                 justifyContent: "center",
                 border: "1px solid black",
               }}
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Description
@@ -1496,12 +1813,13 @@ export default function Home() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                padding: "7px",
                 border: "1px solid black",
               }}
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Claim, Rs
@@ -1510,6 +1828,7 @@ export default function Home() {
             <div
               style={{
                 width: "100%",
+                padding: "7px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1518,7 +1837,7 @@ export default function Home() {
             >
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                 }}
               >
                 Asse, Rs
@@ -1546,13 +1865,14 @@ export default function Home() {
                         width: "100%",
                         display: "flex",
                         alignItems: "center",
+                        padding: "5px",
                         justifyContent: "center",
                         border: "1px solid black",
                       }}
                     >
                       <p
                         style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                         }}
                       >
                         {data[`field${0}`]}
@@ -1567,12 +1887,13 @@ export default function Home() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
+                        padding: "7px",
                         border: "1px solid black",
                       }}
                     >
                       <p
                         style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                         }}
                       >
                         {data[`field${1}`]}
@@ -1586,13 +1907,14 @@ export default function Home() {
                         width: "100%",
                         display: "flex",
                         alignItems: "center",
+                        padding: "7px",
                         justifyContent: "center",
                         border: "1px solid black",
                       }}
                     >
                       <p
                         style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                         }}
                       >
                         {data[`field${2}`]}
@@ -1606,13 +1928,14 @@ export default function Home() {
                         width: "100%",
                         display: "flex",
                         alignItems: "center",
+                        padding: "7px",
                         justifyContent: "center",
                         border: "1px solid black",
                       }}
                     >
                       <p
                         style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                         }}
                       >
                         {data[`field${3}`]}
@@ -1624,6 +1947,7 @@ export default function Home() {
                     <div
                       style={{
                         width: "100%",
+                        padding: "7px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -1632,7 +1956,7 @@ export default function Home() {
                     >
                       <p
                         style={{
-                          fontSize: "13px",
+                          fontSize: "14px",
                         }}
                       >
                         {data[`field${4}`]}
@@ -1645,12 +1969,13 @@ export default function Home() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      padding: "7px",
                       border: "1px solid black",
                     }}
                   >
                     <p
                       style={{
-                        fontSize: "13px",
+                        fontSize: "14px",
                       }}
                     >
                       {data.description}
@@ -1664,14 +1989,17 @@ export default function Home() {
                       alignItems: "center",
                       justifyContent: "center",
                       border: "1px solid black",
+                      padding: "5px",
                     }}
                   >
                     <p
                       style={{
-                        fontSize: "13px",
+                        fontSize: "14px",
                       }}
                     >
-                      {data.claimAmout}
+                      <Currency locale="en-IN" currency="INR">
+                        {Number(data.claimAmout)}
+                      </Currency>
                     </p>
                   </div>
                   <div
@@ -1680,24 +2008,175 @@ export default function Home() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      padding: "7px",
                       border: "1px solid black",
                     }}
                   >
                     <p
                       style={{
-                        fontSize: "13px",
+                        fontSize: "14px",
                       }}
                     >
-                      {data.assessmentAmount}
+                      <Currency locale="en-IN" currency="INR">
+                        {Number(data.assessmentAmount)}
+                      </Currency>
                     </p>
                   </div>
                 </div>
               ))}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                marginTop: "10px",
+              }}
+            >
+              <p
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "15px",
+                  justifyContent: "center",
+                  width: "238px",
+                  padding: "7px 3px",
+                  border: "1px solid black",
+                }}
+              >
+                total claim Amount
+              </p>
+              <p
+                style={{
+                  width: "238px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "7px 3px",
+                  fontSize: "15px",
+                  border: "1px solid black",
+                }}
+              >
+                <Currency locale="en-IN" currency="INR">
+                  {Number(totalClaimAm)}
+                </Currency>
+              </p>
+            </div>{" "}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                margin: "0 0",
+              }}
+            >
+              <p
+                style={{
+                  width: "238px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "15px",
+                  padding: "7px 3px",
+                  border: "1px solid black",
+                }}
+              >
+                total assessment Amount
+              </p>
+              <p
+                style={{
+                  width: "238px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "15px",
+                  padding: "7px 3px",
+                  border: "1px solid black",
+                }}
+              >
+                <Currency locale="en-IN" currency="INR">
+                  {Number(totalAssessmentAm)}
+                </Currency>
+              </p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                marginTop: "10px",
+              }}
+            >
+              <p
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "238px",
+                  fontSize: "15px",
+                  padding: "7px 3px",
+                  border: "1px solid black",
+                }}
+              >
+                ratio
+              </p>
+              <p
+                style={{
+                  width: "238px",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "15px",
+                  justifyContent: "center",
+                  padding: "7px 3px",
+                  border: "1px solid black",
+                }}
+              >
+                {(totalClaimAm * 100) / totalAssessmentAm} %
+              </p>
+            </div>
+            <p
+              style={{
+                fontSize: "16px",
+                marginTop: "20px",
+                marginBottom: "20px",
+                fontWeight: "600",
+              }}
+            >
+              Notes
+            </p>
+            <div style={{ width: "100%" }}>
+              {assessmentLossNotes.map((data, index) => (
+                <div style={{ display: "flex" }}>
+                  <p
+                    style={{
+                      width: "10%",
+                      padding: "7px 5px",
+                      display: "flex",
+                      fontSize: "15px",
+                      alignItems: "center",
+                    }}
+                  >
+                    {index + 1} ){" "}
+                  </p>
+                  <p
+                    style={{
+                      width: "90%",
+                      padding: "7px 5px",
+                      display: "flex",
+                      fontSize: "15px",
+                      alignItems: "center",
+                    }}
+                  >
+                    {data.note}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
           <p
             style={{
               fontSize: "17px",
               marginTop: "20px",
+              fontWeight: "600",
             }}
           >
             6.0 CONCLUSION
@@ -1717,6 +2196,7 @@ export default function Home() {
               gridTemplateColumns: "repeat(2,1fr)",
               alignItems: "stretch",
               justifyContent: "center",
+              marginTop: "30px",
             }}
           >
             {conclusionTable &&

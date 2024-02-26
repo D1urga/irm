@@ -1,15 +1,17 @@
 @media screen and (min-width: 900px) {
   .main_div {
     padding-bottom: 30px;
+    position: relative;
   }
   .outer_div {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-left: 5vw;
     margin-top: 20px;
     height: 84vh;
     overflow: hidden;
-    width: 600px;
+    width: 40vw;
     border-radius: 8px;
     padding: 20px 40px;
     background-color: #ffffff;
@@ -65,6 +67,84 @@
     font-size: 14px;
     height: 100px;
   }
+  .add_field_name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    background-color: #ffffff;
+    height: 160px;
+
+    box-shadow: rgb(213, 213, 213) 0px 0px 4px 1.3px;
+  }
+  .icon_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .icon_div1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .del {
+    color: rgb(206, 72, 72);
+    font-size: 13px;
+    margin-right: 8vw;
+    cursor: pointer;
+  }
+  .add_field_name1 {
+    display: none;
+  }
+  .add_field_name p {
+    font-size: 13px;
+    font-weight: 520;
+    margin-bottom: 10px;
+  }
+  .add_field_name input {
+    border: none;
+    height: 45px;
+    margin: 0px 0px 5px 0px;
+    width: 25vw;
+    padding: 2px 10px;
+    font-size: 13px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+  }
+  .des_title {
+    font-size: 13px;
+    font-weight: 510;
+    padding: 10px 0;
+  }
+  .add_textarea {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 27.5vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 45px;
+  }
+  .add_field_name button {
+    border: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 100px;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(66, 189, 161);
+  }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {
   .main_div {
@@ -74,6 +154,7 @@
     padding-bottom: 30px;
   }
   .outer_div {
+    position: relative;
     display: flex;
     flex-direction: column;
     /* margin-left: 5vw; */
@@ -133,6 +214,84 @@
     padding: 10px;
     font-size: 14px;
     height: 100px;
+  }
+  .add_field_name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    background-color: #ffffff;
+    height: 160px;
+
+    box-shadow: rgb(147, 147, 147) 0px 0px 10px 1.3px;
+  }
+  .icon_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .icon_div1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .del {
+    color: rgb(206, 72, 72);
+    font-size: 13px;
+    margin-right: 10vw;
+    cursor: pointer;
+  }
+  .add_field_name1 {
+    display: none;
+  }
+  .add_field_name p {
+    font-size: 13px;
+    font-weight: 520;
+    margin-bottom: 10px;
+  }
+  .add_field_name input {
+    border: none;
+    height: 45px;
+    margin: 0px 0px 5px 0px;
+    width: 60vw;
+    padding: 2px 10px;
+    font-size: 13px;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+  }
+  .des_title {
+    font-size: 13px;
+    font-weight: 510;
+    padding: 10px 0;
+  }
+  .add_textarea {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 80vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 45px;
+  }
+  .add_field_name button {
+    border: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 100px;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(66, 189, 161);
   }
 }
 @media screen and (max-width: 520px) {
@@ -143,6 +302,7 @@
     padding-bottom: 30px;
   }
   .outer_div {
+    position: relative;
     display: flex;
     flex-direction: column;
     /* margin-left: 5vw; */
@@ -202,5 +362,83 @@
     padding: 10px;
     font-size: 14px;
     height: 100px;
+  }
+  .add_field_name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    background-color: #ffffff;
+    height: 160px;
+
+    box-shadow: rgb(147, 147, 147) 0px 0px 10px 1.3px;
+  }
+  .icon_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .icon_div1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .del {
+    color: rgb(206, 72, 72);
+    font-size: 13px;
+    margin-right: 10vw;
+    cursor: pointer;
+  }
+  .add_field_name1 {
+    display: none;
+  }
+  .add_field_name p {
+    font-size: 13px;
+    font-weight: 520;
+    margin-bottom: 10px;
+  }
+  .add_field_name input {
+    border: none;
+    height: 45px;
+    margin: 0px 0px 5px 0px;
+    width: 60vw;
+    padding: 2px 10px;
+    font-size: 13px;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+  }
+  .des_title {
+    font-size: 13px;
+    font-weight: 510;
+    padding: 10px 0;
+  }
+  .add_textarea {
+    outline: 0;
+    resize: none;
+    border: none;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+    width: 80vw;
+    padding: 10px;
+    font-size: 14px;
+    height: 45px;
+  }
+  .add_field_name button {
+    border: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 100px;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(66, 189, 161);
   }
 }

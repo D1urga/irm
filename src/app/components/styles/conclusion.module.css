@@ -99,15 +99,12 @@
     /* margin-left: 40px; */
     padding: 4px 0px;
     border-radius: 5px;
-    overflow: hidden;
+    overflow: scroll;
     background-color: #ffffff;
     border: 9px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
-  .conclusion_table_div:hover {
-    overflow: scroll;
-    padding: 4px 0px 1.7px 2.4px;
-  }
+
   .logos {
     /* background-color: pink; */
     display: flex;
@@ -163,7 +160,7 @@
     margin-left: 2vw;
     width: 33vw;
     height: 350px;
-    margin-top: 40px;
+    margin-top: 20px;
     border-radius: 8px;
     padding: 20px 40px;
     background-color: #ffffff;
