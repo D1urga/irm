@@ -6,6 +6,7 @@ import {
   FaEdit,
   FaPlusCircle,
   FaPlus,
+  FaTimesCircle,
 } from "react-icons/fa";
 
 export default function ReportSection({
@@ -372,37 +373,45 @@ export default function ReportSection({
             </div>
           ))}
           <div>
-            <div>
+            <div
+              className={
+                isNewFieldShowing
+                  ? styles.add_field_name
+                  : styles.add_field_name1
+              }
+            >
+              <div className={styles.icon_div}>
+                <p>Add New Field</p>
+                <FaTimesCircle
+                  onClick={() => {
+                    setIsNewFieldShowing(!isNewFieldShowing);
+                  }}
+                />
+              </div>
+              <input
+                value={addField.name}
+                name="name"
+                onChange={handleAddChange}
+                placeholder="new field name"
+              ></input>
               <button
-                className={styles.add_btn}
                 onClick={() => {
-                  const obj = {
-                    description: des.des,
-                    report: des.report,
-                    action: des.action,
-                    replacement: des.replacement,
-                    depreciation: des.depreciation,
-                    assessment: des.assessment,
-                    field0: addFieldData.field0,
-                    field1: addFieldData.field1,
-                    field2: addFieldData.field2,
-                    field3: addFieldData.field3,
-                    field4: addFieldData.field4,
-                  };
-                  console.log(assessmentLossTable);
-                  const newData = assessmentLossTable.concat(obj);
-                  setAssessmentLossTable(newData);
+                  if (assessmentLossFields.length < 5) {
+                    console.log(assessmentLossFields);
+                    const obj = { name: addField.name };
+                    const newdata = assessmentLossFields.concat(obj);
+                    setAssessmentLossFields(newdata);
+                  }
                 }}
               >
-                Add
+                add
               </button>
-              <button className={styles.delete_btn}>Delete</button>
             </div>
           </div>
         </div>
       ) : null}
 
-      <div>
+      {/* <div>
         <div
           className={
             isNewFieldShowing ? styles.add_field_name : styles.add_field_name1
@@ -428,7 +437,7 @@ export default function ReportSection({
             add
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

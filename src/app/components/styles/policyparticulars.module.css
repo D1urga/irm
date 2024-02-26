@@ -9,8 +9,6 @@
     flex-direction: column;
     margin-left: 5vw;
     margin-top: 20px;
-    height: 84vh;
-    overflow: hidden;
     width: 40vw;
     border-radius: 8px;
     padding: 20px 40px;
@@ -20,9 +18,10 @@
     border-right: 9px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
-  .outer_div:hover {
+
+  .scroll_div {
+    height: 70vh;
     overflow: scroll;
-    padding: 20px 37.7px 20px 40px;
   }
   .title {
     display: flex;

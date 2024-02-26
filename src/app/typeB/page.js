@@ -33,6 +33,13 @@ export default function TypeB() {
   const [assessmentLossFields, setAssessmentLossFields] = useState([]);
   const [conclusionTable, setConclusionTable] = useState([]);
   const [conclusionDes, setConclusionDes] = useState({ conclusionDes: "" });
+  const [addFieldData, setAddFieldData] = useState({
+    field0: "",
+    field1: "",
+    field2: "",
+    field3: "",
+    field4: "",
+  });
 
   //  ///////////////////////////////////////////////////////////////////
   return (
