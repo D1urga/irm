@@ -242,7 +242,7 @@
     margin-left: 2vw;
     width: 33vw;
     /* min-height: 450px; */
-    max-height: 84vh;
+    max-height: 78vh;
     margin-top: 20px;
     border-radius: 8px;
     padding: 20px 31px;
@@ -264,7 +264,7 @@
     width: 24vw;
     padding: 10px;
     font-size: 14px;
-    height: 100px;
+    height: 70px;
   }
   .add_textarea {
     outline: 0;

@@ -10,6 +10,8 @@ import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import AttachmentSection from "../components2/attachmentSection";
 import irmLogo from "../images/irm_logo.jpg";
+import { Currency } from "react-intl-number-format";
+import irmPng from "../images/irmPng.png";
 import Image from "next/image";
 
 export default function TypeB() {
@@ -20,11 +22,11 @@ export default function TypeB() {
   // //////////////////////////////////////////////////////////////////////////////////
   const [currentSection, setCurrentState] = useState(0);
   const [headerSectionData, setHeaderSectionData] = useState({
-    DraftName: "a",
-    DamagesTo: "b",
-    DraftHeadingAndAddress: "c",
-    DateOfIncident: "d",
-    DateOfSurvey: "r",
+    DraftName: "",
+    DamagesTo: "",
+    DraftHeadingAndAddress: "",
+    DateOfIncident: "",
+    DateOfSurvey: "",
   });
   const [assessmentLossDes, setAssessmentLossDes] = useState("dskhda");
   const [assessmentLossTable, setAssessmentLossTable] = useState([]);
@@ -180,10 +182,164 @@ export default function TypeB() {
             }}
           >
             <Image
-              src={irmLogo}
+              src={irmPng}
               className={styles.irm_logo}
-              style={{ height: "190px", width: "600px" }}
+              style={{
+                height: "70px",
+                width: "500px",
+                objectFit: "cover",
+                margin: "50px 0",
+              }}
             />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              margin: "20px 0",
+            }}
+          >
+            <div style={{ display: "flex", width: "100%" }}>
+              <p
+                style={{
+                  width: "30%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "14px",
+                  padding: "4px 0",
+                }}
+              >
+                Draft Name
+              </p>
+              <p
+                style={{
+                  width: "70%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "14px",
+                  padding: "4px 0",
+                  justifyContent: "center",
+                }}
+              >
+                {headerSectionData.DraftName}
+              </p>
+            </div>
+            <div style={{ display: "flex", width: "100%" }}>
+              <p
+                style={{
+                  width: "30%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "14px",
+                  justifyContent: "center",
+                  padding: "4px 0",
+                }}
+              >
+                Damages To
+              </p>
+              <p
+                style={{
+                  width: "70%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "4px 0",
+                  fontSize: "14px",
+                  justifyContent: "center",
+                }}
+              >
+                {headerSectionData.DamagesTo}
+              </p>
+            </div>{" "}
+            <div style={{ display: "flex", width: "100%" }}>
+              <p
+                style={{
+                  width: "30%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "14px",
+                  justifyContent: "center",
+                  padding: "4px 0",
+                }}
+              >
+                Draft address
+              </p>
+              <p
+                style={{
+                  width: "70%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "14px",
+                  padding: "4px 0",
+                  justifyContent: "center",
+                }}
+              >
+                {headerSectionData.DraftHeadingAndAddress}
+              </p>
+            </div>
+            <div style={{ display: "flex", width: "100%" }}>
+              <p
+                style={{
+                  width: "30%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "14px",
+                  justifyContent: "center",
+                  padding: "4px 0",
+                }}
+              >
+                Date of Incident
+              </p>
+              <p
+                style={{
+                  width: "70%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "4px 0",
+                  justifyContent: "center",
+                  fontSize: "13px",
+                }}
+              >
+                {headerSectionData.DateOfIncident}
+              </p>
+            </div>{" "}
+            <div style={{ display: "flex", width: "100%" }}>
+              <p
+                style={{
+                  width: "30%",
+                  border: "1px solid black",
+                  display: "flex",
+                  fontSize: "14px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "4px 0",
+                }}
+              >
+                Date of Survey
+              </p>
+              <p
+                style={{
+                  width: "70%",
+                  border: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "13px",
+                  padding: "4px 0",
+                  justifyContent: "center",
+                }}
+              >
+                {headerSectionData.DateOfSurvey}
+              </p>
+            </div>
           </div>
           <div
             style={{
@@ -191,7 +347,7 @@ export default function TypeB() {
               display: "flex",
               alignItems: "stretch",
               justifyContent: "center",
-              backgroundColor: "gray",
+              backgroundColor: "#8a8854",
               color: "white",
             }}
           >
@@ -438,7 +594,9 @@ export default function TypeB() {
                       fontSize: "13px",
                     }}
                   >
-                    {data.replacement}
+                    <Currency locale="en-IN" currency="INR">
+                      {Number(data.replacement)}
+                    </Currency>
                   </p>
                 </div>{" "}
                 <div
@@ -457,7 +615,9 @@ export default function TypeB() {
                       fontSize: "13px",
                     }}
                   >
-                    {data.depreciation}
+                    <Currency locale="en-IN" currency="INR">
+                      {Number(data.depreciation)}
+                    </Currency>
                   </p>
                 </div>{" "}
                 <div
@@ -476,21 +636,26 @@ export default function TypeB() {
                       fontSize: "13px",
                     }}
                   >
-                    {data.assessment}
+                    <Currency locale="en-IN" currency="INR">
+                      {Number(data.replacement)}
+                    </Currency>
                   </p>
                 </div>
               </div>
             ))}
           </div>
+          <p style={{ fontSize: "18px", fontWeight: "600", marginTop: "30px" }}>
+            Notes
+          </p>
           <div
             style={{
               width: "100%",
               display: "flex",
               alignItems: "stretch",
               justifyContent: "center",
-              backgroundColor: "gray",
+              backgroundColor: "#8a8854",
               color: "white",
-              marginTop: "20px",
+              marginTop: "30px",
             }}
           >
             <div
@@ -583,6 +748,9 @@ export default function TypeB() {
               </div>
             </div>
           ))}
+          <p style={{ fontSize: "18px", fontWeight: "600", marginTop: "30px" }}>
+            Attachments
+          </p>
           <div
             style={{
               width: "100%",

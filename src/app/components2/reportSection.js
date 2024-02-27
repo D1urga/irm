@@ -215,6 +215,7 @@ export default function ReportSection({
           <p className={styles.des_title}>Replacement cost (Rs)</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
@@ -232,6 +233,7 @@ export default function ReportSection({
           <p className={styles.des_title}>Depreciation cost (Rs)</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
@@ -249,6 +251,7 @@ export default function ReportSection({
           <p className={styles.des_title}>Assessment cost (Rs)</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
@@ -333,6 +336,7 @@ export default function ReportSection({
           <p className={styles.des_title}>Replacement Cost (Rs)</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               value={des.replacement}
               name="replacement"
@@ -343,6 +347,7 @@ export default function ReportSection({
           <p className={styles.des_title}>Depreciation Cost (Rs)</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               value={des.depreciation}
               name="depreciation"
@@ -353,6 +358,7 @@ export default function ReportSection({
           <p className={styles.des_title}>Assessment Cost (Rs)</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               value={des.assessment}
               name="assessment"
@@ -379,8 +385,11 @@ export default function ReportSection({
                 onClick={() => {
                   const obj = {
                     description: des.des,
-                    claimAmout: des.claimAm,
-                    assessmentAmount: des.assessAm,
+                    report: des.report,
+                    action: des.action,
+                    replacement: des.replacement,
+                    depreciation: des.depreciation,
+                    assessment: des.assessment,
                     field0: addFieldData.field0,
                     field1: addFieldData.field1,
                     field2: addFieldData.field2,
