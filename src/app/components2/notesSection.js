@@ -78,8 +78,8 @@ export default function NotesSection({
     });
   };
   const [ref, setRef] = useState({
-    ref: "asjvasdfasda",
-    note: "fahsfvashd",
+    ref: "",
+    note: "",
   });
   const handleRefChange = (event) => {
     setRef({
@@ -91,7 +91,7 @@ export default function NotesSection({
     <div className={styles.main}>
       <div className={styles.outer_div}>
         <div className={styles.title}>
-          <p>Assessment Loss</p>
+          <p>Notes Section</p>
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
 
@@ -226,7 +226,7 @@ export default function NotesSection({
               >
                 Add
               </button>
-              <button className={styles.delete_btn}>Delete</button>
+              {/* <button className={styles.delete_btn}>Delete</button> */}
             </div>
           </div>
         </div>

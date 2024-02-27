@@ -88,8 +88,8 @@ export default function AssessmentOfLoss({
     });
   };
   const [ref, setRef] = useState({
-    ref: "asjvasdfasda",
-    note: "fahsfvashd",
+    ref: "",
+    note: "",
   });
   const handleRefChange = (event) => {
     setRef({
@@ -421,7 +421,7 @@ export default function AssessmentOfLoss({
               >
                 Add
               </button>
-              <button className={styles.delete_btn}>Delete</button>
+              {/* <button className={styles.delete_btn}>Delete</button> */}
             </div>
           </div>
           <div>
@@ -532,7 +532,7 @@ export default function AssessmentOfLoss({
               >
                 Add
               </button>
-              <button className={styles.delete_btn}>Delete</button>
+              {/* <button className={styles.delete_btn}>Delete</button> */}
             </div>
           </div>
         </div>

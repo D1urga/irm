@@ -60,7 +60,7 @@ export default function Home() {
     setObservationsAndVerificationsAttach,
   ] = useState([]);
 
-  const [assessmentLossDes, setAssessmentLossDes] = useState({ des: "adad" });
+  const [assessmentLossDes, setAssessmentLossDes] = useState({ des: "" });
   const [assessmentLossDescription, setAssessmentLossDescription] = useState({
     description: "adad",
   });

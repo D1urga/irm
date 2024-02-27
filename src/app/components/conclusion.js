@@ -15,9 +15,9 @@ export default function Conclusion({
   const [isuploadingAttachement, setUploadingAttachement] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
-  const [title, setTitle] = useState({ title: "ahdlvah" });
+  const [title, setTitle] = useState({ title: "" });
 
-  const [newtitle, setnewTitle] = useState({ title: "ahdlvah" });
+  const [newtitle, setnewTitle] = useState({ title: "" });
 
   const handleChangeTitle = (event) => {
     setTitle({
@@ -231,7 +231,7 @@ export default function Conclusion({
               >
                 Add
               </button>
-              <button className={styles.delete_btn}>Delete</button>
+              {/* <button className={styles.delete_btn}>Delete</button> */}
             </div>
           </div>
         </div>

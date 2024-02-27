@@ -72,9 +72,9 @@ export default function ObservationsAndVerifications({
   };
 
   const [itemsData, setItemsData] = useState({
-    description: "decs",
-    title: "title",
-    attachmentUrl: "attchmen",
+    description: "",
+    title: "",
+    attachmentUrl: "",
   });
   return (
     <div className={styles.main}>
@@ -232,7 +232,7 @@ export default function ObservationsAndVerifications({
                 onChange={handleImageChange}
               ></input> */}
 
-              <button className={styles.delete_btn}>Delete</button>
+              {/* <button className={styles.delete_btn}>Delete</button> */}
             </div>
           </div>
         </div>

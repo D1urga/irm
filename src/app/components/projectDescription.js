@@ -362,7 +362,7 @@ export default function ProjectDescription({
             >
               Add
             </button>
-            <button className={styles.delete_btn}>Delete</button>
+            {/* <button className={styles.delete_btn}>Delete</button> */}
           </div>
         </div>
       ) : null}

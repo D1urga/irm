@@ -403,7 +403,7 @@ export default function ReportSection({
               >
                 Add
               </button>
-              <button className={styles.delete_btn}>Delete</button>
+              {/* <button className={styles.delete_btn}>Delete</button> */}
             </div>
           </div>
           <div>
