@@ -26,7 +26,7 @@ export default function NotesSection({
   const [isShowingTable, setIsShowingTable] = useState(false);
   const [isUploadingTable, setIsUploadingTable] = useState(false);
   const [isShowingNote, setIsShowingNote] = useState(false);
-  const [isUploadingNote, setIsUploadingNote] = useState(false);
+  const [isUploadingNote, setIsUploadingNote] = useState(true);
   const [isNewFieldShowing, setIsNewFieldShowing] = useState(false);
   const [des, setDes] = useState({
     des: "",

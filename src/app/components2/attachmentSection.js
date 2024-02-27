@@ -12,7 +12,7 @@ export default function AttachmentSection({
   const [page, setPage] = useState(0);
   const [isShowingConclusion, setIsShowingConclusion] = useState(true);
   const [isShowingAttachement, setIsShowingAttachement] = useState(false);
-  const [isuploadingAttachement, setUploadingAttachement] = useState(false);
+  const [isuploadingAttachement, setUploadingAttachement] = useState(true);
   const [avatar, setAvatar] = useState(null);
 
   const [title, setTitle] = useState({ title: "ahdlvah" });

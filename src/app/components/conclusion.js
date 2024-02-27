@@ -96,7 +96,7 @@ export default function Conclusion({
                     setPage(index);
                   }}
                 >
-                  <p>item {index + 1}</p>
+                  <p>attachment {index + 1}</p>
                   <div className={styles.logos}>
                     {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}

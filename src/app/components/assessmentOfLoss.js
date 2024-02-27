@@ -136,7 +136,7 @@ export default function AssessmentOfLoss({
                       setTablePage(index);
                     }}
                   >
-                    <p>item {index + 1}</p>
+                    <p>assessment {index + 1}</p>
                     <div className={styles.logos}>
                       {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}

@@ -25,7 +25,7 @@ export default function ReportSection({
   const [notePage, setNotePage] = useState(0);
   const [isShowingDes, setIsShowingDes] = useState(true);
   const [isShowingTable, setIsShowingTable] = useState(false);
-  const [isUploadingTable, setIsUploadingTable] = useState(false);
+  const [isUploadingTable, setIsUploadingTable] = useState(true);
   const [isShowingNote, setIsShowingNote] = useState(false);
   const [isUploadingNote, setIsUploadingNote] = useState(false);
   const [isNewFieldShowing, setIsNewFieldShowing] = useState(false);
@@ -191,7 +191,7 @@ export default function ReportSection({
                 handleShowingChange(e, tablePage);
               }}
               name="report"
-              className={styles.dec_textarea1}
+              className={styles.dec_textarea}
               placeholder="report..."
             ></textarea>
           </div>
@@ -372,6 +372,31 @@ export default function ReportSection({
               ></textarea>
             </div>
           ))}
+          <div>
+            <div>
+              <button
+                className={styles.add_btn}
+                onClick={() => {
+                  const obj = {
+                    description: des.des,
+                    claimAmout: des.claimAm,
+                    assessmentAmount: des.assessAm,
+                    field0: addFieldData.field0,
+                    field1: addFieldData.field1,
+                    field2: addFieldData.field2,
+                    field3: addFieldData.field3,
+                    field4: addFieldData.field4,
+                  };
+                  console.log(assessmentLossTable);
+                  const newData = assessmentLossTable.concat(obj);
+                  setAssessmentLossTable(newData);
+                }}
+              >
+                Add
+              </button>
+              <button className={styles.delete_btn}>Delete</button>
+            </div>
+          </div>
           <div>
             <div
               className={
