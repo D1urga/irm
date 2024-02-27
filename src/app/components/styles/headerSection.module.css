@@ -21,6 +21,7 @@
   }
   .title p {
     font-size: 14px;
+
     font-weight: 510;
   }
   .angle_up {
@@ -31,6 +32,7 @@
   .reason {
     padding: 10px 40px;
     font-size: 13px;
+    cursor: pointer;
     font-weight: 510;
   }
   .text_area,
@@ -57,6 +59,49 @@
     font-size: 13.5px;
     background-color: #f4f4f4;
     border-radius: 5px;
+  }
+  .suggestion {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: rgb(119, 119, 119) 0px 0px 4px 1.3px;
+  }
+  .suggestion1 {
+    display: none;
+  }
+  .suggestion_inner_div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+
+    border-radius: 3px;
+    margin: 2px 5px;
+    padding: 15px 15px;
+  }
+  .suggestion_inner_div p {
+    font-size: 12px;
+  }
+  .suggestion_option {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .suggestion_option p {
+    font-size: 13px;
+    font-weight: 520;
+  }
+  .scrollBar {
+    height: 100%;
+    overflow: scroll;
+  }
+  .arrow_back {
+    font-size: 14px;
+    cursor: pointer;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {

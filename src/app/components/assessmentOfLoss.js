@@ -271,6 +271,7 @@ export default function AssessmentOfLoss({
           <p className={styles.des_title}>claim Rs</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
@@ -288,6 +289,7 @@ export default function AssessmentOfLoss({
           <p className={styles.des_title}>assessment Rs</p>
           <div>
             <input
+              type="number"
               onChange={(e) => {
                 handleShowingChange(e, tablePage);
               }}
@@ -352,6 +354,7 @@ export default function AssessmentOfLoss({
           <p className={styles.des_title}>claim Rs</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               value={des.claimAm}
               name="claimAm"
@@ -362,6 +365,7 @@ export default function AssessmentOfLoss({
           <p className={styles.des_title}>Assessment RS</p>
           <div>
             <input
+              type="number"
               className={styles.claim_input}
               value={des.assessAm}
               name="assessAm"
