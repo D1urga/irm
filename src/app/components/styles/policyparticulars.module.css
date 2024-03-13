@@ -1,4 +1,13 @@
 @media screen and (min-width: 900px) {
+  @keyframes border-blink {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
   .main_div {
     padding-bottom: 30px;
     position: relative;
@@ -14,6 +23,8 @@
     padding: 20px 40px;
     background-color: #ffffff;
     border-top: 9px solid white;
+    animation: border-blink 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
     border-bottom: 9px solid white;
     border-right: 9px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;

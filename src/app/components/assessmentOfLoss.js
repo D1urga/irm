@@ -271,6 +271,7 @@ export default function AssessmentOfLoss({
       {isShowingDes ? (
         <div className={styles.outer_div2}>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.des}
             onClick={() => {
               setIslossSuggestionShowing(true);
@@ -278,7 +279,10 @@ export default function AssessmentOfLoss({
               setIsnoteSuggestionShowing(false);
             }}
           >
-            Assessment of Loss Description
+            Assessment of Loss Description{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <textarea
             value={assessmentLossDes.des}
@@ -382,6 +386,7 @@ export default function AssessmentOfLoss({
             />
           </div>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.des_title}
             onClick={() => {
               setIslossSuggestionShowing(false);
@@ -389,7 +394,10 @@ export default function AssessmentOfLoss({
               setIsnoteSuggestionShowing(false);
             }}
           >
-            Description
+            Description{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <div>
             <textarea
@@ -551,7 +559,7 @@ export default function AssessmentOfLoss({
           </div> */}
         </div>
       ) : isUploadingNote ? (
-        <div className={styles.outer_div3}>
+        <div className={styles.outer_div4}>
           <p className={styles.des}>Add Note</p>
           <p className={styles.des_title}>Ref</p>
           <input
@@ -562,6 +570,7 @@ export default function AssessmentOfLoss({
             placeholder="ref..."
           ></input>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.des_title}
             onClick={() => {
               setIslossSuggestionShowing(false);
@@ -569,7 +578,10 @@ export default function AssessmentOfLoss({
               setIsnoteSuggestionShowing(true);
             }}
           >
-            Note
+            Note{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <textarea
             className={styles.dec_textarea}

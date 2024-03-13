@@ -195,13 +195,17 @@ export default function ObservationsAndVerifications({
       {intro ? (
         <div className={styles.outer_div2}>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.introduction}
             onClick={() => {
               setIsIntroSuggestionShowing(true);
               setIsConcSuggestionShowing(false);
             }}
           >
-            Introduction
+            Introduction{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <textarea
             value={observationsAndVerificationsData[0].introduction}
@@ -214,15 +218,19 @@ export default function ObservationsAndVerifications({
           ></textarea>
         </div>
       ) : conc ? (
-        <div className={styles.outer_div2}>
+        <div className={styles.outer_div4}>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.introduction}
             onClick={() => {
               setIsIntroSuggestionShowing(false);
               setIsConcSuggestionShowing(true);
             }}
           >
-            Conclusion
+            Conclusion{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <textarea
             value={observationsAndVerificationsData[0].conclusion}

@@ -4,7 +4,8 @@
     flex-direction: column;
     margin: 0 5vw;
     margin-top: 20px;
-
+    animation: border-blink 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
     width: 600px;
     border-radius: 8px;
     padding: 20px 0;
@@ -101,6 +102,15 @@
   .arrow_back {
     font-size: 14px;
     cursor: pointer;
+  }
+  @keyframes border-blink {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
   }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {

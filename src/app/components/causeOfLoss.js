@@ -30,12 +30,16 @@ export default function CauseOfLoss({
         <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
       </div>
       <p
+        style={{ cursor: "pointer" }}
         className={styles.des}
         onClick={() => {
           setIsSuggestionShowing(!isSuggestionShowing);
         }}
       >
-        Description
+        Description{" "}
+        <span style={{ fontSize: "12px", color: "blue" }}>
+          (see suggestions)
+        </span>
       </p>
       <textarea
         value={causeOfLoss.causeOfLoss}

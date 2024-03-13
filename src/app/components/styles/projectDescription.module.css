@@ -1,4 +1,22 @@
 @media screen and (min-width: 900px) {
+  @keyframes border-blink {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
+  @keyframes border-blink2 {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
   .main_div {
     display: flex;
     align-items: flex-start;
@@ -11,6 +29,8 @@
     margin-left: 5vw;
     width: 33vw;
     /* height: 500px; */
+    animation: border-blink 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
     margin-top: 20px;
     border-radius: 8px;
     padding: 10px 0;
@@ -148,6 +168,8 @@
     width: 40vw;
     /* height: 500px; */
     margin-top: 20px;
+    animation: border-blink 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
     border-radius: 8px;
     padding: 20px 40px;
     /* background-color: #ece1e1; */
@@ -208,6 +230,8 @@
     padding: 20px 40px;
     background-color: #ffffff;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    animation: border-blink2 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
   }
   .add_issue_title {
     display: flex;

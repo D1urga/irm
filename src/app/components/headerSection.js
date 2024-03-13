@@ -45,7 +45,10 @@ export default function HeaderSection({
             setIsSuggestionShowing(!isSuggestionShowing);
           }}
         >
-          Reason
+          Reason{" "}
+          <span style={{ fontSize: "12px", color: "blue" }}>
+            (see suggestions)
+          </span>
         </p>
         <textarea
           value={headerSectionData.reason}

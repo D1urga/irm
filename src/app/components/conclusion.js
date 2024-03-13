@@ -152,12 +152,16 @@ export default function Conclusion({
       {isShowingConclusion ? (
         <div className={styles.outer_div2}>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.des}
             onClick={() => {
               setIsSuggestionShowing(!isSuggestionShowing);
             }}
           >
-            Conclusion Description
+            Conclusion Description{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <textarea
             value={conclusionDes.conclusionDes}

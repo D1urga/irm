@@ -21,12 +21,7 @@ export default function ProjectDescription({
     "Burglary at Jade House Building, Port LouisMr. and Mrs. Voon Chong Fon Sing",
   ];
   const clientSuggestion = ["SICOM"];
-  const projectDescriptionSuggestion = [
-    "projectTitle1",
-    "projectTitle2",
-    "projectTitle3",
-    "projectTitle4",
-  ];
+  const projectDescriptionSuggestion = ["INSREP22_052"];
   const [isSuggestionShowing, setIsSuggestionShowing] = useState(false);
   const [isClientSuggestionSgowing, setIsClientSuggestionSgowing] =
     useState(false);
@@ -42,11 +37,11 @@ export default function ProjectDescription({
 
   const [projectDescriptionTableData, setProjectDescriptionTableData] =
     useState({
-      status: "",
-      author: "",
-      reviewer: "",
-      distribution: "",
-      mode: "",
+      status: "Draft",
+      author: "K.G",
+      reviewer: "P.P",
+      distribution: "JUBILEE",
+      mode: "e-mail ",
       date: "",
     });
   const handleChange = (event) => {
@@ -181,6 +176,7 @@ export default function ProjectDescription({
         <div className={styles.outer_div2}>
           <p className={styles.project_info}>Project Info</p>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.project_title}
             onClick={() => {
               setActiveSuggestion(0);
@@ -189,7 +185,10 @@ export default function ProjectDescription({
               setIsDescriptionSuggestionSgowing(false);
             }}
           >
-            Project title
+            Project title{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <textarea
             value={projectDescriptionData.projectTitle}
@@ -199,6 +198,7 @@ export default function ProjectDescription({
             placeholder="project title ..."
           ></textarea>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.project_title}
             onClick={() => {
               setActiveSuggestion(1);
@@ -207,7 +207,10 @@ export default function ProjectDescription({
               setIsDescriptionSuggestionSgowing(false);
             }}
           >
-            Client
+            Client{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <input
             value={projectDescriptionData.client}
@@ -217,6 +220,7 @@ export default function ProjectDescription({
             placeholder="client ..."
           ></input>
           <p
+            style={{ cursor: "pointer" }}
             className={styles.project_title}
             onClick={() => {
               setActiveSuggestion(1);
@@ -225,7 +229,10 @@ export default function ProjectDescription({
               setIsDescriptionSuggestionSgowing(true);
             }}
           >
-            Document Reference
+            Document Reference{" "}
+            <span style={{ fontSize: "12px", color: "blue" }}>
+              (see suggestions)
+            </span>
           </p>
           <input
             value={projectDescriptionData.documentReference}

@@ -1,4 +1,31 @@
 @media screen and (min-width: 900px) {
+  @keyframes border-blink {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
+  @keyframes border-blink2 {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
+  @keyframes border-blink3 {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
   .main {
     display: flex;
     align-items: flex-start;
@@ -9,6 +36,8 @@
     flex-direction: column;
     margin-left: 5vw;
     width: 33vw;
+    animation: border-blink 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
 
     max-height: 84vh;
     margin-top: 20px;
@@ -191,6 +220,8 @@
     flex-direction: column;
     margin-left: 2vw;
     width: 33vw;
+    animation: border-blink 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
 
     margin-top: 20px;
     border-radius: 8px;
@@ -241,6 +272,26 @@
     overflow: hidden;
     margin-left: 2vw;
     width: 33vw;
+    animation: border-blink2 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
+    /* min-height: 450px; */
+    max-height: 75vh;
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 20px 31px;
+    background-color: #ffffff;
+    border: 9px solid white;
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .outer_div4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-left: 2vw;
+    width: 33vw;
+    animation: border-blink3 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
     /* min-height: 450px; */
     max-height: 75vh;
     margin-top: 20px;

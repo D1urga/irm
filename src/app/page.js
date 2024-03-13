@@ -28,7 +28,7 @@ export default function Home() {
   // ////////////////////////////
   const [headerSectionData, setHeaderSectionData] = useState({
     reason: "",
-    name: "",
+    name: "Loss Adjustment Report_draf",
   });
 
   const [causeOfLoss, setCauseOfLoss] = useState({ causeOfLoss: "" });
