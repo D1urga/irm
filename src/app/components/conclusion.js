@@ -17,6 +17,108 @@ export default function Conclusion({
 }) {
   const suggestions = [
     "Assessment of the losses encountered by Mrs. Marie Jessica Nathalie Joumont is estimated at Rs 1,999.00, inclusive of VAT and after applicable policy excesses.Under the FIRE AND ALLIED PERILS, it is commonly understood that repairs/ making good of damaged pipework and any associative civil and/ or fitout work is not covered, thus not considered under this claim.This is a draft report and may require review/ revision/ amendment based on receipt of updated invoices/ quotes or claims or any other reason that may be duly justified.This report is made for loss adjustment purposes only.Statements in this report are fair representation of our findings at time of survey, declarations made by Insured and our interpretation of the policy documents.Facts and assumptions presented in this report cannot be used for any other loss adjustment exercise.This report is issued in electronic format and without any prejudice.",
+    `No settlement is proposed for the claim initiated by Insured following malicious 
+damages to insured property.
+Based on our survey, we cannot confirm adequacy of sum insured covered under 
+current policy.
+In event Insurer would like to consider a settlement against losses encountered by 
+Insured as a commercial gesture, below table may be used. This assessment is based 
+on the detailed quote submitted by Insured, presented in Annex 2. The rates are 
+acceptable and VAT inclusive`,
+    `Assessment of the losses encountered by Mrs. Marie Jessica Nathalie Joumont is 
+estimated at Rs 1,999.00, inclusive of VAT and after applicable policy excesses.
+Under the FIRE AND ALLIED PERILS, it is commonly understood that repairs/ 
+making good of damaged pipework and any associative civil and/ or fitout work is 
+not covered, thus not considered under this claim.
+This is a draft report and may require review/ revision/ amendment based on receipt 
+of updated invoices/ quotes or claims or any other reason that may be duly justified.
+This report is made for loss adjustment purposes only.
+Statements in this report are fair representation of our findings at time of survey, 
+declarations made by Insured and our interpretation of the policy documents.
+Facts and assumptions presented in this report cannot be used for any other loss 
+adjustment exercise.
+This report is issued in electronic format and without any prejudice`,
+    `In line with above information, our finding on site at time of survey and the clauses of 
+Policy held by Insured – we believe the claim is admissible for the location surveyed.
+We cannot confirm adequacy of sum insured. We assume surveyed location in 
+covered under present policy as part of Insured’s properties within the Beau Bassin/ 
+Rose Hill jurisdiction.
+Best settlement for losses encountered by Municipal council of Beau Bassin/ Rose 
+Hill following act of malicious damages and burglary at Chebel Sports Complex 
+Kosovo Cloakroom stands at Rs 425,115.00 – after applicable policy excess and 
+inclusive of VAT.
+This is a draft report and may require review/ revision/ amendment based on receipt
+of updated invoices/ quotes or claims or any other reason that may be duly justified.
+This report is issued in electronic format and without any prejudice.
+This report is made for loss adjustment purposes only. Statements in this report are 
+fair representation of our findings at time of survey, declarations made by Insured and 
+our interpretation of the policy documents. Facts and assumptions presented in this 
+report cannot be used for any other loss adjustment exercise.
+`,
+    `In line with above information, our finding on site at time of survey and the clauses of 
+Policy held by Insured – we believe the claim is admissible for the location surveyed.
+We cannot confirm adequacy of sum insured. We assume surveyed location in 
+covered under present policy as part of Insured’s properties within the Beau Bassin/ 
+Rose Hill jurisdiction.
+Best settlement for losses encountered by Municipal council of Beau Bassin/ Rose 
+Hill following act of malicious damages and burglary at Chebel Sports Complex 
+Kosovo Cloakroom stands at Rs 425,115.00 – after applicable policy excess and 
+inclusive of VAT.
+This is a draft report and may require review/ revision/ amendment based on receipt
+of updated invoices/ quotes or claims or any other reason that may be duly justified.
+This report is issued in electronic format and without any prejudice.
+This report is made for loss adjustment purposes only. Statements in this report are 
+fair representation of our findings at time of survey, declarations made by Insured and 
+our interpretation of the policy documents. Facts and assumptions presented in this 
+report cannot be used for any other loss adjustment exercise.`,
+    `Assessment of the loss is estimated at Rs 8,500.00 after applicable policy excess as 
+per CAR schedule.
+This is a draft report and may require review/ revision/ amendment based on receipt 
+on updated invoices/ quotes or claims or any other reason that may be duly justified.
+This report is made for loss adjustment purposes only. Statements in this report are 
+fair representation of our findings at time of survey, declarations made by Insured 
+and our interpretation of the policy documents.
+Facts and assumptions presented in this report cannot be used for any other loss 
+adjustment exercise.
+IRM has assumed all information received from Insured in the preparation of the 
+Report to be correct. While IRM has exercised a customary level of judgment or due 
+diligence in the use of such information, IRM assumes no responsibility for the 
+consequences of any error or omission contained therein.`,
+    `Adjustment of losses encountered by MR PADIACHY, following damage caused by 
+cyclone BATISIRAI at his residence, is estimated at Rs 18,200.00 - including VAT, 
+excluding any loss of use and after policy excess.
+This is a draft report and may require review/ revision/ amendment based on receipt 
+of updated information/ invoices/ quotes or claims or any other reason that may be 
+duly justified.
+This report is issued in electronic format and without any prejudice.`,
+    `Assessment of the loss encountered by FONDATION POUR L'ENFANCE TERRE DE 
+PAIX following fire outbreak within the therapy room of Insured’s premises at Albion 
+is estimated at Rs 137,110.00, inclusive of VAT and after applicable Policy excess.
+Based on our survey, we cannot confirm adequacy of sum insured.
+This is a draft report and may require review/ revision/ amendment based on receipt 
+of updated invoices/ quotes or claims or any other reason that may be duly justified.
+This report is made for loss adjustment purposes only. Statements in this report are 
+fair representation of our findings at time of survey, declarations made by Insured and 
+our interpretation of the policy documents.
+Facts and assumptions presented in this report cannot be used for any other loss 
+adjustment exercise.
+This report is issued in electronic format and without any prejudice`,
+    `Assessment of the losses encountered by Centre Gaming House Ltd., following 
+malicious damage to equipment and installation at Insured premises in Rose Hill is 
+estimated at Rs 148,000.00, after applicable policy excess and exclusive of VAT.
+This is a draft report and may require review/ revision/ amendment based on receipt 
+of updated invoices/ quotes or claims or any other reason that may be duly justified This report is made for loss adjustment purposes only.
+Statements in this report are fair representation of our findings at time of survey, 
+declarations made by Insured and our interpretation of the policy documents.
+Facts and assumptions presented in this report cannot be used for any other loss 
+adjustment exercise.
+IRM has assumed all information received from Insured and its contractor (Rey & 
+Lenferna) in the preparation of the Report to be correct. While IRM has exercised a 
+customary level of judgment or due diligence in the use of such information, IRM
+assumes no responsibility for the consequences of any error or omission contained 
+therein.
+This report is issued in electronic format and without any prejudice.
+`,
   ];
   const [page, setPage] = useState(0);
   const [isSuggestionShowing, setIsSuggestionShowing] = useState(false);

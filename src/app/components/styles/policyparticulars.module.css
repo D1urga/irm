@@ -33,6 +33,7 @@
   .scroll_div {
     height: 70vh;
     overflow: scroll;
+    margin-right: 7px;
   }
   .title {
     display: flex;

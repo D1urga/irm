@@ -17,10 +17,71 @@ export default function ObservationsAndVerifications({
 }) {
   const introSuggestion = [
     "Survey was carried out in the presence of Insured at Jade House Building, Port Louis. As mentioned by Mr Voon Chong Fon Sing, on Monday 20.03.2023 they noticed that air conditioning units in the building was not operational. Upon inspection it was it was fond tat mlicius dmage hav been cause to the eight (8) air conditioning units in Insured’s premises. At time of survey, we found clear signs of malicious damages to the air conditioning installation – which in our opinion was made to steal copper pipes, copper pipe fittings and electrical cables.The theft is suspected to have been committed on the 19.03.2023 and same has been reported to the police for investigation. The matter has been reported to the police station of Fanfaron for investigation and recorded under OB No 927/2023 as per Annex 1.Based on information supplied to us, it appears that the damages were caused by unidentified individual(s), who might have gained access in the property by crossing over the rear side wall. CCTV camera present on the premises could capturemovement of any intruder, as the point of entry might have been different from theview of the camera.  The premises are rented and occupied by Insured’s tenant. Upon query, Insured confirmed that the offices were not locked at time of incidence, thus intruder(s) did not have to force open any opening to obtain access within the offices to steal/ damagethe mentioned items. No means of forcible entry/ exit was observed or shown to us at time of survey",
+
+    "Survey was conducted in presence of Mrs. Joumont.At time of survey, burst apparatus was already repaired and accumulated water was already cleaned from the premises.Concerned apparatus is the potable water filter installed underneath the sink in kitchen, as shown in below picture.Annex 1 – refers to the service provider’s report and image of damaged filter Insured shared pictures of the time of incidence – which clearly showed the premises encountered accumulation of water following the apparatus burst and arepresented below:",
+    `Inspection of site which is situated at Chebel was carried out in the presence of 
+Insured’s representative Messrs Adrien Diolle, Welfare Officer and S.Botte Assistant 
+Inspector of Work.
+Insured’s premises is enclosed and sufficiently secured with a boundary wall. The 
+building is neither equipped with any CCTV surveyance SYSTEM nor with any 
+electronic intruder detection and alarm system. Further, the building was equipped 
+with burglar bars Mr A. Diolle mentioned that the cloakroom was closed with access gates closed and 
+maintained under lock. The keys kept at the Municipal Council of Beau Bassin/ Rose 
+Hill. He also stated that the metal gate found at the front and rear of the cloakroom 
+had been cut and taken away by unidentified individual(s). Same was not mentioned 
+in the claim and he was informed to have same added in the claim.
+As declared, the incidence date is believed to be during the last week of December 
+2022. However, Insured representative stated that the said cloakroom was visited by 
+officer from his office one week before 28.12.2022 , exact date could not be mentioned 
+and had nothing untoward to report. 
+Incidence was discovered on 28.12.2022 during a site visit, hence considered as date 
+of incidence. After inventory of losses, the matter was notified to Coromandel Police 
+on same date, which was recorded under OB167/2023.
+At the time of survey, it was noticed that the metal gates found at the front and rear of 
+the cloakroom had been cut and carried away. According to Insured representative, 
+culprit/s got access from the rear of the cloakroom through the two mentioned stolen 
+gates.
+Below pictures show missing gates which clearly indicate forcible entry into insured 
+premises by unidentified individual(s) with malicious intentions to steal fixtures , 
+fittings and contents within the premises`,
+    `Our survey was conducted in presence of Insured’s representative. The latter 
+showed us Insured property, which appeared to be under renovations as we found 
+scaffoldings installed on façade of the building.
+Insured’s equipment, the generator set, which was affected in reported incidence is 
+located on roof of the building. Access to this part of the property is restricted and not 
+allowed to unauthorised person. 
+Based on declaration of Insured, unidentified individual(s) obtained access to the 
+roof and the generator set by climbing on the scaffolding present on site.
+Insured’s representative mentioned that this might have happened at night, while the 
+site is not occupied and guarded.
+There is neither CCTV surveillance on the roof, nor monitoring access to the 
+scaffolding, thus intrusion was not detected.`,
+    "Inspection of site which is situated at Chebel was carried out in the presence of Insured’s representative Messrs Adrien Diolle, Welfare Officer and S.Botte Assistant Inspector of Work.Insured’s premises is enclosed and sufficiently secured with a boundary wall. The building is neither equipped with any CCTV surveyance SYSTEM nor with any electronic intruder detection and alarm system. Further, the building was equipped with burglar bars Mr A. Diolle mentioned that the cloakroom was closed with access gates closed and maintained under lock. The keys kept at the Municipal Council of Beau Bassin/ Rose Hill. He also stated that the metal gate found at the front and rear of the cloakroom  been cut and taken away by unidentified individual(s). Same was not mentioned in the claim and he was informed to have same added in the claim.As declared, the incidence date is believed to be during the last week of December 2022. However, Insured representative stated that the said cloakroom was visited by officer from his office one week before 28.12.2022 , exact date could not be mentioned and had nothing untoward to report. Incidence was discovered on 28.12.2022 during a site visit, hence considered as date of incidence. After inventory of losses, the matter was notified to Coromandel Police onsame date, which was recorded under OB167/2023At the time of survey, it was noticed that the metal gates found at the front and rear of the cloakroom had been cut and carried away. According to Insured representative, culprit/s got access from the rear of the cloakroom through the two mentioned stolen gates.Below pictures show missing gates which clearly indicate forcible entry into insured premises by unidentified individual(s) with malicious intentions to steal fixtures , fittings and contents within the premise As mentioned by Mr Diolle, intruder(s) cut three metal door together with burglar barsand got access in the cloakroom. Intruder(s) took along the three mentioned metal doors, six metal windows, five metal burglar proofing from windows, three timberdoors, one tropical metal door, three manhole covers from the compound, alsodamaged electrical installations, glass from openings, plumbing works and furniture.Below pictures show damaged electrical installation, plumbing works, furniture as well as metal openings/ glass panes – which clearly indicate forcible entry into Insured’s premises by unidentified individual/s, with malicious intentions to steal contents within the premises We do not have any information on progress of Police’s inquiry at time of reporting and if any of the stolen items could have been recuperated.We were further made to understand that no offender(s) was identified at time of reporting",
   ];
   const concSuggestion = [
     "At time of survey, the site was clean, and no water accumulation was found.Insured mentioned that the water filter was repaired by its service provider and services restored.Incidence occurred on 04th August 2022. Our survey was conducted on 02ndSeptember 2022 – nearly one month after incidence. Water related damages were noticed to the tv cabinet only.None of the other furniture in contact with accumulated water, from the apparatus burst, were found to present water related damagesAdditionally, Insured mentioned that water accumulated during incidence caused damages to the wall finishes as shown to us and presented in pictures below: Damages to the wall finishes is not due to water accumulation following water apparatus burst (the incidence) but appears to be a gradual deterioration of the finishes. This gradual deterioration might be due to water ingress inside the wall/ or any chased pipe leakage in the premises",
+    "None of the other furniture in contact with accumulated water, from the apparatus burst, were found to present water related damages.Additionally, Insured mentioned that water accumulated during incidence caused damages to the wall finishes as shown to us and presented in pictures below Damages to the wall finishes is not due to water accumulation following water apparatus burst (the incidence) but appears to be a gradual deterioration of the finishes. This grdual deterioration might be due to water ingress inside the wall/ or any chased pipe leakage in the premises.",
+    `As mentioned by Mr Diolle, intruder(s) cut three metal door together with burglar bars
+and got access in the cloakroom. Intruder(s) took along the three mentioned metal 
+doors, six metal windows, five metal burglar proofing from windows, three timber
+doors, one tropical metal door, three manhole covers from the compound, also
+damaged electrical installations, glass from openings, plumbing works and furniture.
+Below pictures show damaged electrical installation, plumbing works, furniture as well 
+as metal openings/ glass panes – which clearly indicate forcible entry into Insured’s 
+premises by unidentified individual/s, with malicious intentions to steal contents within 
+the premises We do not have any information on progress of Police’s inquiry at time of reporting 
+and if any of the stolen items could have been recuperated.
+We were further made to understand that no offender(s) was identified at time of 
+reporting.
+`,
+    `It is understood that the unauthorised individual(s) broke the viewing panel of the 
+generator set, to then force open the generator door and its distribution panel to steal 
+copper cables and electrical protection devices (breakers). By doing so, the 
+burglar(s) damaged the generator’s controller. Below survey pictures refer: As mentioned by Insured, the matter was reported to Rose Hill police station on 
+04.11.2022 and recorded under OB 7127/2022.
+No other damages were noted or reported on the site.`,
   ];
+
   const handleSuggestionChange1 = (event, val, id) => {
     const clone = [...observationsAndVerificationsData];
     const obj = clone[id];

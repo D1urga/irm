@@ -19,9 +19,22 @@ export default function ProjectDescription({
   const projectTitleSuggestion = [
     "Loss Adjustment Survey Report forLosses encountered by MRS. MARIE JESSICA NATHALIE JOUMONTfollowing apparatus burst",
     "Burglary at Jade House Building, Port LouisMr. and Mrs. Voon Chong Fon Sing",
+    "Loss Adjustment Survey Report forLosses encountered by MRS. MARIE JESSICA NATHALIE JOUMONTfollowing apparatus burst",
+    "Loss Adjustment Report for Losses encountered by THE MUNICIPAL COUNCIL OF BEAU BASSIN/ ROSE HILL following Act of Vandalism and Theft at Chebel Sports complex (Kosovo Cloakroom).",
+    "Loss Adjustment Survey Report forAccidental Damage to electrical appliances at completion stage at villa H27, Anahita",
+    "Loss Adjustment Survey Report forDamage to Contents & Fixtures in the residence of Mr. & Mrs. Padiachy at St Julien d’Hotman, following CYCLONE BATSIRAI.",
+    "Loss Adjustment Report for Losses encountered by FONDATION POUR L'ENFANCE TERRE DE PAIX ollowing Fire breakout at, Camp Creole, Albion",
+    "Loss Adjustment Report for Burglary and malicious damages cause to property of Centre Gaming House at Rose Hill.",
   ];
-  const clientSuggestion = ["SICOM"];
-  const projectDescriptionSuggestion = ["INSREP22_052"];
+  const clientSuggestion = ["SICOM", "JUBILEE", "SICOM General Insurance Ltd"];
+  const projectDescriptionSuggestion = [
+    "INSREP22_052",
+    "INSREP23_002",
+    "INSREP22-061",
+    "INSREP022-011",
+    "INSREP22_064",
+    "INSREP22-063",
+  ];
   const [isSuggestionShowing, setIsSuggestionShowing] = useState(false);
   const [isClientSuggestionSgowing, setIsClientSuggestionSgowing] =
     useState(false);

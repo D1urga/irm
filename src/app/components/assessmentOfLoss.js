@@ -26,12 +26,127 @@ export default function AssessmentOfLoss({
 }) {
   const lossSuggestion = [
     "Based on the provision of the Fire Insurance Policy held by Insured, there is no cover for malicious damages caused with intention to steal from the insured property. We additionally believe that this claim cannot be considered under the burglary clause –given there has not been any forced entry/ exit from Insured premises.We thus believe this claim is not admissible.",
+    `Based on the provision of the Fire Insurance Policy held by Insured, there is no cover 
+for malicious damages caused with intention to steal from the insured property. We 
+additionally believe that this claim cannot be considered under the burglary clause –
+given there has not been any forced entry/ exit from Insured premises.
+We thus believe this claim is not admissible`,
+    `Assessment of loss is based on declaration of insured, in line with the provisions of 
+insurance policy.
+`,
+    `Below tables details our observations and assessment to restore surveyed premises 
+to the condition before incidence. Our assessment is based on our survey, the 
+quantities measured on site and as per current market rates for the required repairs/ 
+replacement Insured provided overall cost of re-instatement. Our assessment, as presented in 
+below table, details all losses encountered at Chebel Kosovo cloakroom.
+We are of opinion that damaged fixtures/ fittings and appliances, remaining electrical 
+wires do not have any salvage value.`,
+    `Below tables details our observations and assessment to restore surveyed premises 
+to the condition before incidence. Our assessment is based on our survey, the 
+quantities measured on site and as per current market rates for the required repairs/ 
+replacement Insured provided overall cost of re-instatement. Our assessment, as presented in 
+below table, details all losses encountered at Chebel Kosovo cloakroom.
+We are of opinion that damaged fixtures/ fittings and appliances, remaining electrical 
+wires do not have any salvage value`,
+    `Based on our observations and declarations of Insured – we are of opinion the claim 
+is admissible under CAR held by Insured for the Villa at Anahita Project Assessment is based on repair basis as per quotes supplied to us, presented in 
+appendix 2. 
+Details of our assessment is presented in table below – which is exclusive of VAT`,
+    `Based on our survey and observations made during our visit, we believe there is 
+adequacy of sum insured.
+Our assessment of loss is presented in table below`,
+    `In line with above information, our finding on site at time of survey and the clauses 
+within Policy held by Insured – we believe this claim admissible. There has been no 
+violation to warranties under the concerned policy, as we found properly maintained 
+portable fire extinguishers installed within the premises and those which have been 
+used to extinguish the fire.
+Below table presents our assessment of losses encountered by Insured`,
+    `In line with above information, our finding on site at time of survey and the clauses 
+within Policy held by Insured – we believe this claim admissible. There has been no 
+violation to warranties under the concerned policy, as we found properly maintained 
+portable fire extinguishers installed within the premises and those which have been 
+used to extinguish the fire.
+Below table presents our assessment of losses encountered by Insured`,
+    `Assessment is based on declaration of Insured and in light of submitted documents, 
+considering losses encountered following malicious damage to insured’s property by 
+unidentified individuals.
+Assessment is exclusive of VAT as Insured is VAT registered under VAT20002581. 
+Policy excess applied as provisions of the Policy Documents.
+Based on survey conducted, we cannot assess adequacy of sum insured for interest 
+1 (Furniture, Fixtures & Fittings, Equipment, Slot Machines)
+From the policy documents, no exclusion applicable with regards to availability of 
+Security guard/ Guarding Services and/or Intruder alarm and/ or CCTV system on 
+site. No breach of warranties were observed in relation to the reported incidence.
+Assessment is based on repairs basis to re-instate Insured’s equipment and 
+installation at condition prior to incidence, as per the requirement under current 
+policy held by Insured`,
   ];
   const desSuggestion = [
     "Replacement of damaged water filterItem not covered under current policy held by Insured (repairs of water apparatus",
+    `Replacement of damaged water filter
+Item not covered under current policy held by Insured (repairs 
+of water apparatus)`,
+    `Replacement of TV cabinet
+Unit was found damaged, and we believe that the damages are 
+irreversible, thus requires systematic replacement.
+Replacement unit proposed by Insured is acceptable and 
+considered adequate replacement – refer to Annex 2.`,
+    `Making good of wall finishes.
+Not considered, as we are of opinion the wall finishes were not 
+damaged during reported incidence but due to gradual 
+deterioration following some other root cause.`,
+    `Doors with burglar proof, cut and carried away.
+Assessment based on replacement basis, 
+including labour & transport.
+`,
+    `A metal door double swing + burglar proof cut and 
+carried away + three glass (30cm*33cm) broken. 
+Assessment based on repairs basis, including 
+labour and material. Transport assigned to above 
+item.`,
+    `Replacement of kitchen hood ventilation duct
+Not admissible as not considered damaged. Proper 
+cleaning required `,
+    `Cleaning & Paint (labour and material) – chemical cleaning of wall 
+surfaces, prepare surfaces to receive fresh layers of water-based 
+emulsion paint, clearing of debris and application of three layers of 
+water-based emulsion paint.
+Rate includes labour, tools, material, and consumables required for 
+the indicated making good works. This includes the therapy room 
+and corridor area.
+Refer to Annex 1 - Quote supplied by Insured was considered and 
+found to be fair and reasonable for the required remedial works`,
   ];
   const noteSuggestion = [
-    "Insured mentioned their intention to claim for damages to kitchen cabinets as and when this may appear – at time of survey, Insured was clearly mentioned that there are no chances for damages to kitchen cabinet following water accumulation reported on 04th August 2022, since there is no visible sign of damages one month later to incidence. Insured was explained that water damages to wood would have shown in days, ad if it did not show after one month of incidence, it clearly means that the wood has not suffered anydamages due to water",
+    "Insured mentioned their intention to claim for damages to kitchen cabinets as and when this may appear – at time of survey, Insured was clearly mentioned that there are no chances for damages to kitchen cabinet following water accumulation reported on 04th August 2022, since there is no visible sign of damages one month later to incidence. Insured was explained that water damages to wood would have shown in days, ad if it did not show after one month of incidence, it clearly means that the wood has not suffered anydamages due to water Thus, no claim with regards to damages kitchen cabinet will be considered been cause by water accumulation during the incidence recorded on 04th August 2022.",
+
+    `Damages (scratches to the appliances) were visible to the naked eyes and might 
+not be clear on pictures shown in this report.`,
+    `Assessment of damages is based on our observations made on site at time of 
+survey`,
+    `All prices are from quotes from appliances supplier`,
+    `Fortress is the sole distributor and dealer for appliances found damaged on site 
+– thus no counter quotes for required repairs were sought.`,
+    `Additionally, repairs by any other service provider may void appliances 
+warrantee, thus repairs only from Fortress recommended and considered in this 
+case`,
+    `Quotes supplied by Fortress appear to be fair and reasonable.`,
+    `Assessment is exclusive of VAT, as Insured has not claimed VAT.`,
+    `We cannot access adequacy of sum insured`,
+    `We cannot ascertain the condition of declared damaged appliances prior to 
+incidence. However, we reply on commissioning details to understand that 
+appliances were delivered and installed on site without reported damage`,
+    `Our assessment is based on market rates for required making good works / 
+replacement of damaged fixtures – as assessed at time of survey. Quotes 
+submitted by Insured appears higher than market rates, thus not considered for 
+our assessment`,
+    `Assessment is based on all required works for making good/ replacement of 
+Insured’s property – which have been declared and found damaged in the reported 
+incidence.`,
+    `Our assessment is based on inspection carried out post the incidence, we can
+neither affirm the state of polycarbonate sheets prior to the incident nor if these 
+are covered/ or being claimed under any other insurance that Insured may have.
+`,
   ];
   const [tablePage, setTablePage] = useState(0);
   const [islossSuggestionShowing, setIslossSuggestionShowing] = useState(false);

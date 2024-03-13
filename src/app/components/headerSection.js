@@ -23,7 +23,12 @@ export default function HeaderSection({
 
   const suggestions = [
     "Burglary at Jade House Building, Port Louis- Mr and Mrs Voon Chong Fon sing",
-    "Burglary at Jade House Building, Port Louis- Mr and Mrs Voon Chong Fon sing",
+    "Water damages following apparatus burst in kitchen on ground floor.",
+    "Losses encountered by THE MUNICIPAL COUNCIL OF BEAU BASSIN/ ROSE HILL following Act of Vandalism and Theft at Chebel Sports complex (Kosovo Cloakroom).",
+    "Accidental Damage to Electrical appliances in completion phase of Villa H27 at Anahita -Bordier Contracting Ltd.",
+    "Damage to Contents & Fixtures at The Residence of Mr. & Mrs. Padiachy, Siva Soopramanien LaneSt Julien D'hotman, Following Cyclone Batsirai.",
+    "Fire outbreak at FONDATION POUR L'ENFANCE TERRE DE PAIX,AMP CREOLE, ALBION.",
+    "Losses following burglary and malicious damages caused toproperty of Centre Gaming House Ltd at Rose Hill.",
   ];
   return (
     <div className={styles.main}>

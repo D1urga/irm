@@ -46,7 +46,7 @@ export default function PolicyParticulars({
           <div>
             <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
             <FaPlusCircle
-              style={{ color: "gray", marginLeft: "20px" }}
+              style={{ color: "gray", marginLeft: "30px" }}
               onClick={() => {
                 setIsNewFieldShowing(!isNewFieldShowing);
               }}
