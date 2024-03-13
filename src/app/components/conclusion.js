@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import styles from "./styles/conclusion.module.css";
-import { FaAngleUp, FaTrash, FaEdit, FaPlusCircle } from "react-icons/fa";
+import {
+  FaAngleUp,
+  FaTrash,
+  FaEdit,
+  FaPlusCircle,
+  FaArrowRight,
+} from "react-icons/fa";
 
 export default function Conclusion({
   conclusionDes,
@@ -9,7 +15,11 @@ export default function Conclusion({
   setConclusionTable,
   onClickFun,
 }) {
+  const suggestions = [
+    "Assessment of the losses encountered by Mrs. Marie Jessica Nathalie Joumont is estimated at Rs 1,999.00, inclusive of VAT and after applicable policy excesses.Under the FIRE AND ALLIED PERILS, it is commonly understood that repairs/ making good of damaged pipework and any associative civil and/ or fitout work is not covered, thus not considered under this claim.This is a draft report and may require review/ revision/ amendment based on receipt of updated invoices/ quotes or claims or any other reason that may be duly justified.This report is made for loss adjustment purposes only.Statements in this report are fair representation of our findings at time of survey, declarations made by Insured and our interpretation of the policy documents.Facts and assumptions presented in this report cannot be used for any other loss adjustment exercise.This report is issued in electronic format and without any prejudice.",
+  ];
   const [page, setPage] = useState(0);
+  const [isSuggestionShowing, setIsSuggestionShowing] = useState(false);
   const [isShowingConclusion, setIsShowingConclusion] = useState(true);
   const [isShowingAttachement, setIsShowingAttachement] = useState(false);
   const [isuploadingAttachement, setUploadingAttachement] = useState(false);
@@ -40,6 +50,12 @@ export default function Conclusion({
     setConclusionDes({
       ...conclusionDes,
       [event.target.name]: event.target.value,
+    });
+  };
+  const handleSuggestionChange = (event, val) => {
+    setConclusionDes({
+      ...conclusionDes,
+      conclusionDes: val,
     });
   };
 
@@ -135,7 +151,14 @@ export default function Conclusion({
       </div>
       {isShowingConclusion ? (
         <div className={styles.outer_div2}>
-          <p className={styles.des}>Conclusion Description</p>
+          <p
+            className={styles.des}
+            onClick={() => {
+              setIsSuggestionShowing(!isSuggestionShowing);
+            }}
+          >
+            Conclusion Description
+          </p>
           <textarea
             value={conclusionDes.conclusionDes}
             onChange={handleChange}
@@ -235,7 +258,33 @@ export default function Conclusion({
             </div>
           </div>
         </div>
-      ) : null}
+      ) : null}{" "}
+      <div
+        className={isSuggestionShowing ? styles.suggestion : styles.suggestion1}
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIsSuggestionShowing(!isSuggestionShowing);
+            }}
+          />
+          <p>reason suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {suggestions.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleSuggestionChange(e, data);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

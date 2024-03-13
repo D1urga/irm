@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./styles/projectDescription.module.css";
-import { FaAngleUp, FaEdit, FaPlusCircle, FaTrash } from "react-icons/fa";
+import {
+  FaAngleUp,
+  FaEdit,
+  FaPlusCircle,
+  FaTrash,
+  FaArrowRight,
+} from "react-icons/fa";
 import { useState } from "react";
 
 export default function ProjectDescription({
@@ -10,6 +16,23 @@ export default function ProjectDescription({
   setProjectDescriptionTable,
   onClickFun,
 }) {
+  const projectTitleSuggestion = [
+    "Loss Adjustment Survey Report forLosses encountered by MRS. MARIE JESSICA NATHALIE JOUMONTfollowing apparatus burst",
+    "Burglary at Jade House Building, Port LouisMr. and Mrs. Voon Chong Fon Sing",
+  ];
+  const clientSuggestion = ["SICOM"];
+  const projectDescriptionSuggestion = [
+    "projectTitle1",
+    "projectTitle2",
+    "projectTitle3",
+    "projectTitle4",
+  ];
+  const [isSuggestionShowing, setIsSuggestionShowing] = useState(false);
+  const [isClientSuggestionSgowing, setIsClientSuggestionSgowing] =
+    useState(false);
+  const [isDescriptionSuggestionSgowing, setIsDescriptionSuggestionSgowing] =
+    useState(false);
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [page, setPage] = useState(0);
   const [isDescriptionShowing, setIsDescriptionShowing] = useState(true);
   const [isDescriptionTableShowing, setIsDescriptionTableShowing] =
@@ -38,6 +61,7 @@ export default function ProjectDescription({
       [event.target.name]: event.target.value,
     });
   };
+  const projectinfo = ["projectTitle", "client", "documentReference"];
 
   const handleShowingChange = (event, id) => {
     const clone = [...projectDescriptionTable];
@@ -46,6 +70,24 @@ export default function ProjectDescription({
     obj[`${event.target.name}`] = event.target.value;
     clone[id] = obj;
     setProjectDescriptionTable([...clone]);
+  };
+  const handleProjectTitleChange = (event, val) => {
+    setProjectDescriptionData({
+      ...projectDescriptionData,
+      projectTitle: val,
+    });
+  };
+  const handleClientChange = (event, val) => {
+    setProjectDescriptionData({
+      ...projectDescriptionData,
+      client: val,
+    });
+  };
+  const handleProjectDescriptionChange = (event, val) => {
+    setProjectDescriptionData({
+      ...projectDescriptionData,
+      documentReference: val,
+    });
   };
 
   return (
@@ -138,7 +180,17 @@ export default function ProjectDescription({
       {isDescriptionShowing ? (
         <div className={styles.outer_div2}>
           <p className={styles.project_info}>Project Info</p>
-          <p className={styles.project_title}>Project title</p>
+          <p
+            className={styles.project_title}
+            onClick={() => {
+              setActiveSuggestion(0);
+              setIsSuggestionShowing(true);
+              setIsClientSuggestionSgowing(false);
+              setIsDescriptionSuggestionSgowing(false);
+            }}
+          >
+            Project title
+          </p>
           <textarea
             value={projectDescriptionData.projectTitle}
             onChange={handleDataChange}
@@ -146,7 +198,17 @@ export default function ProjectDescription({
             className={styles.project_title_textarea}
             placeholder="project title ..."
           ></textarea>
-          <p className={styles.project_title}>Client</p>
+          <p
+            className={styles.project_title}
+            onClick={() => {
+              setActiveSuggestion(1);
+              setIsSuggestionShowing(false);
+              setIsClientSuggestionSgowing(true);
+              setIsDescriptionSuggestionSgowing(false);
+            }}
+          >
+            Client
+          </p>
           <input
             value={projectDescriptionData.client}
             onChange={handleDataChange}
@@ -154,7 +216,17 @@ export default function ProjectDescription({
             className={styles.client_input}
             placeholder="client ..."
           ></input>
-          <p className={styles.project_title}>Document Reference</p>
+          <p
+            className={styles.project_title}
+            onClick={() => {
+              setActiveSuggestion(1);
+              setIsSuggestionShowing(false);
+              setIsClientSuggestionSgowing(false);
+              setIsDescriptionSuggestionSgowing(true);
+            }}
+          >
+            Document Reference
+          </p>
           <input
             value={projectDescriptionData.documentReference}
             onChange={handleDataChange}
@@ -366,6 +438,97 @@ export default function ProjectDescription({
           </div>
         </div>
       ) : null}
+
+      <div
+        className={isSuggestionShowing ? styles.suggestion : styles.suggestion1}
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIsSuggestionShowing(false);
+              setIsClientSuggestionSgowing(false);
+              setIsDescriptionSuggestionSgowing(false);
+            }}
+          />
+          <p>projectTitle suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {projectTitleSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleProjectTitleChange(e, data);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className={
+          isClientSuggestionSgowing ? styles.suggestion : styles.suggestion1
+        }
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIsSuggestionShowing(false);
+              setIsClientSuggestionSgowing(false);
+              setIsDescriptionSuggestionSgowing(false);
+            }}
+          />
+          <p>client suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {clientSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleClientChange(e, data);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className={
+          isDescriptionSuggestionSgowing
+            ? styles.suggestion
+            : styles.suggestion1
+        }
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIsSuggestionShowing(false);
+              setIsClientSuggestionSgowing(false);
+              setIsDescriptionSuggestionSgowing(false);
+            }}
+          />
+          <p>Doc Reference suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {projectDescriptionSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleProjectDescriptionChange(e, data);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

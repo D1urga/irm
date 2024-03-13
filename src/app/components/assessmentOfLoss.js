@@ -9,6 +9,7 @@ import {
   FaCross,
   FaCut,
   FaTimesCircle,
+  FaArrowRight,
 } from "react-icons/fa";
 
 export default function AssessmentOfLoss({
@@ -23,7 +24,19 @@ export default function AssessmentOfLoss({
   setAssessmentLossFields,
   onClickFun,
 }) {
+  const lossSuggestion = [
+    "Based on the provision of the Fire Insurance Policy held by Insured, there is no cover for malicious damages caused with intention to steal from the insured property. We additionally believe that this claim cannot be considered under the burglary clause –given there has not been any forced entry/ exit from Insured premises.We thus believe this claim is not admissible.",
+  ];
+  const desSuggestion = [
+    "Replacement of damaged water filterItem not covered under current policy held by Insured (repairs of water apparatus",
+  ];
+  const noteSuggestion = [
+    "Insured mentioned their intention to claim for damages to kitchen cabinets as and when this may appear – at time of survey, Insured was clearly mentioned that there are no chances for damages to kitchen cabinet following water accumulation reported on 04th August 2022, since there is no visible sign of damages one month later to incidence. Insured was explained that water damages to wood would have shown in days, ad if it did not show after one month of incidence, it clearly means that the wood has not suffered anydamages due to water",
+  ];
   const [tablePage, setTablePage] = useState(0);
+  const [islossSuggestionShowing, setIslossSuggestionShowing] = useState(false);
+  const [isdesSuggestionShowing, setIsdesSuggestionShowing] = useState(false);
+  const [isnoteSuggestionShowing, setIsnoteSuggestionShowing] = useState(false);
   const [curentNotePage, setCurentNotePage] = useState(0);
   const [notePage, setNotePage] = useState(0);
   const [isShowingDes, setIsShowingDes] = useState(true);
@@ -75,10 +88,22 @@ export default function AssessmentOfLoss({
       [event.target.name]: event.target.value,
     });
   };
+  const handleDesChange = (event, val) => {
+    setAssessmentLossDes({
+      ...assessmentLossDes,
+      des: val,
+    });
+  };
   const handleChange1 = (event) => {
     setDes({
       ...des,
       [event.target.name]: event.target.value,
+    });
+  };
+  const handleDescriptionChange = (event, val) => {
+    setDes({
+      ...des,
+      des: val,
     });
   };
   const handleAddChange = (event) => {
@@ -95,6 +120,12 @@ export default function AssessmentOfLoss({
     setRef({
       ...ref,
       [event.target.name]: event.target.value,
+    });
+  };
+  const handleRefSuggChange = (event, val) => {
+    setRef({
+      ...ref,
+      note: val,
     });
   };
   return (
@@ -239,7 +270,16 @@ export default function AssessmentOfLoss({
       </div>
       {isShowingDes ? (
         <div className={styles.outer_div2}>
-          <p className={styles.des}>Assessment of Loss Description</p>
+          <p
+            className={styles.des}
+            onClick={() => {
+              setIslossSuggestionShowing(true);
+              setIsdesSuggestionShowing(false);
+              setIsnoteSuggestionShowing(false);
+            }}
+          >
+            Assessment of Loss Description
+          </p>
           <textarea
             value={assessmentLossDes.des}
             onChange={handleChange}
@@ -341,7 +381,16 @@ export default function AssessmentOfLoss({
               }}
             />
           </div>
-          <p className={styles.des_title}>Description</p>
+          <p
+            className={styles.des_title}
+            onClick={() => {
+              setIslossSuggestionShowing(false);
+              setIsdesSuggestionShowing(true);
+              setIsnoteSuggestionShowing(false);
+            }}
+          >
+            Description
+          </p>
           <div>
             <textarea
               value={des.des}
@@ -512,7 +561,16 @@ export default function AssessmentOfLoss({
             onChange={handleRefChange}
             placeholder="ref..."
           ></input>
-          <p className={styles.des_title}>Note</p>
+          <p
+            className={styles.des_title}
+            onClick={() => {
+              setIslossSuggestionShowing(false);
+              setIsdesSuggestionShowing(false);
+              setIsnoteSuggestionShowing(true);
+            }}
+          >
+            Note
+          </p>
           <textarea
             className={styles.dec_textarea}
             value={ref.note}
@@ -537,6 +595,96 @@ export default function AssessmentOfLoss({
           </div>
         </div>
       ) : null}
+      <div
+        className={
+          islossSuggestionShowing ? styles.suggestion : styles.suggestion1
+        }
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIslossSuggestionShowing(false);
+              setIsdesSuggestionShowing(false);
+              setIsnoteSuggestionShowing(false);
+            }}
+          />
+          <p>reason suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {lossSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleDesChange(e, data);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className={
+          isdesSuggestionShowing ? styles.suggestion : styles.suggestion1
+        }
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIslossSuggestionShowing(false);
+              setIsdesSuggestionShowing(false);
+              setIsnoteSuggestionShowing(false);
+            }}
+          />
+          <p>reason suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {desSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleDescriptionChange(e, data);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className={
+          isnoteSuggestionShowing ? styles.suggestion : styles.suggestion1
+        }
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIslossSuggestionShowing(false);
+              setIsdesSuggestionShowing(false);
+              setIsnoteSuggestionShowing(false);
+            }}
+          />
+          <p>reason suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {noteSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleRefSuggChange(e, data);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

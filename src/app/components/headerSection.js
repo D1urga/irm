@@ -22,26 +22,7 @@ export default function HeaderSection({
   };
 
   const suggestions = [
-    "reason 1",
-    "reason 2",
-    "reason 3",
-    "reason 4",
-    "reason 5",
-    "reason 6",
-    "reason 7",
-    "reason 8",
-    "reason 9",
-    "reason 10",
-    "reason 11",
-    "reason 12",
-    "reason 13",
-    "reason 14",
-    "reason 15",
-    "reason 16",
-    "reason 17",
-    "reason 18",
-    "reason 19",
-    "reason 20",
+    "Burglary at Jade House Building, Port Louis- Mr and Mrs Voon Chong Fon sing",
   ];
   return (
     <div className={styles.main}>

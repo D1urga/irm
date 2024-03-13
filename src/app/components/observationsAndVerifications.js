@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import styles from "./styles/observationsAndVerifications.module.css";
-import { FaAngleUp, FaPlusCircle, FaEdit, FaTrash } from "react-icons/fa";
+import {
+  FaAngleUp,
+  FaPlusCircle,
+  FaEdit,
+  FaTrash,
+  FaArrowRight,
+} from "react-icons/fa";
 
 export default function ObservationsAndVerifications({
   observationsAndVerificationsData,
@@ -9,6 +15,31 @@ export default function ObservationsAndVerifications({
   setObservationsAndVerificationsAttach,
   onClickFun,
 }) {
+  const introSuggestion = [
+    "Survey was carried out in the presence of Insured at Jade House Building, Port Louis. As mentioned by Mr Voon Chong Fon Sing, on Monday 20.03.2023 they noticed that air conditioning units in the building was not operational. Upon inspection it was it was fond tat mlicius dmage hav been cause to the eight (8) air conditioning units in Insured’s premises. At time of survey, we found clear signs of malicious damages to the air conditioning installation – which in our opinion was made to steal copper pipes, copper pipe fittings and electrical cables.The theft is suspected to have been committed on the 19.03.2023 and same has been reported to the police for investigation. The matter has been reported to the police station of Fanfaron for investigation and recorded under OB No 927/2023 as per Annex 1.Based on information supplied to us, it appears that the damages were caused by unidentified individual(s), who might have gained access in the property by crossing over the rear side wall. CCTV camera present on the premises could capturemovement of any intruder, as the point of entry might have been different from theview of the camera.  The premises are rented and occupied by Insured’s tenant. Upon query, Insured confirmed that the offices were not locked at time of incidence, thus intruder(s) did not have to force open any opening to obtain access within the offices to steal/ damagethe mentioned items. No means of forcible entry/ exit was observed or shown to us at time of survey",
+  ];
+  const concSuggestion = [
+    "At time of survey, the site was clean, and no water accumulation was found.Insured mentioned that the water filter was repaired by its service provider and services restored.Incidence occurred on 04th August 2022. Our survey was conducted on 02ndSeptember 2022 – nearly one month after incidence. Water related damages were noticed to the tv cabinet only.None of the other furniture in contact with accumulated water, from the apparatus burst, were found to present water related damagesAdditionally, Insured mentioned that water accumulated during incidence caused damages to the wall finishes as shown to us and presented in pictures below: Damages to the wall finishes is not due to water accumulation following water apparatus burst (the incidence) but appears to be a gradual deterioration of the finishes. This gradual deterioration might be due to water ingress inside the wall/ or any chased pipe leakage in the premises",
+  ];
+  const handleSuggestionChange1 = (event, val, id) => {
+    const clone = [...observationsAndVerificationsData];
+    const obj = clone[id];
+
+    obj["introduction"] = val;
+    clone[id] = obj;
+    setObservationsAndVerificationsData([...clone]);
+  };
+  const handleSuggestionChange2 = (event, val, id) => {
+    const clone = [...observationsAndVerificationsData];
+    const obj = clone[id];
+
+    obj["conclusion"] = val;
+    clone[id] = obj;
+    setObservationsAndVerificationsData([...clone]);
+  };
+  const [isIntroSuggestionShowing, setIsIntroSuggestionShowing] =
+    useState(false);
+  const [isConcSuggestionShowing, setIsConcSuggestionShowing] = useState(false);
   const [page, setPage] = useState(0);
   const [isShowing, setIsShowing] = useState(false);
   const [intro, setIntro] = useState(true);
@@ -163,7 +194,15 @@ export default function ObservationsAndVerifications({
       </div>
       {intro ? (
         <div className={styles.outer_div2}>
-          <p className={styles.introduction}>Introduction</p>
+          <p
+            className={styles.introduction}
+            onClick={() => {
+              setIsIntroSuggestionShowing(true);
+              setIsConcSuggestionShowing(false);
+            }}
+          >
+            Introduction
+          </p>
           <textarea
             value={observationsAndVerificationsData[0].introduction}
             name="introduction"
@@ -176,7 +215,15 @@ export default function ObservationsAndVerifications({
         </div>
       ) : conc ? (
         <div className={styles.outer_div2}>
-          <p className={styles.introduction}>Conclusion</p>
+          <p
+            className={styles.introduction}
+            onClick={() => {
+              setIsIntroSuggestionShowing(false);
+              setIsConcSuggestionShowing(true);
+            }}
+          >
+            Conclusion
+          </p>
           <textarea
             value={observationsAndVerificationsData[0].conclusion}
             name="conclusion"
@@ -313,6 +360,64 @@ export default function ObservationsAndVerifications({
           </div>
         </div>
       ) : null}
+      <div
+        className={
+          isIntroSuggestionShowing ? styles.suggestion : styles.suggestion1
+        }
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIsIntroSuggestionShowing(false);
+              setIsConcSuggestionShowing(false);
+            }}
+          />
+          <p>introduction suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {introSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleSuggestionChange1(e, data, 0);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className={
+          isConcSuggestionShowing ? styles.suggestion : styles.suggestion1
+        }
+      >
+        <div className={styles.suggestion_option}>
+          <FaArrowRight
+            className={styles.arrow_back}
+            onClick={() => {
+              setIsIntroSuggestionShowing(false);
+              setIsConcSuggestionShowing(false);
+            }}
+          />
+          <p>conclusion suggestions</p>
+        </div>
+        <div className={styles.scrollBar}>
+          {concSuggestion.map((data, index) => (
+            <div
+              key={index}
+              className={styles.suggestion_inner_div}
+              onClick={(e) => {
+                handleSuggestionChange2(e, data, 0);
+              }}
+            >
+              <p>{data}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

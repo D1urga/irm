@@ -32,7 +32,6 @@ export default function Home() {
   });
 
   const [causeOfLoss, setCauseOfLoss] = useState({ causeOfLoss: "" });
-
   const [policyParticularsData, setPolicyParticularsData] = useState({
     insurer: "",
     insured: "",
@@ -41,16 +40,13 @@ export default function Home() {
     periodOfInsurance: "",
     policyExcess: "",
   });
-
   const [policyParticularsFields, setPolicyParticularsFields] = useState([]);
-
   const [projectDescriptionData, setProjectDescriptionData] = useState({
     projectTitle: "",
     client: "",
     documentReference: "",
   });
   const [projectDescriptionTable, setProjectDescriptionTable] = useState([]);
-
   const [
     observationsAndVerificationsData,
     setObservationsAndVerificationsData,
@@ -59,7 +55,6 @@ export default function Home() {
     observationsAndVerificationsAttach,
     setObservationsAndVerificationsAttach,
   ] = useState([]);
-
   const [assessmentLossDes, setAssessmentLossDes] = useState({ des: "" });
   const [assessmentLossDescription, setAssessmentLossDescription] = useState({
     description: "adad",
@@ -74,10 +69,8 @@ export default function Home() {
   const [assessmentLossTable, setAssessmentLossTable] = useState([]);
   const [assessmentLossNotes, setAssessmentLossNotes] = useState([]);
   const [assessmentLossFields, setAssessmentLossFields] = useState([]);
-
   const [conclusionDes, setConclusionDes] = useState({ conclusionDes: "" });
   const [conclusionTable, setConclusionTable] = useState([]);
-
   const [totalClaimAm, setTotalClaimAm] = useState(0);
   const [totalAssessmentAm, setTotalAssessmentAm] = useState(0);
 
