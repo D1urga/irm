@@ -23,6 +23,7 @@ export default function HeaderSection({
 
   const suggestions = [
     "Burglary at Jade House Building, Port Louis- Mr and Mrs Voon Chong Fon sing",
+    "Burglary at Jade House Building, Port Louis- Mr and Mrs Voon Chong Fon sing",
   ];
   return (
     <div className={styles.main}>
