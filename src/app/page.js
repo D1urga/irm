@@ -12,6 +12,7 @@ import CauseOfLoss from "./components/causeOfLoss";
 import AssessmentOfLoss from "./components/assessmentOfLoss";
 import Conclusion from "./components/conclusion";
 import irmLogo from "./images/irm_logo.jpg";
+import coverpage from "./images/irmCoverImage.jpeg";
 import irmPng from "./images/irmPng.png";
 import ReactToPrint from "react-to-print";
 import { useReactToPrint } from "react-to-print";
@@ -354,10 +355,17 @@ export default function Home() {
           ref={componentRef}
           className={styles.print_pdf}
           style={{
-            width: "100vw",
+            width: "100vw !important",
             paddingLeft: "40px",
             paddingRight: "40px",
-            backgroundColor: "white",
+            // backgroundColor: "white",
+            pageBreakAfter: "always",
+
+            backgroundImage: "url(/cover.jpg)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            paddingBottom: "0px",
+            paddingTop: "0px",
           }}
         >
           <div
@@ -376,6 +384,8 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+
+                // backgroundColor: "green",
               }}
             >
               <Image
@@ -383,9 +393,9 @@ export default function Home() {
                 className={styles.irm_logo}
                 style={{
                   height: "105px",
-                  width: "700px",
+                  width: "600px",
                   objectFit: "cover",
-                  marginBottom: "150px",
+                  marginBottom: "250px",
                 }}
               />
             </div>
@@ -395,6 +405,7 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 paddingLeft: "25vw",
+                // backgroundColor: "pink",
               }}
             >
               <p
@@ -427,7 +438,7 @@ export default function Home() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              backgroundColor: "white",
+              marginTop: "70px",
             }}
           >
             <Image

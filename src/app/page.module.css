@@ -8,11 +8,19 @@
       box-shadow: rgb(201, 201, 201) 0px 0px 4px 1.3px;
     }
   }
-  @media print {
-    .print_pdf {
-      background-color: #cbb8b8;
+
+  .print_pdf {
+    @media print {
+      @page {
+        .print_pdf {
+          background-image: url("./images/irmCoverImage.jpeg");
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
     }
   }
+
   .outer_div {
     position: relative;
     height: 100vh;
