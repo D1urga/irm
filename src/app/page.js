@@ -393,7 +393,7 @@ export default function Home() {
                 className={styles.irm_logo}
                 style={{
                   height: "90px",
-                  width: "640px",
+                  width: "580px",
                   objectFit: "cover",
                   marginBottom: "250px",
                 }}
@@ -445,8 +445,8 @@ export default function Home() {
               src={irmPng}
               className={styles.irm_logo}
               style={{
-                height: "70px",
-                width: "500px",
+                height: "75px",
+                width: "490px",
                 objectFit: "cover",
                 margin: "50px 0",
               }}
