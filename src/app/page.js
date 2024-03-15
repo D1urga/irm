@@ -392,8 +392,8 @@ export default function Home() {
                 src={irmPng}
                 className={styles.irm_logo}
                 style={{
-                  height: "105px",
-                  width: "600px",
+                  height: "90px",
+                  width: "640px",
                   objectFit: "cover",
                   marginBottom: "250px",
                 }}
