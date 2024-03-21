@@ -35,7 +35,7 @@ export default function TypeBReports() {
                   <div className={styles.div1}>
                     <p
                       style={{
-                        fontSize: "13px",
+                        fontSize: "12px",
                         fontWeight: "600",
                       }}
                     >
@@ -44,7 +44,7 @@ export default function TypeBReports() {
                     <div className={styles.icon}>
                       <p
                         style={{
-                          color: "blue",
+                          color: " rgb(47, 47, 228)",
                           fontSize: "13px",
                           fontWeight: "600",
                         }}
@@ -55,7 +55,7 @@ export default function TypeBReports() {
                         style={{
                           fontSize: "14px",
                           margin: "0 20px",
-                          color: "blue",
+                          color: "rgb(47, 47, 228)",
                         }}
                       />
                     </div>

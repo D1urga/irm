@@ -22,6 +22,15 @@
       background-color: #cbb8b8;
     }
   }
+  @keyframes border-blink {
+    0% {
+      box-shadow: rgb(201, 201, 201) 0px 0px 4px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(201, 201, 201) 0px 0px 4px 1.3px;
+    }
+  }
   .outer_div {
     position: relative;
     height: 100vh;
@@ -87,6 +96,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 17px 40px;
+    animation: border-blink 400ms steps(1) 1;
+    animation-timing-function: ease-in-out;
     margin: 6px 0;
     cursor: pointer;
     border-radius: 5px;

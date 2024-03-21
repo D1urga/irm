@@ -35,29 +35,15 @@ export default function AllReports() {
                   <div className={styles.div1}>
                     <p
                       style={{
-                        fontSize: "13px",
+                        fontSize: "12px",
                         fontWeight: "600",
                       }}
                     >
                       report {index + 1}
                     </p>
                     <div className={styles.icon}>
-                      <p
-                        style={{
-                          color: "blue",
-                          fontSize: "13px",
-                          fontWeight: "600",
-                        }}
-                      >
-                        visit
-                      </p>
-                      <FaArrowRight
-                        style={{
-                          fontSize: "14px",
-                          margin: "0 20px",
-                          color: "blue",
-                        }}
-                      />
+                      <p>visit</p>
+                      <FaArrowRight className={styles.logo} />
                     </div>
                   </div>
                 </Link>

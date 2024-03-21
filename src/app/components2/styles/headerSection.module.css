@@ -77,6 +77,7 @@
   .scrollbar_div {
     height: 65vh;
     overflow: scroll;
+    margin-right: 48px;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {

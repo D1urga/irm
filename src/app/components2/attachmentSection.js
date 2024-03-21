@@ -216,18 +216,20 @@ export default function AttachmentSection({
               <button
                 className={styles.add_btn}
                 onClick={() => {
-                  const obj = {
-                    title: title.title,
-                    attachmentUrl: cuurent,
-                    attachmentImage: "",
-                  };
-                  let obj2 = {
-                    url: avatar,
-                  };
-                  const newobj2 = imageUrl.concat(obj2);
-                  setImageUrl(newobj2);
-                  const newData = conclusionTable.concat(obj);
-                  setConclusionTable(newData);
+                  if (conclusionTable.length < 10) {
+                    const obj = {
+                      title: title.title,
+                      attachmentUrl: cuurent,
+                      attachmentImage: "",
+                    };
+                    let obj2 = {
+                      url: avatar,
+                    };
+                    const newobj2 = imageUrl.concat(obj2);
+                    setImageUrl(newobj2);
+                    const newData = conclusionTable.concat(obj);
+                    setConclusionTable(newData);
+                  }
                 }}
               >
                 Add

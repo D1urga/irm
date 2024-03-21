@@ -106,7 +106,7 @@ export default function TypeB({ params }) {
 
     const response = await axios({
       method: "post",
-      url: `http://localhost:3000/api/v1/update/typeA/${decodeURIComponent(
+      url: `https://irmbackend.onrender.com/api/v1/update/typeA/${decodeURIComponent(
         params.typeBReport[0]
       )}`,
       data: formData,
@@ -140,16 +140,16 @@ export default function TypeB({ params }) {
 
         {/* <p>{assessmentLossTable && assessmentLossTable.length}</p> */}
 
-        <form onSubmit={updateTypeB}>
-          <div className={styles.btn_div}>
+        <div className={styles.btn_div} style={{ display: "flex" }}>
+          <form onSubmit={updateTypeB}>
             <button className={styles.btn1} type="submit">
               Update
             </button>
-            <button className={styles.btn3} onClick={handlePrint}>
-              Download
-            </button>
-          </div>
-        </form>
+          </form>
+          <button className={styles.btn3} onClick={handlePrint}>
+            Download
+          </button>
+        </div>
       </div>
       {currentSection === 0 ? (
         <div className={styles.allPages}>

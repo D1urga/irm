@@ -21,7 +21,16 @@
     /* width: 20vw; */
     padding: 30px 20px;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    transition: 300ms ease-in-out;
+    border: 1px solid rgb(255, 255, 255);
   }
+  .div1:hover {
+    background-color: rgb(237, 244, 249);
+    box-shadow: rgb(149, 149, 149) 0px 0px 0px 0px;
+    transition: 300ms ease-in-out;
+    border: 1px solid rgb(220, 220, 220);
+  }
+
   .icon {
     display: flex;
     align-items: center;

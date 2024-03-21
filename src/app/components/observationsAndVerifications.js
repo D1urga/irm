@@ -160,22 +160,24 @@ No other damages were noted or reported on the site.`,
     setObservationsAndVerificationsAttach([...clone]);
   };
   const addAttachments = () => {
-    const obj = {
-      description: itemsData.description,
-      title: itemsData.title,
-      attachmentUrl: cuurent,
-      attachmentImage: "",
-    };
-    console.log(obj);
-    const obj2 = {
-      url: avatar,
-    };
-    const newobj2 = imageUrl.concat(obj2);
-    setImageUrl(newobj2);
+    if (observationsAndVerificationsAttach.length < 10) {
+      const obj = {
+        description: itemsData.description,
+        title: itemsData.title,
+        attachmentUrl: cuurent,
+        attachmentImage: "",
+      };
+      console.log(obj);
+      const obj2 = {
+        url: avatar,
+      };
+      const newobj2 = imageUrl.concat(obj2);
+      setImageUrl(newobj2);
 
-    const newData = observationsAndVerificationsAttach.concat(obj);
+      const newData = observationsAndVerificationsAttach.concat(obj);
 
-    setObservationsAndVerificationsAttach(newData);
+      setObservationsAndVerificationsAttach(newData);
+    }
   };
 
   const [avatar, setAvatar] = useState(null);

@@ -253,16 +253,17 @@ export default function Report({ params }) {
 
         {/* <p>{headerSectionData.name}</p> */}
         {/* {projectDescriptionData.documentReference} */}
-        <form onSubmit={updateReport}>
-          <div className={styles.btn_div}>
+
+        <div className={styles.btn_div} style={{ display: "flex" }}>
+          <form onSubmit={updateReport}>
             <button className={styles.btn1} type="submit">
               Update
             </button>
-            <button className={styles.btn3} onClick={handlePrint}>
-              Download
-            </button>
-          </div>
-        </form>
+          </form>
+          <button className={styles.btn3} onClick={handlePrint}>
+            Download
+          </button>
+        </div>
       </div>
       {currentSection === 0 ? (
         <div className={styles.allPages}>
