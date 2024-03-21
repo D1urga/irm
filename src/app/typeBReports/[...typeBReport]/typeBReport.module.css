@@ -1,4 +1,22 @@
 @media screen and (min-width: 900px) {
+  .notUploading {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.8);
+    z-index: 999;
+  }
+  .notUploading p {
+    color: white;
+  }
+  .uploading {
+    display: none;
+  }
   @media print {
     .print_pdf {
       background-color: #cbb8b8;

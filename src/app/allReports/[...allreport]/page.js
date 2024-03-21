@@ -115,6 +115,7 @@ export default function Report({ params }) {
     },
   });
   const sections = [];
+  const [isUploading, setIsUploading] = useState(false);
   const [currentSection, setCurrentState] = useState(0);
   const [data, setData] = useState([]);
   const fetchInfo = async () => {
@@ -154,6 +155,7 @@ export default function Report({ params }) {
 
   const updateReport = async (event) => {
     event.preventDefault();
+    setIsUploading(true);
     // setIsUploading(true);
     const formData = new FormData();
     // formData.append("file", imageUrl[0]);
@@ -217,6 +219,7 @@ export default function Report({ params }) {
       .catch((error) => {
         console.log(error);
       });
+    setIsUploading(false);
     // setIsUploading(false);
   };
   useEffect(() => {
@@ -2381,6 +2384,9 @@ export default function Report({ params }) {
               ))}
           </div>
         </div>
+      </div>
+      <div className={isUploading ? styles.notUploading : styles.uploading}>
+        <p>updating report ....</p>
       </div>
     </div>
   );

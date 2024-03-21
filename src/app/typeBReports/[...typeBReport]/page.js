@@ -36,6 +36,7 @@ export default function TypeB({ params }) {
   const [assessmentLossFields, setAssessmentLossFields] = useState([]);
   const [conclusionTable, setConclusionTable] = useState([]);
   const [conclusionDes, setConclusionDes] = useState({ conclusionDes: "" });
+  const [isUploading, setIsUploading] = useState(false);
   const [addFieldData, setAddFieldData] = useState({
     field0: "",
     field1: "",
@@ -87,6 +88,7 @@ export default function TypeB({ params }) {
 
   const updateTypeB = async (event) => {
     event.preventDefault();
+    setIsUploading(true);
     // setCurrentValue1(false);
     const formData = new FormData();
     formData.append("headerSectionData", JSON.stringify(headerSectionData));
@@ -116,6 +118,7 @@ export default function TypeB({ params }) {
       .catch((error) => {
         console.log(error);
       });
+    setIsUploading(false);
   };
   useEffect(() => {
     // const unloadCallback = (event) => {
@@ -907,6 +910,9 @@ export default function TypeB({ params }) {
               ))}
           </div>
         </div>
+      </div>
+      <div className={isUploading ? styles.notUploading : styles.uploading}>
+        <p>updating report ....</p>
       </div>
     </div>
   );
