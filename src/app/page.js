@@ -30,7 +30,7 @@ export default function Home() {
   });
   //////////////////////////////////////////////////////////////////////////////////////////////
   const [headerSectionData, setHeaderSectionData] = useState({
-    reason: "das",
+    reason: "",
     name: "Loss Adjustment Report_draf",
   });
 
@@ -68,7 +68,7 @@ export default function Home() {
   ] = useState([]);
   const [assessmentLossDes, setAssessmentLossDes] = useState({ des: "" });
   const [assessmentLossDescription, setAssessmentLossDescription] = useState({
-    description: "adad",
+    description: "",
   });
   const [addFieldData, setAddFieldData] = useState({
     field0: "",

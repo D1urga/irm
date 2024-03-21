@@ -38,14 +38,14 @@ export default function RootLayout({ children }) {
               onClick={() => setIsActive(0)}
               className={isActive === 0 ? styles.links_active : styles.links}
             >
-              <p>Home</p>
+              <p>reportB</p>
             </Link>
             <Link
               href="/"
               onClick={() => setIsActive(1)}
               className={isActive === 1 ? styles.links_active : styles.links}
             >
-              <p>Dashboard</p>
+              <p>reportA</p>
             </Link>
             <Link
               href="/allReports"
