@@ -23,7 +23,7 @@ export default function AllReports() {
           {data.length != 0 ? (
             data &&
             data.map((data, index) => (
-              <div className={styles.grid}>
+              <div key={index} className={styles.grid}>
                 <Link href={`/allReports/${data._id}`}>
                   {" "}
                   <div className={styles.div1}>

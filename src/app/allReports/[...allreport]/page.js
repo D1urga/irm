@@ -1702,9 +1702,8 @@ export default function Report({ params }) {
           >
             {imageUrl &&
               imageUrl.map((data, index) => (
-                <div>
+                <div key={index}>
                   <div
-                    key={index}
                     style={{
                       display: "grid",
                       gridTemplateColumns: "repeat(2,1fr)",
