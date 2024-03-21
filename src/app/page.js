@@ -241,7 +241,7 @@ export default function Home() {
 
     const response = await axios({
       method: "post",
-      url: "http://localhost:3000/api/v1/reports/postReport",
+      url: "https://irmbackend.onrender.com/api/v1/reports/postReport",
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     })
