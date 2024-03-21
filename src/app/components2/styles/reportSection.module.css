@@ -1,4 +1,22 @@
 @media screen and (min-width: 900px) {
+  @keyframes border-blink {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
+  @keyframes border-blink2 {
+    0% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(44, 161, 197) 0px 0px 7px 1.3px;
+    }
+  }
   .main {
     display: flex;
     align-items: flex-start;
@@ -9,7 +27,8 @@
     flex-direction: column;
     margin-left: 5vw;
     width: 33vw;
-
+    animation: border-blink 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
     max-height: 84vh;
     margin-top: 20px;
     border-radius: 8px;
@@ -244,6 +263,8 @@
     /* min-height: 450px; */
     max-height: 78vh;
     margin-top: 20px;
+    animation: border-blink2 1s steps(1) 1;
+    animation-timing-function: ease-in-out;
     border-radius: 8px;
     padding: 20px 31px;
     background-color: #ffffff;

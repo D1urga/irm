@@ -49,6 +49,7 @@ export default function TypeB() {
 
   const handleSubmitRegister = async (event) => {
     event.preventDefault();
+    setIsUploading(true);
     // setCurrentValue1(false);
     const formData = new FormData();
     formData.append("headerSectionData", JSON.stringify(headerSectionData));
@@ -66,7 +67,7 @@ export default function TypeB() {
 
     const response = await axios({
       method: "post",
-      url: "http://localhost:3000/api/v1/reports/postTypeB",
+      url: "https://irmbackend.onrender.com/api/v1/reports/postTypeB",
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -76,7 +77,9 @@ export default function TypeB() {
       .catch((error) => {
         console.log(error);
       });
+    setIsUploading(false);
   };
+  const [isUploading, setIsUploading] = useState(false);
   //  ///////////////////////////////////////////////////////////////////
   return (
     <div className={styles.outer_div}>
@@ -198,7 +201,6 @@ export default function TypeB() {
           }}
         />
       ) : null}
-
       <div
         style={{
           display: "none",
@@ -852,7 +854,10 @@ export default function TypeB() {
                 </div>
               ))}
           </div>
-        </div>
+        </div>{" "}
+      </div>{" "}
+      <div className={isUploading ? styles.notUploading : styles.uploading}>
+        <p>uploading report ....</p>
       </div>
     </div>
   );

@@ -119,7 +119,7 @@ export default function Report({ params }) {
   const [data, setData] = useState([]);
   const fetchInfo = async () => {
     const res = await fetch(
-      `https://irmbackend-1.onrender.com/api/v1/reports/getIndivisualReport/${decodeURIComponent(
+      `https://irmbackend.onrender.com/api/v1/reports/getIndivisualReport/${decodeURIComponent(
         params.allreport[0]
       )}`,
       {
@@ -205,7 +205,7 @@ export default function Report({ params }) {
 
     const response = await axios({
       method: "post",
-      url: `http://localhost:3000/api/v1/update/typeB/${decodeURIComponent(
+      url: `https://irmbackend.onrender.com/api/v1/update/typeB/${decodeURIComponent(
         params.allreport[0]
       )}`,
       data: formData,

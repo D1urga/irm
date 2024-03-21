@@ -48,7 +48,7 @@ export default function TypeB({ params }) {
   const [data, setData] = useState([]);
   const fetchInfo = async () => {
     const res = await fetch(
-      `https://irmbackend-1.onrender.com/api/v1/reports/getIndivisualReportTypeB/${decodeURIComponent(
+      `https://irmbackend.onrender.com/api/v1/reports/getIndivisualReportTypeB/${decodeURIComponent(
         params.typeBReport[0]
       )}`,
       {

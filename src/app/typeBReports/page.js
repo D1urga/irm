@@ -7,7 +7,7 @@ export default function TypeBReports() {
   const [data, setData] = useState([]);
   const fetchInfo = async () => {
     const res = await fetch(
-      "https://irmbackend-1.onrender.com/api/v1/reports/getReportTypeB",
+      "https://irmbackend.onrender.com/api/v1/reports/getReportTypeB",
       {
         credentials: "include",
       }
@@ -21,6 +21,9 @@ export default function TypeBReports() {
   return (
     <div className={styles.main}>
       <div className={styles.outer_div}>
+        <div className={styles.heading}>
+          <p>Type-B all reports</p>
+        </div>
         <div className={styles.grids}>
           {" "}
           {data.length != 0 ? (
