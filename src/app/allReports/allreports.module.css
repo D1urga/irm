@@ -1,0 +1,44 @@
+@media screen and (min-width: 900px) {
+  .main {
+    padding-left: 150px;
+  }
+  .grids {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+  }
+  /* .grid {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    padding: 20px;
+    border-radius: 5px;
+  } */
+  .div1 {
+    border-radius: 5px;
+    /* width: 20vw; */
+    padding: 30px 20px;
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .indicator {
+    position: fixed;
+    top: 48vh;
+    left: 48vw;
+  }
+  .indicator p {
+    color: blue;
+    font-weight: 530;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 900px) and (min-width: 520px) {
+}
+@media screen and (max-width: 520px) {
+}

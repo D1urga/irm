@@ -47,6 +47,20 @@ export default function RootLayout({ children }) {
             >
               <p>Dashboard</p>
             </Link>
+            <Link
+              href="/allReports"
+              onClick={() => setIsActive(2)}
+              className={isActive === 2 ? styles.links_active : styles.links}
+            >
+              <p>AllTypeA</p>
+            </Link>
+            <Link
+              href="/typeBReports"
+              onClick={() => setIsActive(3)}
+              className={isActive === 3 ? styles.links_active : styles.links}
+            >
+              <p>AllTypeB</p>
+            </Link>
           </div>
           <div className={styles.children}> {children}</div>
         </div>

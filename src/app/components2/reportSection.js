@@ -101,40 +101,43 @@ export default function ReportSection({
         <p className={styles.add_attach}>Assessment Table</p>
         <div>
           <div className={styles.assessment_loss_table}>
-            {assessmentLossTable.length != 0 ? (
+            {assessmentLossTable && assessmentLossTable.length != 0 ? (
               <div>
-                {assessmentLossTable.map((data, index) => (
-                  <div
-                    key={index}
-                    className={isShowingTable ? styles.tables : styles.tables1}
-                    onClick={() => {
-                      setIsUploadingNote(false);
-                      setIsUploadingTable(false);
-                      setIsShowingDes(false);
-                      setIsShowingNote(false);
-                      setIsShowingTable(true);
-                      setTablePage(index);
-                    }}
-                  >
-                    <p>item {index + 1}</p>
-                    <div className={styles.logos}>
-                      {/* <FaPlusCircle className={styles.logo1} />
+                {assessmentLossTable &&
+                  assessmentLossTable.map((data, index) => (
+                    <div
+                      key={index}
+                      className={
+                        isShowingTable ? styles.tables : styles.tables1
+                      }
+                      onClick={() => {
+                        setIsUploadingNote(false);
+                        setIsUploadingTable(false);
+                        setIsShowingDes(false);
+                        setIsShowingNote(false);
+                        setIsShowingTable(true);
+                        setTablePage(index);
+                      }}
+                    >
+                      <p>item {index + 1}</p>
+                      <div className={styles.logos}>
+                        {/* <FaPlusCircle className={styles.logo1} />
                 <FaEdit className={styles.logo2} /> */}
-                      <FaTrash
-                        className={styles.logo3}
-                        onClick={() => {
-                          const subarr1 = assessmentLossTable.slice(0, index);
-                          const subarr2 = assessmentLossTable.slice(
-                            index + 1,
-                            assessmentLossTable.length
-                          );
-                          const newData = [...subarr1, ...subarr2];
-                          setAssessmentLossTable(newData);
-                        }}
-                      />
+                        <FaTrash
+                          className={styles.logo3}
+                          onClick={() => {
+                            const subarr1 = assessmentLossTable.slice(0, index);
+                            const subarr2 = assessmentLossTable.slice(
+                              index + 1,
+                              assessmentLossTable.length
+                            );
+                            const newData = [...subarr1, ...subarr2];
+                            setAssessmentLossTable(newData);
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             ) : (
               <p

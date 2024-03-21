@@ -1,21 +1,21 @@
 "use client";
-import React from "react";
-import styles from "./page.module.css";
+import React, { useEffect } from "react";
+import styles from "./typeBReport.module.css";
 import { useState } from "react";
 import { FaArrowLeft, FaAngleDown } from "react-icons/fa";
-import HeaderSection from "../components2/headerSection";
-import ReportSection from "../components2/reportSection";
-import NotesSection from "../components2/notesSection";
+import HeaderSection from "@/app/components2/headerSection";
+import ReportSection from "@/app/components2/reportSection";
+import NotesSection from "@/app/components2/notesSection";
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-import AttachmentSection from "../components2/attachmentSection";
-import irmLogo from "../images/irm_logo.jpg";
+import AttachmentSection from "@/app/components2/attachmentSection";
+import irmLogo from "@/app/images/irm_logo.jpg";
 import { Currency } from "react-intl-number-format";
-import irmPng from "../images/irmPng.png";
+import irmPng from "@/app/images/irmPng.png";
 import Image from "next/image";
 import axios from "axios";
 
-export default function TypeB() {
+export default function TypeB({ params }) {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -29,6 +29,13 @@ export default function TypeB() {
     DateOfIncident: "",
     DateOfSurvey: "",
   });
+  const [assessmentLossDes, setAssessmentLossDes] = useState("dskhda");
+  const [assessmentLossTable, setAssessmentLossTable] = useState([]);
+  const [assessmentLossNotes, setAssessmentLossNotes] = useState([]);
+  const [notesSection, setNotesSection] = useState([]);
+  const [assessmentLossFields, setAssessmentLossFields] = useState([]);
+  const [conclusionTable, setConclusionTable] = useState([]);
+  const [conclusionDes, setConclusionDes] = useState({ conclusionDes: "" });
   const [addFieldData, setAddFieldData] = useState({
     field0: "",
     field1: "",
@@ -36,23 +43,54 @@ export default function TypeB() {
     field3: "",
     field4: "",
   });
-  const [assessmentLossNotes, setAssessmentLossNotes] = useState([]);
-  const [assessmentLossDes, setAssessmentLossDes] = useState("dskhda");
-  const [assessmentLossTable, setAssessmentLossTable] = useState([]);
-  // const [assessmentLossNotes, setAssessmentLossNotes] = useState([]);
-  const [notesSection, setNotesSection] = useState([]);
-  const [assessmentLossFields, setAssessmentLossFields] = useState([]);
-  const [conclusionTable, setConclusionTable] = useState([]);
-  const [conclusionDes, setConclusionDes] = useState({ conclusionDes: "" });
   const [imageUrl, setImageUrl] = useState([]);
-  const [ismain, setIsmain] = useState(true);
+  const [ismain, setIsmain] = useState(false);
+  const [data, setData] = useState([]);
+  const fetchInfo = async () => {
+    const res = await fetch(
+      `https://irmbackend-1.onrender.com/api/v1/reports/getIndivisualReportTypeB/${decodeURIComponent(
+        params.typeBReport[0]
+      )}`,
+      {
+        credentials: "include",
+      }
+    );
+    const d = await res.json();
+    setHeaderSectionData(d.data.headerSectionData[0]);
+    setConclusionTable(d.data.conclusionTable);
+    setImageUrl(d.data.contable);
+    setAssessmentLossFields(d.data.assessmentLossFields);
+    setAssessmentLossTable(d.data.reportSection);
+    setNotesSection(d.data.assessmentLossNotes);
+    setAssessmentLossNotes(d.data.assessmentLossNotes);
 
-  const handleSubmitRegister = async (event) => {
+    // setCauseOfLoss(d.data.causeOfLoss[0]);
+    // setProjectDescriptionData(d.data.projectDescriptionData[0]);
+    // setProjectDescriptionTable(d.data.projectDescriptionTable);
+    // setPolicyParticularsData(d.data.policyParticularsData[0]);
+    // setPolicyParticularsFields(d.data.policyParticularsFields);
+
+    // setAssessmentLossDes(d.data.assessmentLossDes[0]);
+    // setAssessmentLossNotes(d.data.assessmentLossNotes);
+    // setConclusionDes(d.data.conclusionDes[0]);
+    // setObservationsAndVerificationsData(
+    //   d.data.observationsAndVerificationsData
+    // );
+
+    // setConImageUrl(d.data.contable);
+
+    // setObservationsAndVerificationsAttach(
+    //   d.data.observationsAndVerificationsAttach
+    // );
+    return setData(d.data);
+  };
+
+  const updateTypeB = async (event) => {
     event.preventDefault();
     // setCurrentValue1(false);
     const formData = new FormData();
     formData.append("headerSectionData", JSON.stringify(headerSectionData));
-    formData.append("conclusionTable", JSON.stringify(conclusionTable));
+    // formData.append("conclusionTable", JSON.stringify(conclusionTable));
     formData.append("reportSection", JSON.stringify(assessmentLossTable));
     formData.append("assessmentLossNotes", JSON.stringify(notesSection));
     formData.append(
@@ -60,13 +98,15 @@ export default function TypeB() {
       JSON.stringify(assessmentLossFields)
     );
 
-    for (let i = 0; i < imageUrl.length; i++) {
-      formData.append(`img${i + 1}`, imageUrl[i].url);
-    }
+    // for (let i = 0; i < imageUrl.length; i++) {
+    //   formData.append(`img${i + 1}`, imageUrl[i].url);
+    // }
 
     const response = await axios({
       method: "post",
-      url: "http://localhost:3000/api/v1/reports/postTypeB",
+      url: `http://localhost:3000/api/v1/update/typeA/${decodeURIComponent(
+        params.typeBReport[0]
+      )}`,
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -77,23 +117,36 @@ export default function TypeB() {
         console.log(error);
       });
   };
+  useEffect(() => {
+    // const unloadCallback = (event) => {
+    //   event.preventDefault();
+    //   event.returnValue = "";
+    //   return "";
+    // };
+
+    // window.addEventListener("beforeunload", unloadCallback);
+    // return () => window.removeEventListener("beforeunload", unloadCallback);
+    fetchInfo();
+  }, []);
+
   //  ///////////////////////////////////////////////////////////////////
   return (
     <div className={styles.outer_div}>
       <div className={styles.topbar}>
         <p>Dashboard</p>
 
-        <div style={{ display: "flex" }} className={styles.btn_div}>
-          <form onSubmit={handleSubmitRegister}>
+        {/* <p>{assessmentLossTable && assessmentLossTable.length}</p> */}
+
+        <form onSubmit={updateTypeB}>
+          <div className={styles.btn_div}>
             <button className={styles.btn1} type="submit">
-              Save
+              Update
             </button>
-          </form>
-          <button className={styles.btn2}>Delete</button>
-          <button className={styles.btn3} onClick={handlePrint}>
-            Download
-          </button>
-        </div>
+            <button className={styles.btn3} onClick={handlePrint}>
+              Download
+            </button>
+          </div>
+        </form>
       </div>
       {currentSection === 0 ? (
         <div className={styles.allPages}>
@@ -190,8 +243,6 @@ export default function TypeB() {
           conclusionTable={conclusionTable}
           setConclusionTable={setConclusionTable}
           imageUrl={imageUrl}
-          ismain={ismain}
-          setIsmain={setIsmain}
           setImageUrl={setImageUrl}
           onClickFun={() => {
             setCurrentState(0);
@@ -534,157 +585,158 @@ export default function TypeB() {
               flexDirection: "column",
             }}
           >
-            {assessmentLossTable.map((data, index) => (
-              <div
-                key={index}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "stretch",
-                  justifyContent: "center",
-                }}
-              >
+            {assessmentLossTable &&
+              assessmentLossTable.map((data, index) => (
                 <div
-                  style={{
-                    width: "20%",
-                    display: "flex",
-                    textAlign: "center",
-                    alignItems: "center",
-                    padding: "2px 2px",
-                    justifyContent: "center",
-                    border: "0.1px solid black",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "13px",
-                    }}
-                  >
-                    {index + 1}
-                  </p>
-                </div>
-                <div
+                  key={index}
                   style={{
                     width: "100%",
                     display: "flex",
-                    textAlign: "center",
-                    alignItems: "center",
-                    padding: "2px 2px",
+                    alignItems: "stretch",
                     justifyContent: "center",
-                    border: "0.1px solid black",
                   }}
                 >
-                  <p
+                  <div
                     style={{
-                      fontSize: "13px",
+                      width: "20%",
+                      display: "flex",
+                      textAlign: "center",
+                      alignItems: "center",
+                      padding: "2px 2px",
+                      justifyContent: "center",
+                      border: "0.1px solid black",
                     }}
                   >
-                    {data.description}
-                  </p>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      {index + 1}
+                    </p>
+                  </div>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      textAlign: "center",
+                      alignItems: "center",
+                      padding: "2px 2px",
+                      justifyContent: "center",
+                      border: "0.1px solid black",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      {data.description}
+                    </p>
+                  </div>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      textAlign: "center",
+                      alignItems: "center",
+                      padding: "2px 2px",
+                      justifyContent: "center",
+                      border: "0.1px solid black",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      {data.report}
+                    </p>
+                  </div>{" "}
+                  <div
+                    style={{
+                      width: "40%",
+                      display: "flex",
+                      textAlign: "center",
+                      alignItems: "center",
+                      padding: "2px 2px",
+                      justifyContent: "center",
+                      border: "0.1px solid black",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      {data.action}
+                    </p>
+                  </div>{" "}
+                  <div
+                    style={{
+                      width: "40%",
+                      display: "flex",
+                      textAlign: "center",
+                      alignItems: "center",
+                      padding: "2px 2px",
+                      justifyContent: "center",
+                      border: "0.1px solid black",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      <Currency locale="en-IN" currency="INR">
+                        {Number(data.replacement)}
+                      </Currency>
+                    </p>
+                  </div>{" "}
+                  <div
+                    style={{
+                      width: "40%",
+                      display: "flex",
+                      textAlign: "center",
+                      alignItems: "center",
+                      padding: "2px 2px",
+                      justifyContent: "center",
+                      border: "0.1px solid black",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      <Currency locale="en-IN" currency="INR">
+                        {Number(data.depreciation)}
+                      </Currency>
+                    </p>
+                  </div>{" "}
+                  <div
+                    style={{
+                      width: "40%",
+                      display: "flex",
+                      textAlign: "center",
+                      alignItems: "center",
+                      padding: "2px 2px",
+                      justifyContent: "center",
+                      border: "0.1px solid black",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      <Currency locale="en-IN" currency="INR">
+                        {Number(data.replacement)}
+                      </Currency>
+                    </p>
+                  </div>
                 </div>
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    textAlign: "center",
-                    alignItems: "center",
-                    padding: "2px 2px",
-                    justifyContent: "center",
-                    border: "0.1px solid black",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "13px",
-                    }}
-                  >
-                    {data.report}
-                  </p>
-                </div>{" "}
-                <div
-                  style={{
-                    width: "40%",
-                    display: "flex",
-                    textAlign: "center",
-                    alignItems: "center",
-                    padding: "2px 2px",
-                    justifyContent: "center",
-                    border: "0.1px solid black",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "13px",
-                    }}
-                  >
-                    {data.action}
-                  </p>
-                </div>{" "}
-                <div
-                  style={{
-                    width: "40%",
-                    display: "flex",
-                    textAlign: "center",
-                    alignItems: "center",
-                    padding: "2px 2px",
-                    justifyContent: "center",
-                    border: "0.1px solid black",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "13px",
-                    }}
-                  >
-                    <Currency locale="en-IN" currency="INR">
-                      {Number(data.replacement)}
-                    </Currency>
-                  </p>
-                </div>{" "}
-                <div
-                  style={{
-                    width: "40%",
-                    display: "flex",
-                    textAlign: "center",
-                    alignItems: "center",
-                    padding: "2px 2px",
-                    justifyContent: "center",
-                    border: "0.1px solid black",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "13px",
-                    }}
-                  >
-                    <Currency locale="en-IN" currency="INR">
-                      {Number(data.depreciation)}
-                    </Currency>
-                  </p>
-                </div>{" "}
-                <div
-                  style={{
-                    width: "40%",
-                    display: "flex",
-                    textAlign: "center",
-                    alignItems: "center",
-                    padding: "2px 2px",
-                    justifyContent: "center",
-                    border: "0.1px solid black",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "13px",
-                    }}
-                  >
-                    <Currency locale="en-IN" currency="INR">
-                      {Number(data.replacement)}
-                    </Currency>
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
           <p style={{ fontSize: "18px", fontWeight: "600", marginTop: "30px" }}>
             Notes
@@ -803,8 +855,8 @@ export default function TypeB() {
               marginTop: "20px",
             }}
           >
-            {conclusionTable &&
-              conclusionTable.map((data, index) => (
+            {imageUrl &&
+              imageUrl.map((data, index) => (
                 <div
                   key={index}
                   style={{
@@ -816,39 +868,41 @@ export default function TypeB() {
                     marginTop: "10px",
                   }}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <img
-                      src={data.attachmentUrl}
+                  {data.imgurl.length != 0 ? (
+                    <div
                       style={{
-                        height: "330px",
-                        width: "350px",
-                        objectFit: "contain",
-                        display: "grid",
-                        gridTemplateColumns: "repeat(2,1fr)",
+                        display: "flex",
+                        flexDirection: "column",
                         textAlign: "center",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "2px",
-                        backgroundColor: "rgb(230 , 230 , 230)",
-                      }}
-                    ></img>
-                    <p
-                      style={{
-                        fontSize: "13px",
-                        marginTop: "5px",
                       }}
                     >
-                      {data.title}
-                    </p>
-                  </div>
+                      <img
+                        src={data.imgurl}
+                        style={{
+                          height: "330px",
+                          width: "350px",
+                          objectFit: "contain",
+                          display: "grid",
+                          gridTemplateColumns: "repeat(2,1fr)",
+                          textAlign: "center",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          margin: "2px",
+                          backgroundColor: "rgb(230 , 230 , 230)",
+                        }}
+                      ></img>
+                      <p
+                        style={{
+                          fontSize: "13px",
+                          marginTop: "5px",
+                        }}
+                      >
+                        {data.title}
+                      </p>
+                    </div>
+                  ) : null}
                 </div>
               ))}
           </div>

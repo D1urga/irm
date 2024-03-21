@@ -119,32 +119,33 @@ export default function PolicyParticulars({
               placeholder="policy excess ..."
             ></textarea>
           </div>
-          {policyParticularsFields.map((data, index) => (
-            <div key={index}>
-              <div className={styles.icon_div1}>
-                <p className={styles.des_title}>{data.name}</p>
-                <FaTrash
-                  className={styles.del}
-                  onClick={() => {
-                    const subarr1 = policyParticularsFields.slice(0, index);
-                    const subarr2 = policyParticularsFields.slice(
-                      index + 1,
-                      policyParticularsFields.length
-                    );
-                    const newData = [...subarr1, ...subarr2];
-                    setPolicyParticularsFields(newData);
-                  }}
-                />
+          {policyParticularsFields &&
+            policyParticularsFields.map((data, index) => (
+              <div key={index}>
+                <div className={styles.icon_div1}>
+                  <p className={styles.des_title}>{data.name}</p>
+                  <FaTrash
+                    className={styles.del}
+                    onClick={() => {
+                      const subarr1 = policyParticularsFields.slice(0, index);
+                      const subarr2 = policyParticularsFields.slice(
+                        index + 1,
+                        policyParticularsFields.length
+                      );
+                      const newData = [...subarr1, ...subarr2];
+                      setPolicyParticularsFields(newData);
+                    }}
+                  />
+                </div>
+                <textarea
+                  value={addFieldData[`field${index}`]}
+                  onChange={handleAddFieldChange}
+                  name={`field${index}`}
+                  className={styles.add_textarea}
+                  placeholder={data.name}
+                ></textarea>
               </div>
-              <textarea
-                value={addFieldData[`field${index}`]}
-                onChange={handleAddFieldChange}
-                name={`field${index}`}
-                className={styles.add_textarea}
-                placeholder={data.name}
-              ></textarea>
-            </div>
-          ))}
+            ))}
           <div>
             <div
               className={

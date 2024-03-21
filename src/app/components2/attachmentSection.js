@@ -7,6 +7,11 @@ export default function AttachmentSection({
   setConclusionDes,
   conclusionTable,
   setConclusionTable,
+  imageUrl,
+  setImageUrl,
+  ismain,
+  setIsmain,
+
   onClickFun,
 }) {
   const [page, setPage] = useState(0);
@@ -14,6 +19,7 @@ export default function AttachmentSection({
   const [isShowingAttachement, setIsShowingAttachement] = useState(false);
   const [isuploadingAttachement, setUploadingAttachement] = useState(true);
   const [avatar, setAvatar] = useState(null);
+  const [cuurent, setCurrentImage] = useState(null);
 
   const [title, setTitle] = useState({ title: "" });
 
@@ -33,7 +39,8 @@ export default function AttachmentSection({
   };
 
   const handleAvatarchange = (e) => {
-    setAvatar(URL.createObjectURL(e.target.files[0]));
+    setAvatar(e.target.files[0]);
+    setCurrentImage(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleChange = (event) => {
@@ -46,10 +53,16 @@ export default function AttachmentSection({
   const handleShowingImageChange = (event, id) => {
     const clone = [...conclusionTable];
     const obj = clone[id];
+    const clone2 = [...imageUrl];
+    clone2[id] = {
+      url: avatar,
+    };
+
     clone[id] = {
       title: title.title,
-      attachmentUrl: avatar,
+      attachmentUrl: cuurent,
     };
+    setImageUrl([...clone2]);
     setConclusionTable([...clone]);
   };
   const handleShowingImageTitleChange = (event, id) => {
@@ -144,9 +157,9 @@ export default function AttachmentSection({
           <div className={styles.img}>
             <img
               src={
-                conclusionTable.length != 0
+                ismain
                   ? conclusionTable[page] && conclusionTable[page].attachmentUrl
-                  : ""
+                  : imageUrl[page] && imageUrl[page].imgurl
               }
               className={styles.images}
             ></img>
@@ -190,7 +203,7 @@ export default function AttachmentSection({
           ></input>
           <p className={styles.des}>Attachment</p>
           <div className={styles.img}>
-            <img src={avatar} className={styles.images}></img>
+            <img src={cuurent} className={styles.images}></img>
           </div>
           <input
             type="file"
@@ -203,7 +216,16 @@ export default function AttachmentSection({
               <button
                 className={styles.add_btn}
                 onClick={() => {
-                  const obj = { title: title.title, attachmentUrl: avatar };
+                  const obj = {
+                    title: title.title,
+                    attachmentUrl: cuurent,
+                    attachmentImage: "",
+                  };
+                  let obj2 = {
+                    url: avatar,
+                  };
+                  const newobj2 = imageUrl.concat(obj2);
+                  setImageUrl(newobj2);
                   const newData = conclusionTable.concat(obj);
                   setConclusionTable(newData);
                 }}

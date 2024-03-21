@@ -13,6 +13,10 @@ export default function Conclusion({
   setConclusionDes,
   conclusionTable,
   setConclusionTable,
+  conImageUrl,
+  setConImageUrl,
+  ismain,
+  setIsmain,
   onClickFun,
 }) {
   const suggestions = [
@@ -126,6 +130,7 @@ This report is issued in electronic format and without any prejudice.
   const [isShowingAttachement, setIsShowingAttachement] = useState(false);
   const [isuploadingAttachement, setUploadingAttachement] = useState(false);
   const [avatar, setAvatar] = useState(null);
+  const [cuurent, setCurrentImage] = useState(null);
 
   const [title, setTitle] = useState({ title: "" });
 
@@ -145,7 +150,8 @@ This report is issued in electronic format and without any prejudice.
   };
 
   const handleAvatarchange = (e) => {
-    setAvatar(URL.createObjectURL(e.target.files[0]));
+    setAvatar(e.target.files[0]);
+    setCurrentImage(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleChange = (event) => {
@@ -164,10 +170,15 @@ This report is issued in electronic format and without any prejudice.
   const handleShowingImageChange = (event, id) => {
     const clone = [...conclusionTable];
     const obj = clone[id];
+    const clone2 = [...conImageUrl];
     clone[id] = {
       title: title.title,
-      attachmentUrl: avatar,
+      attachmentUrl: cuurent,
     };
+    clone2[id] = {
+      url: avatar,
+    };
+    setConImageUrl([...clone2]);
     setConclusionTable([...clone]);
   };
   const handleShowingImageTitleChange = (event, id) => {
@@ -184,6 +195,7 @@ This report is issued in electronic format and without any prejudice.
       <div className={styles.outer_div}>
         <div className={styles.title}>
           <p>Conclusion</p>
+          {/* <p>{conImageUrl[0].imgurl}</p> */}
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
         <button
@@ -226,6 +238,14 @@ This report is issued in electronic format and without any prejudice.
                           index + 1,
                           conclusionTable.length
                         );
+                        const sb1 = conImageUrl.slice(0, index);
+                        const sb2 = conImageUrl.slice(
+                          index + 1,
+                          conImageUrl.length
+                        );
+                        const newdata2 = [...sb1, ...sb2];
+
+                        setConImageUrl(newdata2);
                         const newData = [...subarr1, ...subarr2];
                         setConclusionTable(newData);
                       }}
@@ -294,9 +314,9 @@ This report is issued in electronic format and without any prejudice.
           <div className={styles.img}>
             <img
               src={
-                conclusionTable.length != 0
+                ismain
                   ? conclusionTable[page] && conclusionTable[page].attachmentUrl
-                  : ""
+                  : conImageUrl[page] && conImageUrl[page].imgurl
               }
               className={styles.images}
             ></img>
@@ -340,7 +360,7 @@ This report is issued in electronic format and without any prejudice.
           ></input>
           <p className={styles.des}>Attachment</p>
           <div className={styles.img}>
-            <img src={avatar} className={styles.images}></img>
+            <img src={cuurent} className={styles.images}></img>
           </div>
           <input
             type="file"
@@ -353,9 +373,20 @@ This report is issued in electronic format and without any prejudice.
               <button
                 className={styles.add_btn}
                 onClick={() => {
-                  const obj = { title: title.title, attachmentUrl: avatar };
+                  const obj = {
+                    title: title.title,
+                    attachmentUrl: cuurent,
+                    attachmentImage: "",
+                  };
+                  let obj2 = {
+                    url: avatar,
+                  };
+
                   const newData = conclusionTable.concat(obj);
                   setConclusionTable(newData);
+
+                  const newobj2 = conImageUrl.concat(obj2);
+                  setConImageUrl(newobj2);
                 }}
               >
                 Add

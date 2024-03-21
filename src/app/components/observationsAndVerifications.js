@@ -13,6 +13,12 @@ export default function ObservationsAndVerifications({
   setObservationsAndVerificationsData,
   observationsAndVerificationsAttach,
   setObservationsAndVerificationsAttach,
+  imageUrl,
+  setImageUrl,
+  ismain,
+  setIsmain,
+  observationsAndVerificationsImages,
+  setObservationsAndVerificationsImages,
   onClickFun,
 }) {
   const introSuggestion = [
@@ -106,6 +112,7 @@ No other damages were noted or reported on the site.`,
   const [intro, setIntro] = useState(true);
   const [conc, setConc] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+
   const handleChange = (event, id) => {
     const clone = [...observationsAndVerificationsData];
     const obj = clone[id];
@@ -126,36 +133,61 @@ No other damages were noted or reported on the site.`,
     const obj = clone[id];
 
     obj[`${event.target.name}`] = event.target.value;
+    console.log(obj);
     clone[id] = obj;
     setObservationsAndVerificationsAttach([...clone]);
   };
   const handleShowingImageChange = (event, id) => {
     const clone = [...observationsAndVerificationsAttach];
     const obj = clone[id];
+    const clone2 = [...imageUrl];
+    const obj2 = clone2[id];
 
-    // obj[`${event.target.name}`] = avatar;
+    clone2[id] = {
+      url: avatar,
+    };
+
     clone[id] = {
       description: itemsData.description,
       title: itemsData.title,
-      attachmentUrl: avatar,
+      attachmentUrl: cuurent,
+      attachmentImage: "",
     };
+    setImageUrl([...clone2]);
+    console.log(observationsAndVerificationsAttach);
+    console.log(imageUrl);
+    // console.log(obj2);
     setObservationsAndVerificationsAttach([...clone]);
   };
   const addAttachments = () => {
     const obj = {
       description: itemsData.description,
       title: itemsData.title,
-      attachmentUrl: avatar,
+      attachmentUrl: cuurent,
+      attachmentImage: "",
     };
+    console.log(obj);
+    const obj2 = {
+      url: avatar,
+    };
+    const newobj2 = imageUrl.concat(obj2);
+    setImageUrl(newobj2);
+
     const newData = observationsAndVerificationsAttach.concat(obj);
-    console.log(newData);
+
     setObservationsAndVerificationsAttach(newData);
   };
 
   const [avatar, setAvatar] = useState(null);
+  const [images, setImages] = useState(null);
+  const [cuurent, setCurrentImage] = useState(null);
 
   const handleAvatarchange = (e) => {
-    setAvatar(URL.createObjectURL(e.target.files[0]));
+    setAvatar(e.target.files[0]);
+    setCurrentImage(URL.createObjectURL(e.target.files[0]));
+  };
+  const handleImagechange = (e) => {
+    setImages(e.target.files[0]);
   };
 
   const [image, setImage] = useState("ghvgh");
@@ -173,6 +205,7 @@ No other damages were noted or reported on the site.`,
       <div className={styles.outer_div}>
         <div className={styles.title}>
           <p>Observation and Verification</p>
+
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
         <button
@@ -227,7 +260,12 @@ No other damages were noted or reported on the site.`,
                             index + 1,
                             observationsAndVerificationsAttach.length
                           );
+
+                        const sb1 = imageUrl.slice(0, index);
+                        const sb2 = imageUrl.slice(index + 1, imageUrl.length);
+                        const newdata2 = [...sb1, ...sb2];
                         const newData = [...subarr1, ...subarr2];
+                        setImageUrl(newdata2);
                         setObservationsAndVerificationsAttach(newData);
                       }}
                     />
@@ -324,7 +362,7 @@ No other damages were noted or reported on the site.`,
           ></input>
           <p className={styles.des}>Attachment</p>
           <div className={styles.img}>
-            <img className={styles.avatar} src={avatar}></img>
+            <img className={styles.avatar} src={cuurent}></img>
           </div>
           <div>
             <input
@@ -390,10 +428,10 @@ No other damages were noted or reported on the site.`,
             <img
               className={styles.prev_image}
               src={
-                observationsAndVerificationsAttach.length != 0
+                ismain
                   ? observationsAndVerificationsAttach[page] &&
                     observationsAndVerificationsAttach[page].attachmentUrl
-                  : ""
+                  : imageUrl[page] && imageUrl[page].imgurl
               }
             ></img>
           </div>

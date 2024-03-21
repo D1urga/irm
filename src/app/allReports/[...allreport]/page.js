@@ -1,38 +1,38 @@
 "use client";
 import Image from "next/image";
 import { Margin, Resolution, usePDF } from "react-to-pdf";
-import styles from "./page.module.css";
+import styles from "./allreport.module.css";
 import { FaAngleDown, FaAngleUp, FaArrowLeft } from "react-icons/fa";
-import HeaderSection from "./components/headerSection.js";
+import HeaderSection from "@/app/components/headerSection.js";
 import { useEffect, useState } from "react";
-import ProjectDescription from "./components/projectDescription.js";
-import PolicyParticulars from "./components/policyParticulars.js";
-import ObservationsAndVerifications from "./components/observationsAndVerifications.js";
-import CauseOfLoss from "./components/causeOfLoss";
-import AssessmentOfLoss from "./components/assessmentOfLoss";
-import Conclusion from "./components/conclusion";
-import irmLogo from "./images/irm_logo.jpg";
-import coverpage from "./images/irmCoverImage.jpeg";
-import irmPng from "./images/irmPng.png";
+import ProjectDescription from "@/app/components/projectDescription.js";
+import PolicyParticulars from "@/app/components/policyParticulars.js";
+import ObservationsAndVerifications from "@/app/components/observationsAndVerifications.js";
+import CauseOfLoss from "@/app/components/causeOfLoss";
+import AssessmentOfLoss from "@/app/components/assessmentOfLoss";
+import Conclusion from "@/app/components/conclusion";
+import irmLogo from "@/app/images/irm_logo.jpg";
+// import coverpage from "@/app/images/irmCoverImage.jpeg";
+import irmPng from "@/app/images/irmPng.png";
 import ReactToPrint from "react-to-print";
 import { useReactToPrint } from "react-to-print";
 import { Currency } from "react-intl-number-format";
 import Intl from "intl";
 import { useRef } from "react";
+import { Table } from "@mui/material";
 import axios from "axios";
 
-import { Table } from "@mui/material";
+export default function Report({ params }) {
+  const [headerSectionData, setHeaderSectionData] = useState({
+    name: "",
+    reason: "",
+  });
 
-export default function Home() {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
   //////////////////////////////////////////////////////////////////////////////////////////////
-  const [headerSectionData, setHeaderSectionData] = useState({
-    reason: "das",
-    name: "Loss Adjustment Report_draf",
-  });
 
   const [causeOfLoss, setCauseOfLoss] = useState({ causeOfLoss: "" });
   const [policyParticularsData, setPolicyParticularsData] = useState({
@@ -58,18 +58,13 @@ export default function Home() {
     observationsAndVerificationsAttach,
     setObservationsAndVerificationsAttach,
   ] = useState([]);
-
-  const [imageUrl, setImageUrl] = useState([]);
-  const [ismain, setIsmain] = useState(true);
-  const [conImageUrl, setConImageUrl] = useState([]);
-  const [
-    observationsAndVerificationsImages,
-    setObservationsAndVerificationsImages,
-  ] = useState([]);
   const [assessmentLossDes, setAssessmentLossDes] = useState({ des: "" });
   const [assessmentLossDescription, setAssessmentLossDescription] = useState({
     description: "adad",
   });
+  const [imageUrl, setImageUrl] = useState([]);
+  const [ismain, setIsmain] = useState(false);
+  const [conImageUrl, setConImageUrl] = useState([]);
   const [addFieldData, setAddFieldData] = useState({
     field0: "",
     field1: "",
@@ -121,72 +116,47 @@ export default function Home() {
   });
   const sections = [];
   const [currentSection, setCurrentState] = useState(0);
-  const [isUploading, setIsUploading] = useState(false);
-  // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  const [formData, setFormData] = useState({
-    reason: `...headerSectionData.reason`,
-    name: headerSectionData.name,
-    insurer: "jdadbjasda",
-    insured: "jdadbjasda",
-    typesOfPolicy: "jdadbjasda",
-    policyNumber: "jdadbjasda",
-    periodOfInsurance: "jdadbjasda",
-    policyExcess: "jdadbjasda",
-    projectTitle: "jdadbjasda",
-    client: "jdadbjasda",
-    documentReference: "jdadbjasda",
-    introduction: "jdadbjasda",
-    conclusion: "jdadbjasda",
-    description: "jdadbjasda",
-    field0: "jdadbjasda",
-    field1: "jdadbjasda",
-    field2: "jdadbjasda",
-    field3: "jdadbjasda",
-    field4: "jdadbjasda",
-    conclusionDes: "jdadbjasda",
-  });
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const response = await fetch(
-      "http://localhost:3000/api/v1/reports/postReport",
+  const [data, setData] = useState([]);
+  const fetchInfo = async () => {
+    const res = await fetch(
+      `https://irmbackend-1.onrender.com/api/v1/reports/getIndivisualReport/${decodeURIComponent(
+        params.allreport[0]
+      )}`,
       {
-        method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          reason: headerSectionData.reason,
-          name: headerSectionData.name,
-          insurer: "jdadbjasda",
-          insured: "jdadbjasda",
-          typesOfPolicy: "jdadbjasda",
-          policyNumber: "jdadbjasda",
-          periodOfInsurance: "jdadbjasda",
-          policyExcess: "jdadbjasda",
-          projectTitle: "jdadbjasda",
-          client: "jdadbjasda",
-          documentReference: "jdadbjasda",
-          introduction: "jdadbjasda",
-          conclusion: "jdadbjasda",
-          description: "jdadbjasda",
-          field0: "jdadbjasda",
-          field1: "jdadbjasda",
-          field2: "jdadbjasda",
-          field3: "jdadbjasda",
-          field4: "jdadbjasda",
-          conclusionDes: "jdadbjasda",
-        }),
       }
     );
-    const data = await response.json();
-  };
+    const d = await res.json();
+    setHeaderSectionData(d.data.headerSectionData[0]);
+    setCauseOfLoss(d.data.causeOfLoss[0]);
+    setProjectDescriptionData(d.data.projectDescriptionData[0]);
+    setProjectDescriptionTable(d.data.projectDescriptionTable);
+    setPolicyParticularsData(d.data.policyParticularsData[0]);
+    setPolicyParticularsFields(d.data.policyParticularsFields);
+    setAssessmentLossTable(d.data.assessmentLossTable);
+    setAssessmentLossDes(d.data.assessmentLossDes[0]);
+    setAssessmentLossNotes(d.data.assessmentLossNotes);
+    setConclusionDes(d.data.conclusionDes[0]);
+    setObservationsAndVerificationsData(
+      d.data.observationsAndVerificationsData
+    );
+    setImageUrl(d.data.obsvrf);
+    setConImageUrl(d.data.contable);
 
-  const handleSubmitRegister = async (event) => {
+    setAssessmentLossFields(d.data.assessmentLossFields);
+    setConclusionTable(d.data.conclusionTable);
+    setObservationsAndVerificationsAttach(
+      d.data.observationsAndVerificationsAttach
+    );
+    return setData(d.data);
+  };
+  //  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const updateReport = async (event) => {
     event.preventDefault();
-    setIsUploading(true);
+    // setIsUploading(true);
     const formData = new FormData();
+    // formData.append("file", imageUrl[0]);
     formData.append("headerSectionData", JSON.stringify(headerSectionData));
     formData.append(
       "projectDescriptionData",
@@ -194,17 +164,14 @@ export default function Home() {
     );
     formData.append("causeOfLoss", JSON.stringify(causeOfLoss));
     formData.append("assessmentLossDes", JSON.stringify(assessmentLossDes));
-    formData.append("insured", policyParticularsData.insured);
-    formData.append("typesOfPolicy", policyParticularsData.typesOfPolicy);
-    formData.append("policyExcess", policyParticularsData.policyExcess);
-    formData.append("policyNumber", policyParticularsData.policyNumber);
+
     formData.append("conclusionDes", JSON.stringify(conclusionDes));
 
-    formData.append(
-      "observationsAndVerificationsAttach",
-      JSON.stringify(observationsAndVerificationsAttach)
-    );
-    formData.append("conclusionTable", JSON.stringify(conclusionTable));
+    // formData.append(
+    //   "observationsAndVerificationsAttach",
+    //   JSON.stringify(observationsAndVerificationsAttach)
+    // );
+    // formData.append("conclusionTable", JSON.stringify(conclusionTable));
     formData.append(
       "periodOfInsurance",
       policyParticularsData.periodOfInsurance
@@ -217,6 +184,10 @@ export default function Home() {
       "policyParticularsData",
       JSON.stringify(policyParticularsData)
     );
+    for (let i = 0; i < imageUrl.length; i++) {
+      formData.append(`img${i + 1}`, imageUrl[i].url);
+    }
+
     formData.append(
       "policyParticularsFields",
       JSON.stringify(policyParticularsFields)
@@ -232,16 +203,11 @@ export default function Home() {
       JSON.stringify(assessmentLossFields)
     );
 
-    for (let i = 0; i < imageUrl.length; i++) {
-      formData.append(`img${i + 1}`, imageUrl[i].url);
-    }
-    for (let i = 0; i < conImageUrl.length; i++) {
-      formData.append(`img${i + 11}`, conImageUrl[i].url);
-    }
-
     const response = await axios({
       method: "post",
-      url: "http://localhost:3000/api/v1/reports/postReport",
+      url: `http://localhost:3000/api/v1/update/typeB/${decodeURIComponent(
+        params.allreport[0]
+      )}`,
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -251,9 +217,8 @@ export default function Home() {
       .catch((error) => {
         console.log(error);
       });
-    setIsUploading(false);
+    // setIsUploading(false);
   };
-  //  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   useEffect(() => {
     // const unloadCallback = (event) => {
     //   event.preventDefault();
@@ -263,6 +228,7 @@ export default function Home() {
 
     // window.addEventListener("beforeunload", unloadCallback);
     // return () => window.removeEventListener("beforeunload", unloadCallback);
+    fetchInfo();
     countClaimAm();
     countAssessAm();
   }, []);
@@ -271,11 +237,9 @@ export default function Home() {
     <div className={styles.outer_div}>
       <div className={styles.topbar}>
         <p>Dashboard</p>
-        {/* <p>{imageUrl[0].url}</p> */}
-        <p>
-          {observationsAndVerificationsAttach[0] &&
-            observationsAndVerificationsAttach[0].attachmentImage[0]}
-        </p>
+        {/* <p>{imageUrl.length}</p> */}
+        {/* <p>{assessmentLossTable[0].field0}</p> */}
+        {/* <p>{decodeURIComponent(params.allreport[0])}</p> */}
         {/* <p>
           {(assessmentLossTable[0] &&
             typeof Number(assessmentLossTable[0].claimAmout)) ||
@@ -286,19 +250,16 @@ export default function Home() {
 
         {/* <p>{headerSectionData.name}</p> */}
         {/* {projectDescriptionData.documentReference} */}
-
-        <div className={styles.btn_div} style={{ display: "flex" }}>
-          <form onSubmit={handleSubmitRegister}>
-            {" "}
+        <form onSubmit={updateReport}>
+          <div className={styles.btn_div}>
             <button className={styles.btn1} type="submit">
-              Save
+              Update
             </button>
-          </form>
-          <button className={styles.btn2}>Delete</button>
-          <button className={styles.btn3} onClick={handlePrint}>
-            Download
-          </button>
-        </div>
+            <button className={styles.btn3} onClick={handlePrint}>
+              Download
+            </button>
+          </div>
+        </form>
       </div>
       {currentSection === 0 ? (
         <div className={styles.allPages}>
@@ -440,12 +401,6 @@ export default function Home() {
           setObservationsAndVerificationsAttach={
             setObservationsAndVerificationsAttach
           }
-          observationsAndVerificationsImages={
-            observationsAndVerificationsImages
-          }
-          setObservationsAndVerificationsImages={
-            setObservationsAndVerificationsImages
-          }
           ismain={ismain}
           setIsmain={setIsmain}
           imageUrl={imageUrl}
@@ -479,12 +434,12 @@ export default function Home() {
         />
       ) : currentSection === 7 ? (
         <Conclusion
+          conImageUrl={conImageUrl}
+          setConImageUrl={setConImageUrl}
           conclusionDes={conclusionDes}
           setConclusionDes={setConclusionDes}
           conclusionTable={conclusionTable}
           setConclusionTable={setConclusionTable}
-          conImageUrl={conImageUrl}
-          setConImageUrl={setConImageUrl}
           ismain={ismain}
           setIsmain={{ setIsmain }}
           onClickFun={() => {
@@ -1745,50 +1700,54 @@ export default function Home() {
               marginTop: "30px",
             }}
           >
-            {observationsAndVerificationsAttach &&
-              observationsAndVerificationsAttach.map((data, index) => (
-                <div
-                  key={index}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(2,1fr)",
-                    textAlign: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
+            {imageUrl &&
+              imageUrl.map((data, index) => (
+                <div>
                   <div
+                    key={index}
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
+                      display: "grid",
+                      gridTemplateColumns: "repeat(2,1fr)",
                       textAlign: "center",
                       alignItems: "center",
                       justifyContent: "center",
                     }}
                   >
-                    <img
-                      src={data.attachmentUrl}
-                      style={{
-                        height: "330px",
-                        width: "350px",
-                        objectFit: "contain",
-                        display: "grid",
-                        gridTemplateColumns: "repeat(2,1fr)",
-                        textAlign: "center",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "2px",
-                        backgroundColor: "rgb(230 , 230 , 230)",
-                      }}
-                    ></img>
-                    <p
-                      style={{
-                        fontSize: "8px",
-                        marginTop: "5px",
-                      }}
-                    >
-                      {data.title}
-                    </p>
+                    {data.imgurl.length != 0 ? (
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          textAlign: "center",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img
+                          src={data.imgurl}
+                          style={{
+                            height: "330px",
+                            width: "350px",
+                            objectFit: "contain",
+                            display: "grid",
+                            gridTemplateColumns: "repeat(2,1fr)",
+                            textAlign: "center",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            margin: "2px",
+                            backgroundColor: "rgb(230 , 230 , 230)",
+                          }}
+                        ></img>
+                        <p
+                          style={{
+                            fontSize: "8px",
+                            marginTop: "5px",
+                          }}
+                        >
+                          {data.title}
+                        </p>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               ))}
@@ -2371,8 +2330,8 @@ export default function Home() {
               marginTop: "30px",
             }}
           >
-            {conclusionTable &&
-              conclusionTable.map((data, index) => (
+            {conImageUrl &&
+              conImageUrl.map((data, index) => (
                 <div
                   key={index}
                   style={{
@@ -2384,46 +2343,45 @@ export default function Home() {
                     marginTop: "10px",
                   }}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <img
-                      src={data.attachmentUrl}
+                  {data.imgurl.length != 0 ? (
+                    <div
                       style={{
-                        height: "330px",
-                        width: "350px",
-                        objectFit: "contain",
-                        display: "grid",
-                        gridTemplateColumns: "repeat(2,1fr)",
+                        display: "flex",
+                        flexDirection: "column",
                         textAlign: "center",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "2px",
-                        backgroundColor: "rgb(230 , 230 , 230)",
-                      }}
-                    ></img>
-                    <p
-                      style={{
-                        fontSize: "13px",
-                        marginTop: "5px",
                       }}
                     >
-                      {data.title}
-                    </p>
-                  </div>
+                      <img
+                        src={data.imgurl}
+                        style={{
+                          height: "330px",
+                          width: "350px",
+                          objectFit: "contain",
+                          display: "grid",
+                          gridTemplateColumns: "repeat(2,1fr)",
+                          textAlign: "center",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          margin: "2px",
+                          backgroundColor: "rgb(230 , 230 , 230)",
+                        }}
+                      ></img>
+                      <p
+                        style={{
+                          fontSize: "13px",
+                          marginTop: "5px",
+                        }}
+                      >
+                        {data.title}
+                      </p>
+                    </div>
+                  ) : null}
                 </div>
               ))}
           </div>
         </div>
-      </div>
-      <div className={isUploading ? styles.notUploading : styles.uploading}>
-        <p>uploading report ....</p>
       </div>
     </div>
   );

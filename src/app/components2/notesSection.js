@@ -92,6 +92,7 @@ export default function NotesSection({
       <div className={styles.outer_div}>
         <div className={styles.title}>
           <p>Notes Section</p>
+
           <FaAngleUp className={styles.angle_up} onClick={onClickFun} />
         </div>
 
@@ -180,10 +181,8 @@ export default function NotesSection({
             }}
             name="note"
             value={
-              assessmentLossNotes.length != 0
-                ? assessmentLossNotes[curentNotePage] &&
-                  assessmentLossNotes[curentNotePage].note
-                : ""
+              assessmentLossNotes[curentNotePage] &&
+              assessmentLossNotes[curentNotePage].note
             }
             className={styles.dec_textarea}
             placeholder="note..."
