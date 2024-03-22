@@ -373,20 +373,22 @@ This report is issued in electronic format and without any prejudice.
               <button
                 className={styles.add_btn}
                 onClick={() => {
-                  const obj = {
-                    title: title.title,
-                    attachmentUrl: cuurent,
-                    attachmentImage: "",
-                  };
-                  let obj2 = {
-                    url: avatar,
-                  };
+                  if (conclusionTable.length < 10) {
+                    const obj = {
+                      title: title.title,
+                      attachmentUrl: cuurent,
+                      attachmentImage: "",
+                    };
+                    let obj2 = {
+                      url: avatar,
+                    };
 
-                  const newData = conclusionTable.concat(obj);
-                  setConclusionTable(newData);
+                    const newData = conclusionTable.concat(obj);
+                    setConclusionTable(newData);
 
-                  const newobj2 = conImageUrl.concat(obj2);
-                  setConImageUrl(newobj2);
+                    const newobj2 = conImageUrl.concat(obj2);
+                    setConImageUrl(newobj2);
+                  }
                 }}
               >
                 Add
