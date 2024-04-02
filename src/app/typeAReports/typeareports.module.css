@@ -1,0 +1,534 @@
+@media screen and (min-width: 900px) {
+  .notUploading {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.8);
+    z-index: 999;
+  }
+  .notUploading p {
+    color: white;
+  }
+  .uploading {
+    display: none;
+  }
+  @keyframes border-blink {
+    0% {
+      box-shadow: rgb(201, 201, 201) 0px 0px 4px 1.3px;
+    }
+
+    50% {
+      box-shadow: rgb(201, 201, 201) 0px 0px 4px 1.3px;
+    }
+  }
+
+  .print_pdf {
+    @media print {
+      @page {
+        .print_pdf {
+          background-image: url("../images/irmCoverImage.jpeg");
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
+    }
+  }
+
+  .outer_div {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ffffff;
+
+    padding-left: 150px;
+    padding-top: 20px;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 0 5vw;
+  }
+  .topbar p {
+    font-size: 18px;
+    font-weight: 550;
+    color: rgb(54, 54, 54);
+  }
+  .btn1,
+  .btn2,
+  .btn3 {
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-size: 13px;
+    color: white;
+    font-weight: 500;
+  }
+  .btn1 {
+    background-color: rgb(66, 189, 161);
+  }
+  .btn2 {
+    background-color: rgb(188, 58, 58);
+  }
+  .btn3 {
+    background-color: rgb(92, 128, 220);
+  }
+  .report {
+    display: flex;
+    align-items: center;
+    padding: 20px 5vw;
+    background-color: #ffffff;
+  }
+  .report p {
+    font-size: 14px;
+    margin: 0 10px;
+    font-weight: 540;
+  }
+  .arrow_left {
+    font-size: 13px;
+  }
+  .option_outer_div {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 5vw;
+  }
+  .option {
+    display: flex;
+    width: 600px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 17px 40px;
+    margin: 6px 0;
+    cursor: pointer;
+    animation: border-blink 400ms steps(1) 1;
+    animation-timing-function: ease-in-out;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+  }
+  .option p {
+    font-weight: 510;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+  }
+  .angle_down {
+    font-size: 17px;
+    color: rgb(91, 91, 91);
+    cursor: pointer;
+  }
+  .preview {
+    display: none;
+    user-select: none;
+    padding: 10px 5vw;
+    font-weight: 540;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .pdf {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.7);
+  }
+  .pdf1 {
+    width: 1080px;
+    position: fixed;
+    z-index: -1;
+    /* margin-top: 00px; */
+  }
+
+  .pdf_div {
+    background-color: white;
+    width: 800px;
+  }
+  .test {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+  }
+  .logo_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .irm_logo {
+    height: 300px;
+    width: 100vw;
+  }
+  .print_pdf {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+  }
+  .para {
+    font-size: 80px;
+    color: pink;
+  }
+  .testing {
+    height: 200px;
+    width: 300px;
+    background-color: #837e7e;
+  }
+  .table {
+    border: 3px solid red;
+  }
+  .divi {
+    background-color: rgb(246, 13, 52);
+  }
+}
+@media screen and (max-width: 900px) and (min-width: 520px) {
+  .outer_div {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ffffff;
+
+    padding-top: 48px;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 0 5vw;
+    margin-top: 15px;
+  }
+  .topbar p {
+    font-size: 16px;
+    font-weight: 590;
+    color: rgb(54, 54, 54);
+  }
+  .btn1,
+  .btn2,
+  .btn3 {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 20px;
+    margin: 0 3px;
+    font-size: 12px;
+
+    background-color: #fff;
+
+    /* font-weight: 500; */
+  }
+  .btn1 {
+    color: rgb(82, 158, 141);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
+  }
+  .btn2 {
+    color: rgb(152, 84, 84);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
+  }
+  .btn3 {
+    color: rgb(85, 104, 152);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
+  }
+  .allPages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .report {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 5vw;
+    background-color: #ffffff;
+  }
+  .preview_div {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100vw;
+    height: 60px;
+    background-color: #ffffff;
+  }
+  .report p {
+    font-size: 14px;
+    margin: 0 10px;
+    font-weight: 540;
+  }
+  .arrow_left {
+    font-size: 13px;
+  }
+  .option_outer_div {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 5vw;
+  }
+  .option {
+    display: flex;
+    width: 93vw;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5vw;
+    margin: 6px 0;
+    border-radius: 5px;
+    background-color: #f6f6f6;
+    border: 1px solid rgb(229, 229, 229);
+    /* box-shadow: rgb(215, 215, 215) 0px 0px 2px 1.1px; */
+  }
+  .option p {
+    font-weight: 510;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+  }
+  .angle_down {
+    font-size: 17px;
+    color: rgb(91, 91, 91);
+    cursor: pointer;
+  }
+  .preview {
+    user-select: none;
+    padding: 10px 5vw;
+    font-weight: 540;
+    font-size: 14px;
+
+    cursor: pointer;
+  }
+  .pdf {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.7);
+  }
+  .pdf1 {
+    width: 1080px;
+    position: fixed;
+    z-index: -1;
+    /* margin-top: 00px; */
+  }
+
+  .pdf_div {
+    background-color: white;
+    width: 800px;
+  }
+  .test {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+  }
+  .logo_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .irm_logo {
+    height: 300px;
+    width: 100vw;
+  }
+  .print_pdf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+    display: none;
+  }
+  .para {
+    font-size: 80px;
+    color: pink;
+  }
+  .testing {
+    height: 200px;
+    width: 300px;
+    background-color: #c1a8a8;
+  }
+}
+@media screen and (max-width: 520px) {
+  .outer_div {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ffffff;
+
+    padding-top: 48px;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 0 5vw;
+    margin-top: 15px;
+  }
+  .topbar p {
+    font-size: 16px;
+    font-weight: 590;
+    color: rgb(54, 54, 54);
+  }
+  .btn1,
+  .btn2,
+  .btn3 {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 20px;
+    margin: 0 3px;
+    font-size: 12px;
+
+    background-color: #fff;
+
+    /* font-weight: 500; */
+  }
+  .btn1 {
+    color: rgb(82, 158, 141);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
+  }
+  .btn2 {
+    color: rgb(152, 84, 84);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
+  }
+  .btn3 {
+    color: rgb(85, 104, 152);
+    font-weight: 600;
+    border: 1.5px solid rgb(229, 229, 229);
+  }
+  .allPages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .report {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 5vw;
+    background-color: #ffffff;
+  }
+  .preview_div {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100vw;
+    height: 60px;
+    background-color: #ffffff;
+  }
+  .report p {
+    font-size: 14px;
+    margin: 0 10px;
+    font-weight: 540;
+  }
+  .arrow_left {
+    font-size: 13px;
+  }
+  .option_outer_div {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 5vw;
+  }
+  .option {
+    display: flex;
+    width: 93vw;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5vw;
+    margin: 6px 0;
+    border-radius: 5px;
+    background-color: #f6f6f6;
+    border: 1px solid rgb(229, 229, 229);
+    /* box-shadow: rgb(215, 215, 215) 0px 0px 2px 1.1px; */
+  }
+  .option p {
+    font-weight: 510;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+  }
+  .angle_down {
+    font-size: 17px;
+    color: rgb(91, 91, 91);
+    cursor: pointer;
+  }
+  .preview {
+    user-select: none;
+    padding: 10px 5vw;
+    font-weight: 540;
+    font-size: 14px;
+
+    cursor: pointer;
+  }
+  .pdf {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.7);
+  }
+  .pdf1 {
+    width: 1080px;
+    position: fixed;
+    z-index: -1;
+    /* margin-top: 00px; */
+  }
+
+  .pdf_div {
+    background-color: white;
+    width: 800px;
+  }
+  .test {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+  }
+  .logo_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .irm_logo {
+    height: 300px;
+    width: 100vw;
+  }
+  .print_pdf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+    display: none;
+  }
+  .para {
+    font-size: 80px;
+    color: pink;
+  }
+  .testing {
+    height: 200px;
+    width: 300px;
+    background-color: #c1a8a8;
+  }
+}

@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function RootLayout({ children }) {
-  const [isActive, setIsActive] = useState(1);
+  const [isActive, setIsActive] = useState(4);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <html lang="en">
@@ -34,6 +34,13 @@ export default function RootLayout({ children }) {
             {/* <Image src={logo} className={styles.logo} /> */}
             <p className={styles.name}>irm</p>
             <Link
+              href="/"
+              onClick={() => setIsActive(4)}
+              className={isActive === 4 ? styles.links_active : styles.links}
+            >
+              <p>Dashboard</p>
+            </Link>
+            <Link
               href="/typeB"
               onClick={() => setIsActive(0)}
               className={isActive === 0 ? styles.links_active : styles.links}
@@ -41,7 +48,7 @@ export default function RootLayout({ children }) {
               <p>reportB</p>
             </Link>
             <Link
-              href="/"
+              href="/typeAReports"
               onClick={() => setIsActive(1)}
               className={isActive === 1 ? styles.links_active : styles.links}
             >
