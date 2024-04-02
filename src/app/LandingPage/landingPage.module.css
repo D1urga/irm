@@ -11,6 +11,11 @@
     padding: 0 3vw;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
+  .logo {
+    height: 80px;
+    /* width: 150px; */
+    object-fit: cover;
+  }
   .title {
     display: flex;
     align-items: center;
@@ -121,7 +126,7 @@
   .btn {
     height: 40px;
     width: 30vw;
-    background-color: rgba(133, 179, 187, 0.6);
+    background-color: rgba(162, 206, 214, 0.8);
     border: none;
     color: rgb(0, 0, 0);
     font-weight: 600;

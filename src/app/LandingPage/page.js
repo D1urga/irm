@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./landingPage.module.css";
+import Image from "next/image";
 import {
   FaBinoculars,
   FaCity,
@@ -11,20 +12,13 @@ import {
 export default function LandingPage() {
   return (
     <div className={styles.main}>
-      <div className={styles.topbar}>
+      {/* <div className={styles.topbar}>
         <div className={styles.title}>
-          <h1 className={styles.name}>irm</h1>
-          <div className={styles.tagline}>
-            <p>innovative thinking</p>
-            <p>creative solutions</p>
-          </div>
+          <img src="/tour1.jpeg" className={styles.logo}></img>
         </div>
         <ul className={styles.list}>
           <li>
-            <p>09817501500</p>
-          </li>
-          <li>
-            <p>088945-50050</p>
+            <p>+91 8859342576</p>
           </li>
         </ul>
       </div>
@@ -58,7 +52,7 @@ export default function LandingPage() {
       </div>
       <div className={styles.bottom}>
         <p>Mysterious Himachal Offers Best Deals for Winter Packages</p>
-      </div>
+      </div> */}
     </div>
   );
 }
