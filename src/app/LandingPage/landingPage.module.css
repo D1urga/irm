@@ -44,8 +44,8 @@
     justify-content: space-around;
     height: calc(100vh - 9rem);
     margin: 0 5px;
-    background-color: #e4caca;
-    background-image: url("https://i.pinimg.com/564x/29/16/44/291644da2e222d3f59bc97d688f0d01e.jpg");
+    /* background-color: #e4caca; */
+    background-image: url("/bg.jpg");
     /* background-image: linear-gradient(
       to right,
       rgb(255, 255, 255),
