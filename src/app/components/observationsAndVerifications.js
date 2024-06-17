@@ -144,7 +144,7 @@ No other damages were noted or reported on the site.`,
     setIsGenerating(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/reports/generate",
+        "https://irmbackend.onrender.com/api/v1/reports/generate",
         { input: observationsAndVerificationsData[0].introduction }
       );
       // response.data = bservationsAndVerificationsData[0].introduction;
