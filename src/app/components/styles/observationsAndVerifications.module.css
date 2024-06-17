@@ -30,6 +30,13 @@
     display: flex;
     align-items: flex-start;
   }
+  .textp {
+    color: blue;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 5px;
+  }
   .outer_div {
     display: flex;
     flex-direction: column;

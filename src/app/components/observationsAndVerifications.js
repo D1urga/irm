@@ -7,6 +7,7 @@ import {
   FaTrash,
   FaArrowRight,
 } from "react-icons/fa";
+import axios from "axios";
 
 export default function ObservationsAndVerifications({
   observationsAndVerificationsData,
@@ -109,6 +110,7 @@ No other damages were noted or reported on the site.`,
   const [isConcSuggestionShowing, setIsConcSuggestionShowing] = useState(false);
   const [page, setPage] = useState(0);
   const [isShowing, setIsShowing] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [intro, setIntro] = useState(true);
   const [conc, setConc] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -136,6 +138,27 @@ No other damages were noted or reported on the site.`,
     console.log(obj);
     clone[id] = obj;
     setObservationsAndVerificationsAttach([...clone]);
+  };
+
+  const generateSuggestion = async () => {
+    setIsGenerating(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/reports/generate",
+        { input: observationsAndVerificationsData[0].introduction }
+      );
+      // response.data = bservationsAndVerificationsData[0].introduction;
+      const clone = [...observationsAndVerificationsData];
+      const obj = clone[0];
+
+      obj["introduction"] = response.data.data;
+      clone[0] = obj;
+      setObservationsAndVerificationsData([...clone]);
+    } catch (error) {
+      console.error("Error posting data", error);
+      throw error;
+    }
+    setIsGenerating(false);
   };
   const handleShowingImageChange = (event, id) => {
     const clone = [...observationsAndVerificationsAttach];
@@ -309,7 +332,11 @@ No other damages were noted or reported on the site.`,
             </span>
           </p>
           <textarea
-            value={observationsAndVerificationsData[0].introduction}
+            value={
+              isGenerating
+                ? "loading data please wait .."
+                : observationsAndVerificationsData[0].introduction
+            }
             name="introduction"
             onChange={(e) => {
               handleChange(e, 0);
@@ -317,6 +344,14 @@ No other damages were noted or reported on the site.`,
             className={styles.intro_textarea}
             placeholder="introduction ..."
           ></textarea>
+          <p
+            onClick={() => {
+              generateSuggestion();
+            }}
+            className={styles.textp}
+          >
+            Generate Text
+          </p>
         </div>
       ) : conc ? (
         <div className={styles.outer_div4}>

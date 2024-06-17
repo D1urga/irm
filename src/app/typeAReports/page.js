@@ -24,7 +24,7 @@ import axios from "axios";
 import { Table } from "@mui/material";
 import Page1 from "../typeAReports/page";
 
-export default function Home() {
+export default function HomePage() {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
