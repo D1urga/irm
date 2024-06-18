@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./landingpage.module.css";
+import styles from "./myLandingPage.module.css";
 
-export default function LandingPage() {
+export default function MyLandingPage() {
   return (
     <div className={styles.main}>
       <div className={styles.outer_div}>
