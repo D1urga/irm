@@ -96,7 +96,7 @@ export default function Report({ params }) {
   };
 
   // /////////////////////////
-
+  var count = 0;
   const [list, setList] = useState(["anoop", "kumar"]);
   const [list1, setList1] = useState(0);
   const [isPdfOpen, setIsPdfOpen] = useState(false);
@@ -234,6 +234,13 @@ export default function Report({ params }) {
     fetchInfo();
     countClaimAm();
     countAssessAm();
+    handlePrint();
+    const hasRefreshed = sessionStorage.getItem("hasRefreshed");
+
+    if (!hasRefreshed) {
+      sessionStorage.setItem("hasRefreshed", "true");
+      window.location.reload();
+    }
   }, []);
 
   return (
