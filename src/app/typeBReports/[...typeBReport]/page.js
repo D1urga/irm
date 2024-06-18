@@ -130,6 +130,13 @@ export default function TypeB({ params }) {
     // window.addEventListener("beforeunload", unloadCallback);
     // return () => window.removeEventListener("beforeunload", unloadCallback);
     fetchInfo();
+    handlePrint();
+    const hasRefreshed = sessionStorage.getItem("hasRefreshed");
+
+    if (!hasRefreshed) {
+      sessionStorage.setItem("hasRefreshed", "true");
+      window.location.reload();
+    }
   }, []);
 
   //  ///////////////////////////////////////////////////////////////////
