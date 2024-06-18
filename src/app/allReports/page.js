@@ -22,7 +22,7 @@ export default function AllReports() {
     <div className={styles.main}>
       <div className={styles.outer_div}>
         <div className={styles.heading}>
-          <p>Type-A all reports</p>
+          <p>All reports TypeA</p>
         </div>
         <div className={styles.grids}>
           {" "}
@@ -37,12 +37,22 @@ export default function AllReports() {
                       style={{
                         fontSize: "12px",
                         fontWeight: "600",
+                        paddingBottom: "8px",
                       }}
                     >
-                      report {index + 1}
+                      client : {data.projectDescriptionData[0].client}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                      }}
+                    >
+                      projectTitle :{" "}
+                      {data.projectDescriptionData[0].projectTitle}
                     </p>
                     <div className={styles.icon}>
-                      <p>visit</p>
+                      <p>View report</p>
                       <FaArrowRight className={styles.logo} />
                     </div>
                   </div>

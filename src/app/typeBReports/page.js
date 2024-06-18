@@ -22,7 +22,7 @@ export default function TypeBReports() {
     <div className={styles.main}>
       <div className={styles.outer_div}>
         <div className={styles.heading}>
-          <p>Type-B all reports</p>
+          <p>All reports TypeB</p>
         </div>
         <div className={styles.grids}>
           {" "}
@@ -37,9 +37,18 @@ export default function TypeBReports() {
                       style={{
                         fontSize: "12px",
                         fontWeight: "600",
+                        paddingBottom: "8px",
                       }}
                     >
-                      report {index + 1}
+                      DraftName : {data.headerSectionData[0].DraftName}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                      }}
+                    >
+                      DamagesTo : {data.headerSectionData[0].DamagesTo}
                     </p>
                     <div className={styles.icon}>
                       <p

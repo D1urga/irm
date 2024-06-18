@@ -6,7 +6,13 @@ import logo from "./images/irm1.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaBars } from "react-icons/fa";
+import {
+  FaAngleDown,
+  FaAngleUp,
+  FaArrowDown,
+  FaArrowRight,
+  FaBars,
+} from "react-icons/fa";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
@@ -15,8 +21,10 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function RootLayout({ children }) {
-  const [isActive, setIsActive] = useState(1);
+  const [isActive, setIsActive] = useState(4);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isOpenD1, setIsOpenD1] = useState(false);
+  const [isOpenD2, setIsOpenD2] = useState(false);
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -30,6 +38,7 @@ export default function RootLayout({ children }) {
             />
             <p className={styles.title_name}>irm</p>
           </div>
+
           <div className={isSidebarOpen ? styles.sidebar : styles.sidebar1}>
             {/* <Image src={logo} className={styles.logo} /> */}
             <p className={styles.name}>irm</p>
@@ -41,33 +50,84 @@ export default function RootLayout({ children }) {
               <p>Dashboard</p>
             </Link> */}
             <Link
-              href="/typeB"
-              onClick={() => setIsActive(0)}
-              className={isActive === 0 ? styles.links_active : styles.links}
-            >
-              <p>reportB</p>
-            </Link>
-            <Link
               href="/"
-              onClick={() => setIsActive(1)}
-              className={isActive === 1 ? styles.links_active : styles.links}
+              onClick={() => setIsActive(4)}
+              className={isActive === 4 ? styles.links_active : styles.links}
             >
-              <p>reportA</p>
+              <p className={isActive === 4 ? styles.landing : styles.landing1}>
+                Home
+              </p>
             </Link>
-            <Link
-              href="/allReports"
-              onClick={() => setIsActive(2)}
-              className={isActive === 2 ? styles.links_active : styles.links}
-            >
-              <p>AllTypeA</p>
-            </Link>
-            <Link
-              href="/typeBReports"
-              onClick={() => setIsActive(3)}
-              className={isActive === 3 ? styles.links_active : styles.links}
-            >
-              <p>AllTypeB</p>
-            </Link>
+            <div className={styles.drawer1}>
+              <div
+                className={styles.opener1}
+                onClick={() => {
+                  setIsOpenD1(!isOpenD1);
+                }}
+              >
+                <p>Create Reports</p>
+                {isOpenD1 ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div
+                className={
+                  isOpenD1 ? styles.innerdrawer1 : styles.innerdrawer11
+                }
+              >
+                <Link
+                  href="/typeAReports"
+                  onClick={() => setIsActive(1)}
+                  className={
+                    isActive === 1 ? styles.links_active : styles.links
+                  }
+                >
+                  <p>TypeA</p>
+                </Link>{" "}
+                <Link
+                  href="/typeB"
+                  onClick={() => setIsActive(0)}
+                  className={
+                    isActive === 0 ? styles.links_active : styles.links
+                  }
+                >
+                  <p>TypeB</p>
+                </Link>
+              </div>
+            </div>
+            <div className={styles.drawer1}>
+              <div
+                className={styles.opener1}
+                onClick={() => {
+                  setIsOpenD2(!isOpenD2);
+                }}
+              >
+                <p>Saved Reports</p>
+                {isOpenD2 ? <FaAngleUp /> : <FaAngleDown />}
+              </div>
+              <div
+                className={
+                  isOpenD2 ? styles.innerdrawer1 : styles.innerdrawer11
+                }
+              >
+                <Link
+                  href="/allReports"
+                  onClick={() => setIsActive(2)}
+                  className={
+                    isActive === 2 ? styles.links_active : styles.links
+                  }
+                >
+                  <p>TypeA</p>
+                </Link>
+                <Link
+                  href="/typeBReports"
+                  onClick={() => setIsActive(3)}
+                  className={
+                    isActive === 3 ? styles.links_active : styles.links
+                  }
+                >
+                  <p>TypeB</p>
+                </Link>
+              </div>
+            </div>
           </div>
           <div className={styles.children}> {children}</div>
         </div>

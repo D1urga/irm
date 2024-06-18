@@ -1,406 +1,132 @@
 @media screen and (min-width: 900px) {
   .main {
-    margin-left: 150px;
+    padding-left: 150px;
+    height: 100vh;
+    background-image: url("/c1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.45);
   }
-  .topbar {
+  .outer_div {
     display: flex;
+    height: 100%;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 5rem;
-    background-color: rgb(255, 255, 255);
-    padding: 0 3vw;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
-  }
-  .logo {
-    height: 80px;
-    /* width: 150px; */
-    object-fit: cover;
+    justify-content: center;
   }
   .title {
     display: flex;
     align-items: center;
   }
-  .tagline {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: #ffffff;
-    padding-top: 10px;
-    padding-left: 5px;
-  }
-  .title p {
-    font-size: 13px;
-    font-weight: 530;
-  }
-  .name {
-    font-size: 50px;
-  }
-  .name::first-letter {
-    color: rgb(224, 84, 84);
-  }
-  .list li {
-    font-size: 14px;
-    font-weight: 530;
-  }
-  .body {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: calc(100vh - 9rem);
-    margin: 0 5px;
-    /* background-color: #e4caca; */
-    background-image: url("/bg.jpg");
-    /* background-image: linear-gradient(
-      to right,
-      rgb(255, 255, 255),
-      rgb(250, 247, 247),
-      rgb(255, 255, 255)
-    ); */
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .div1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 60vh;
-    width: 40vw;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* box-shadow: rgb(218, 218, 218) 0px 0px 4px 1.3px; */
-  }
-  .icons {
-    width: 39vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 8vw;
-    padding-top: 30px;
-  }
-  .icon {
-    font-size: 36px;
-    color: rgb(22, 22, 69);
-  }
-  .div1 h2 {
-    padding: 0 5vw;
-    font-size: 17px;
-    font-weight: 570;
-    text-align: center;
-    color: rgb(35, 35, 35);
-  }
-
-  .div2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 60vh;
-    width: 40vw;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* box-shadow: rgb(218, 218, 218) 0px 0px 4px 1.3px; */
-    padding: 15px 0;
-  }
-  .input,
-  .input:focus {
-    height: 50px;
-    width: 30vw;
-    padding: 0 20px;
-    border: none;
-    background-color: rgb(195, 220, 224, 0.5);
-    border-radius: 5px;
-  }
-  .bottom {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-  }
-  .bottom p {
-    font-size: 17px;
+  .p1 {
+    font-size: 45px;
     font-weight: 500;
+    padding-bottom: 5px;
   }
-  .btn {
-    height: 40px;
-    width: 30vw;
-    background-color: rgba(162, 206, 214, 0.8);
-    border: none;
-    color: rgb(0, 0, 0);
-    font-weight: 600;
-    border-radius: 5px;
-    margin-top: 20px;
+  .p2 {
+    font-size: 90px;
+    /* letter-spacing: 0px; */
+    font-weight: 700;
+    padding-right: 10px;
+  }
+  .p2::first-letter {
+    color: red;
+  }
+  .p3 {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .s1 {
+    color: red;
+  }
+  .s2 {
+    color: blue;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {
   .main {
-    padding-top: 2.7rem;
+    height: 100vh;
+    background-image: url("/c1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.45);
   }
-  .topbar {
+  .outer_div {
     display: flex;
+    height: 100%;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 5rem;
-    background-color: rgb(255, 255, 255);
-    padding: 0 3vw;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    justify-content: center;
   }
   .title {
     display: flex;
     align-items: center;
   }
-  .tagline {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: #ffffff;
-    padding-top: 10px;
-    padding-left: 5px;
-  }
-  .title p {
-    font-size: 13px;
-    font-weight: 530;
-  }
-  .name {
-    font-size: 50px;
-  }
-  .name::first-letter {
-    color: rgb(224, 84, 84);
-  }
-  .list li {
-    font-size: 14px;
-    font-weight: 530;
-  }
-  .body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0 0;
-
-    /* background-color: #e4caca; */
-    background-image: url("/bg.jpg");
-    /* background-image: linear-gradient(
-      to right,
-      rgb(255, 255, 255),
-      rgb(250, 247, 247),
-      rgb(255, 255, 255)
-    ); */
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .div1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 400px;
-    width: 90vw;
-    border-radius: 5px;
-    margin: 10px 0;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* box-shadow: rgb(218, 218, 218) 0px 0px 4px 1.3px; */
-  }
-  .icons {
-    width: 70vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 8vw;
-    padding-top: 30px;
-  }
-  .icon {
-    font-size: 36px;
-    color: rgb(22, 22, 69);
-  }
-  .div1 h2 {
-    padding: 0 5vw;
-    font-size: 17px;
-    font-weight: 570;
-    text-align: center;
-    color: rgb(35, 35, 35);
-  }
-
-  .div2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 400px;
-    width: 90vw;
-    border-radius: 5px;
-    margin: 10px 0;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* box-shadow: rgb(218, 218, 218) 0px 0px 4px 1.3px; */
-    padding: 15px 0;
-  }
-  .input,
-  .input:focus {
-    height: 50px;
-    width: 70vw;
-    padding: 0 20px;
-    border: none;
-    background-color: rgb(195, 220, 224, 0.5);
-    border-radius: 5px;
-  }
-  .bottom {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-  }
-  .bottom p {
-    font-size: 17px;
+  .p1 {
+    font-size: 40px;
     font-weight: 500;
+    padding-bottom: 5px;
   }
-  .btn {
-    height: 40px;
-    width: 70vw;
-    background-color: rgba(133, 179, 187, 0.6);
-    border: none;
-    color: rgb(0, 0, 0);
-    font-weight: 600;
-    border-radius: 5px;
-    margin-top: 20px;
+  .p2 {
+    font-size: 70px;
+    /* letter-spacing: 0px; */
+    font-weight: 700;
+    padding-right: 10px;
+  }
+  .p2::first-letter {
+    color: red;
+  }
+  .p3 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .s1 {
+    color: red;
+  }
+  .s2 {
+    color: blue;
   }
 }
 @media screen and (max-width: 520px) {
   .main {
-    padding-top: 2.7rem;
+    height: 100vh;
+    background-image: url("/c1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.45);
   }
-  .topbar {
+  .outer_div {
     display: flex;
+    height: 100%;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 5rem;
-    background-color: rgb(255, 255, 255);
-    padding: 0 3vw;
-    box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
+    justify-content: center;
   }
   .title {
     display: flex;
     align-items: center;
   }
-  .tagline {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: #ffffff;
-    padding-top: 10px;
-    padding-left: 5px;
-  }
-  .title p {
-    font-size: 13px;
-    font-weight: 530;
-  }
-  .name {
-    font-size: 50px;
-  }
-  .name::first-letter {
-    color: rgb(224, 84, 84);
-  }
-  .list li {
-    font-size: 14px;
-    font-weight: 530;
-  }
-  .body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0 0;
-
-    /* background-color: #e4caca; */
-    background-image: url("/bg.jpg");
-    /* background-image: linear-gradient(
-      to right,
-      rgb(255, 255, 255),
-      rgb(250, 247, 247),
-      rgb(255, 255, 255)
-    ); */
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .div1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 350px;
-    width: 90vw;
-    border-radius: 5px;
-    margin: 10px 0;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* box-shadow: rgb(218, 218, 218) 0px 0px 4px 1.3px; */
-  }
-  .icons {
-    width: 80vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 4vw;
-    padding-top: 30px;
-  }
-  .icon {
-    font-size: 36px;
-    color: rgb(22, 22, 69);
-  }
-  .div1 h2 {
-    padding: 0 5vw;
-    font-size: 17px;
-    font-weight: 570;
-    text-align: center;
-    color: rgb(35, 35, 35);
-  }
-
-  .div2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 400px;
-    width: 90vw;
-    border-radius: 5px;
-    margin: 10px 0;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* box-shadow: rgb(218, 218, 218) 0px 0px 4px 1.3px; */
-    padding: 15px 0;
-  }
-  .input,
-  .input:focus {
-    height: 50px;
-    width: 80vw;
-    padding: 0 20px;
-    border: none;
-    background-color: rgb(195, 220, 224, 0.5);
-    border-radius: 5px;
-  }
-  .bottom {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-  }
-  .bottom p {
-    font-size: 15px;
-    padding: 0 3vw;
-    text-align: center;
+  .p1 {
+    font-size: 35px;
     font-weight: 500;
   }
-  .btn {
-    height: 40px;
-    width: 70vw;
-    background-color: rgba(133, 179, 187, 0.6);
-    border: none;
-    color: rgb(0, 0, 0);
-    font-weight: 600;
-    border-radius: 5px;
-    margin-top: 20px;
+  .p2 {
+    font-size: 60px;
+    /* letter-spacing: 0px; */
+    font-weight: 700;
+    padding-right: 10px;
+  }
+  .p2::first-letter {
+    color: red;
+  }
+  .p3 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .s1 {
+    color: red;
+  }
+  .s2 {
+    color: blue;
   }
 }
