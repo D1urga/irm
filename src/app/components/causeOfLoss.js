@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles/causeOfLoss.module.css";
 import { FaAngleUp, FaArrowRight } from "react-icons/fa";
+import axios from "axios";
 
 export default function CauseOfLoss({
   causeOfLoss,
@@ -8,6 +9,28 @@ export default function CauseOfLoss({
   onClickFun,
 }) {
   const [isSuggestionShowing, setIsSuggestionShowing] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const generateSuggestion = async () => {
+    setIsGenerating(true);
+    try {
+      const response = await axios.post(
+        "https://irmbackend.onrender.com/api/v1/reports/generate",
+        { input: causeOfLoss.causeOfLoss }
+      );
+
+      // setCauseOfLoss(response.data.data);
+
+      setCauseOfLoss({
+        ...causeOfLoss,
+        causeOfLoss: response.data.data,
+      });
+    } catch (error) {
+      console.error("Error posting data", error);
+      throw error;
+    }
+    setIsGenerating(false);
+  };
   const handleChange = (event) => {
     setCauseOfLoss({
       ...causeOfLoss,
@@ -99,12 +122,22 @@ We thus believe the claim is admissible under cover against malicious damage.`,
         </span>
       </p>
       <textarea
-        value={causeOfLoss.causeOfLoss}
+        value={
+          isGenerating ? "loading data please wait .." : causeOfLoss.causeOfLoss
+        }
         onChange={handleChange}
         name="causeOfLoss"
         className={styles.intro_textarea}
         placeholder="description ..."
-      ></textarea>
+      ></textarea>{" "}
+      <p
+        onClick={() => {
+          generateSuggestion();
+        }}
+        className={styles.textp}
+      >
+        Generate Text
+      </p>
       <div
         className={isSuggestionShowing ? styles.suggestion : styles.suggestion1}
       >

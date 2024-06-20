@@ -42,6 +42,40 @@
   .s2 {
     color: blue;
   }
+  .btns {
+    display: flex;
+    padding-top: 50px;
+  }
+  .btn1,
+  .btn2 {
+    height: 40px;
+    width: 200px;
+    border: none;
+    outline: none;
+    margin: 2px 4px;
+  }
+  .btn1 {
+    background-color: black;
+    color: white;
+  }
+  .btn2 {
+    border: 2px solid;
+    background-color: transparent;
+    color: black;
+    font-weight: 600;
+  }
+  .btn2:hover {
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    border: 2px solid black;
+  }
+  .btn1:hover {
+    border: 2px solid;
+    background-color: transparent;
+    color: black;
+    font-weight: 600;
+  }
 }
 @media screen and (max-width: 900px) and (min-width: 520px) {
   .main {

@@ -20,11 +20,38 @@ import { Currency } from "react-intl-number-format";
 import Intl from "intl";
 import { useRef } from "react";
 import axios from "axios";
+import { Document, Packer, Paragraph, TextRun } from "docx";
+import { saveAs } from "file-saver";
 
 import { Table } from "@mui/material";
 import Page1 from "../typeAReports/page";
 
 export default function HomePage() {
+  const generateWordDocument = async () => {
+    const doc = new Document({
+      sections: [
+        {
+          properties: {},
+          children: [
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: "Hello, this is a sample text in a Word document.",
+                  bold: true,
+                }),
+                new TextRun({
+                  text: "\nThis is another line in the document.",
+                }),
+              ],
+            }),
+          ],
+        },
+      ],
+    });
+
+    const blob = await Packer.toBlob(doc);
+    saveAs(blob, "example.docx");
+  };
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -306,7 +333,7 @@ export default function HomePage() {
         <div className={styles.allPages}>
           <div className={styles.report}>
             <FaArrowLeft className={styles.arrow_left} />
-            <p>Mr John report</p>
+            <p>{projectDescriptionData.client}</p>
             {/* <p>{totalClaimAm}</p>
             <p>
               {assessmentLossTable.reduce((a, v) => (a = a + v.claimAmout), 0)}

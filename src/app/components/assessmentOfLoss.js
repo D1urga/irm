@@ -1,5 +1,6 @@
 import React, { use, useState } from "react";
 import styles from "./styles/assessmentOfLoss.module.css";
+import axios from "axios";
 import {
   FaAngleUp,
   FaTrash,
@@ -174,6 +175,28 @@ are covered/ or being claimed under any other insurance that Insured may have.
     field3: "",
     field4: "",
   });
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const generateSuggestion = async () => {
+    setIsGenerating(true);
+    try {
+      const response = await axios.post(
+        "https://irmbackend.onrender.com/api/v1/reports/generate",
+        { input: assessmentLossDes.des }
+      );
+
+      // setCauseOfLoss(response.data.data);
+
+      setAssessmentLossDes({
+        ...assessmentLossDes,
+        des: response.data.data,
+      });
+    } catch (error) {
+      console.error("Error posting data", error);
+      throw error;
+    }
+    setIsGenerating(false);
+  };
 
   const handleAddFieldChange = (event) => {
     setAddFieldData({
@@ -400,12 +423,24 @@ are covered/ or being claimed under any other insurance that Insured may have.
             </span>
           </p>
           <textarea
-            value={assessmentLossDes.des}
+            value={
+              isGenerating
+                ? "loading data please wait .."
+                : assessmentLossDes.des
+            }
             onChange={handleChange}
             name="des"
             className={styles.intro_textarea}
             placeholder="Assessment of Loss Description ..."
-          ></textarea>
+          ></textarea>{" "}
+          <p
+            onClick={() => {
+              generateSuggestion();
+            }}
+            className={styles.textp}
+          >
+            Generate Text
+          </p>
         </div>
       ) : isShowingTable ? (
         <div className={styles.outer_div3}>

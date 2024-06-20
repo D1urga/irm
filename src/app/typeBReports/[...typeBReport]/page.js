@@ -162,7 +162,7 @@ export default function TypeB({ params }) {
         <div className={styles.allPages}>
           <div className={styles.report}>
             <FaArrowLeft className={styles.arrow_left} />
-            <p>Mr John report</p>
+            <p>{data.headerSectionData[0].DraftName}</p>
           </div>
           <div className={styles.option_outer_div}>
             <div
@@ -878,7 +878,7 @@ export default function TypeB({ params }) {
                     marginTop: "10px",
                   }}
                 >
-                  {data.imgurl.length != 0 ? (
+                  {data.imgurl && data.imgurl.length != 0 ? (
                     <div
                       style={{
                         display: "flex",

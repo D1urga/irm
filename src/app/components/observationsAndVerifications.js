@@ -160,6 +160,27 @@ No other damages were noted or reported on the site.`,
     }
     setIsGenerating(false);
   };
+
+  const generateSuggestionConclusion = async () => {
+    setIsGenerating(true);
+    try {
+      const response = await axios.post(
+        "https://irmbackend.onrender.com/api/v1/reports/generate",
+        { input: observationsAndVerificationsData[0].conclusion }
+      );
+      // response.data = bservationsAndVerificationsData[0].introduction;
+      const clone = [...observationsAndVerificationsData];
+      const obj = clone[0];
+
+      obj["conclusion"] = response.data.data;
+      clone[0] = obj;
+      setObservationsAndVerificationsData([...clone]);
+    } catch (error) {
+      console.error("Error posting data", error);
+      throw error;
+    }
+    setIsGenerating(false);
+  };
   const handleShowingImageChange = (event, id) => {
     const clone = [...observationsAndVerificationsAttach];
     const obj = clone[id];
@@ -369,14 +390,26 @@ No other damages were noted or reported on the site.`,
             </span>
           </p>
           <textarea
-            value={observationsAndVerificationsData[0].conclusion}
+            value={
+              isGenerating
+                ? "loading data please wait .."
+                : observationsAndVerificationsData[0].conclusion
+            }
             name="conclusion"
             onChange={(e) => {
               handleChange(e, 0);
             }}
             className={styles.intro_textarea}
-            placeholder="ionclusion ..."
-          ></textarea>
+            placeholder="conclusion ..."
+          ></textarea>{" "}
+          <p
+            onClick={() => {
+              generateSuggestionConclusion();
+            }}
+            className={styles.textp}
+          >
+            Generate Text
+          </p>
         </div>
       ) : isUploading ? (
         <div className={styles.items}>

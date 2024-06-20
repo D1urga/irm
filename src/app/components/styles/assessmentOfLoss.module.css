@@ -48,6 +48,13 @@
     border-bottom: 8px solid white;
     box-shadow: rgb(230, 230, 230) 0px 0px 4px 1.3px;
   }
+  .textp {
+    color: blue;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 5px;
+  }
   .outer_div:hover {
     overflow: scroll;
     padding: 20px 37.5px 18px 40px;

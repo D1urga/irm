@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./allreports.module.css";
 import Link from "next/link";
+import moment from "moment";
 import { FaArrowRight } from "react-icons/fa";
 export default function AllReports() {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ export default function AllReports() {
       }
     );
     const d = await res.json();
-    return setData(d.data);
+    return setData(d.data.reverse());
   };
   useEffect(() => {
     fetchInfo();
@@ -36,20 +37,40 @@ export default function AllReports() {
                     <p
                       style={{
                         fontSize: "12px",
-                        fontWeight: "600",
-                        paddingBottom: "8px",
+                        fontWeight: "550",
                       }}
                     >
-                      client : {data.projectDescriptionData[0].client}
+                      <span style={{ color: "blue", fontWeight: "600" }}>
+                        ProjectTitle
+                      </span>{" "}
+                      : {data.projectDescriptionData[0].projectTitle}
+                    </p>{" "}
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "550",
+                        paddingTop: "8px",
+                      }}
+                    >
+                      <span style={{ color: "blue", fontWeight: "600" }}>
+                        Client
+                      </span>{" "}
+                      : {data.projectDescriptionData[0].client}
                     </p>
                     <p
                       style={{
                         fontSize: "12px",
-                        fontWeight: "600",
+                        fontWeight: "550",
+                        paddingTop: "8px",
                       }}
                     >
-                      projectTitle :{" "}
-                      {data.projectDescriptionData[0].projectTitle}
+                      <span style={{ color: "blue", fontWeight: "600" }}>
+                        Time
+                      </span>{" "}
+                      :{" "}
+                      {moment(data.createdAt).format(
+                        "dddd, MMMM Do YYYY, h:mm:ss a"
+                      )}
                     </p>
                     <div className={styles.icon}>
                       <p>View report</p>

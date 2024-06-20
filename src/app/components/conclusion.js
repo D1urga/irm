@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles/conclusion.module.css";
+import axios from "axios";
 import {
   FaAngleUp,
   FaTrash,
@@ -149,6 +150,26 @@ This report is issued in electronic format and without any prejudice.
     });
   };
 
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const generateSuggestion = async () => {
+    setIsGenerating(true);
+    try {
+      const response = await axios.post(
+        "https://irmbackend.onrender.com/api/v1/reports/generate",
+        { input: conclusionDes.conclusionDes }
+      );
+      setConclusionDes({
+        ...conclusionDes,
+        conclusionDes: response.data.data,
+      });
+    } catch (error) {
+      console.error("Error posting data", error);
+      throw error;
+    }
+    setIsGenerating(false);
+  };
+
   const handleAvatarchange = (e) => {
     setAvatar(e.target.files[0]);
     setCurrentImage(URL.createObjectURL(e.target.files[0]));
@@ -286,12 +307,24 @@ This report is issued in electronic format and without any prejudice.
             </span>
           </p>
           <textarea
-            value={conclusionDes.conclusionDes}
+            value={
+              isGenerating
+                ? "loading data please wait .."
+                : conclusionDes.conclusionDes
+            }
             onChange={handleChange}
             name="conclusionDes"
             className={styles.intro_textarea}
             placeholder="conclusion description ..."
-          ></textarea>
+          ></textarea>{" "}
+          <p
+            onClick={() => {
+              generateSuggestion();
+            }}
+            className={styles.textp}
+          >
+            Generate Text
+          </p>
         </div>
       ) : isShowingAttachement ? (
         <div className={styles.items}>

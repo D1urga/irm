@@ -276,7 +276,10 @@ export default function Report({ params }) {
         <div className={styles.allPages}>
           <div className={styles.report}>
             <FaArrowLeft className={styles.arrow_left} />
-            <p>Mr John report</p>
+            <p>
+              {data.projectDescriptionData &&
+                data.projectDescriptionData[0].client}
+            </p>
             {/* <p>{totalClaimAm}</p>
             <p>
               {assessmentLossTable.reduce((a, v) => (a = a + v.claimAmout), 0)}
@@ -1723,7 +1726,7 @@ export default function Report({ params }) {
                       justifyContent: "center",
                     }}
                   >
-                    {data.imgurl.length != 0 ? (
+                    {data.imageUrl && data.imgurl.length != 0 ? (
                       <div
                         style={{
                           display: "flex",

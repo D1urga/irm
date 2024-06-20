@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./typeBReports.module.css";
 import Link from "next/link";
+import moment from "moment";
 import { FaArrowRight } from "react-icons/fa";
+
 export default function TypeBReports() {
   const [data, setData] = useState([]);
   const fetchInfo = async () => {
@@ -13,7 +15,7 @@ export default function TypeBReports() {
       }
     );
     const d = await res.json();
-    return setData(d.data);
+    return setData(d.data.reverse());
   };
   useEffect(() => {
     fetchInfo();
@@ -40,7 +42,10 @@ export default function TypeBReports() {
                         paddingBottom: "8px",
                       }}
                     >
-                      DraftName : {data.headerSectionData[0].DraftName}
+                      <span style={{ color: "blue", fontWeight: "600" }}>
+                        DraftName
+                      </span>{" "}
+                      : {data.headerSectionData[0].DraftName}
                     </p>
                     <p
                       style={{
@@ -48,7 +53,25 @@ export default function TypeBReports() {
                         fontWeight: "600",
                       }}
                     >
-                      DamagesTo : {data.headerSectionData[0].DamagesTo}
+                      <span style={{ color: "blue", fontWeight: "600" }}>
+                        DamagesTo
+                      </span>{" "}
+                      : {data.headerSectionData[0].DamagesTo}
+                    </p>{" "}
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "550",
+                        paddingTop: "8px",
+                      }}
+                    >
+                      <span style={{ color: "blue", fontWeight: "600" }}>
+                        Time
+                      </span>{" "}
+                      :{" "}
+                      {moment(data.createdAt).format(
+                        "dddd, MMMM Do YYYY, h:mm:ss a"
+                      )}
                     </p>
                     <div className={styles.icon}>
                       <p

@@ -102,7 +102,7 @@ export default function TypeB() {
         <div className={styles.allPages}>
           <div className={styles.report}>
             <FaArrowLeft className={styles.arrow_left} />
-            <p>Mr John report</p>
+            <p>{headerSectionData.DraftName}</p>
           </div>
           <div className={styles.option_outer_div}>
             <div
