@@ -58,11 +58,14 @@ export default function Report({ params }) {
     observationsAndVerificationsAttach,
     setObservationsAndVerificationsAttach,
   ] = useState([]);
+  const [excelAttachment, setExcelAttachment] = useState([]);
   const [assessmentLossDes, setAssessmentLossDes] = useState({ des: "" });
   const [assessmentLossDescription, setAssessmentLossDescription] = useState({
     description: "adad",
   });
   const [imageUrl, setImageUrl] = useState([]);
+  const [imageUrlExcel, setImageUrlExcel] = useState([]);
+  const [excelAttach, setExcelAttach] = useState([]);
   const [ismain, setIsmain] = useState(false);
   const [conImageUrl, setConImageUrl] = useState([]);
   const [addFieldData, setAddFieldData] = useState({
@@ -143,12 +146,14 @@ export default function Report({ params }) {
     );
     setImageUrl(d.data.obsvrf);
     setConImageUrl(d.data.contable);
+    setImageUrlExcel(d.data.excelAttach);
 
     setAssessmentLossFields(d.data.assessmentLossFields);
     setConclusionTable(d.data.conclusionTable);
     setObservationsAndVerificationsAttach(
       d.data.observationsAndVerificationsAttach
     );
+    setExcelAttachment(d.data.excelAttachment);
     return setData(d.data);
   };
   //  //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,7 +178,7 @@ export default function Report({ params }) {
     //   "observationsAndVerificationsAttach",
     //   JSON.stringify(observationsAndVerificationsAttach)
     // );
-    // formData.append("conclusionTable", JSON.stringify(conclusionTable));
+    formData.append("conclusionTable", JSON.stringify(conclusionTable));
     formData.append(
       "periodOfInsurance",
       policyParticularsData.periodOfInsurance
@@ -187,7 +192,7 @@ export default function Report({ params }) {
       JSON.stringify(policyParticularsData)
     );
     for (let i = 0; i < imageUrl.length; i++) {
-      formData.append(`img${i + 1}`, imageUrl[i].url);
+      formData.append(`img1`, imageUrl[i].url);
     }
 
     formData.append(
@@ -207,7 +212,7 @@ export default function Report({ params }) {
 
     const response = await axios({
       method: "post",
-      url: `https://irmbackend.onrender.com/api/v1/update/typeB/${decodeURIComponent(
+      url: `http://localhost:3000/api/v1/update/typeB/${decodeURIComponent(
         params.allreport[0]
       )}`,
       data: formData,
@@ -247,6 +252,7 @@ export default function Report({ params }) {
     <div className={styles.outer_div}>
       <div className={styles.topbar}>
         <p>Dashboard</p>
+        {/* <p>{observationsAndVerificationsAttach.length}</p> */}
         {/* <p>{imageUrl.length}</p> */}
         {/* <p>{assessmentLossTable[0].field0}</p> */}
         {/* <p>{decodeURIComponent(params.allreport[0])}</p> */}
@@ -419,6 +425,10 @@ export default function Report({ params }) {
           setIsmain={setIsmain}
           imageUrl={imageUrl}
           setImageUrl={setImageUrl}
+          excelAttachment={excelAttachment}
+          setExcelAttachment={setExcelAttachment}
+          imageUrlExcel={imageUrlExcel}
+          setImageUrlExcel={setImageUrlExcel}
           onClickFun={() => {
             setCurrentState(0);
           }}
@@ -1726,41 +1736,39 @@ export default function Report({ params }) {
                       justifyContent: "center",
                     }}
                   >
-                    {data.imageUrl && data.imgurl.length != 0 ? (
-                      <div
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        src={data.imgurl}
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
+                          height: "330px",
+                          width: "350px",
+                          objectFit: "contain",
+                          display: "grid",
+                          gridTemplateColumns: "repeat(2,1fr)",
                           textAlign: "center",
                           alignItems: "center",
                           justifyContent: "center",
+                          margin: "2px",
+                          backgroundColor: "rgb(230 , 230 , 230)",
+                        }}
+                      ></img>
+                      <p
+                        style={{
+                          fontSize: "8px",
+                          marginTop: "5px",
                         }}
                       >
-                        <img
-                          src={data.imgurl}
-                          style={{
-                            height: "330px",
-                            width: "350px",
-                            objectFit: "contain",
-                            display: "grid",
-                            gridTemplateColumns: "repeat(2,1fr)",
-                            textAlign: "center",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            margin: "2px",
-                            backgroundColor: "rgb(230 , 230 , 230)",
-                          }}
-                        ></img>
-                        <p
-                          style={{
-                            fontSize: "8px",
-                            marginTop: "5px",
-                          }}
-                        >
-                          {data.title}
-                        </p>
-                      </div>
-                    ) : null}
+                        {data.title}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -1773,6 +1781,24 @@ export default function Report({ params }) {
           >
             {observationsAndVerificationsData[0].conclusion}
           </p>
+          <p
+            style={{
+              fontSize: "15px",
+              marginTop: "15px",
+              marginBottom: "15px",
+              fontWeight: "550",
+            }}
+          >
+            Excel Attachment
+          </p>
+          {imageUrlExcel &&
+            imageUrlExcel.map((data, index) => (
+              <img
+                key={index}
+                src={data.imgurl}
+                style={{ width: "100%" }}
+              ></img>
+            ))}
           <p
             style={{
               fontSize: "17px",

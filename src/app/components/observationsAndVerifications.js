@@ -15,7 +15,11 @@ export default function ObservationsAndVerifications({
   observationsAndVerificationsAttach,
   setObservationsAndVerificationsAttach,
   imageUrl,
+  imageUrlExcel,
+  excelAttachment,
+  setExcelAttachment,
   setImageUrl,
+  setImageUrlExcel,
   ismain,
   setIsmain,
   observationsAndVerificationsImages,
@@ -109,11 +113,14 @@ No other damages were noted or reported on the site.`,
     useState(false);
   const [isConcSuggestionShowing, setIsConcSuggestionShowing] = useState(false);
   const [page, setPage] = useState(0);
+  const [pageExcel, setPageExcel] = useState(0);
   const [isShowing, setIsShowing] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [intro, setIntro] = useState(true);
   const [conc, setConc] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isUploadingAttach, setIsUploadingAttach] = useState(false);
+  const [isShowingExcel, setIsShowingExcel] = useState(false);
 
   const handleChange = (event, id) => {
     const clone = [...observationsAndVerificationsData];
@@ -138,6 +145,15 @@ No other damages were noted or reported on the site.`,
     console.log(obj);
     clone[id] = obj;
     setObservationsAndVerificationsAttach([...clone]);
+  };
+  const handleShowingChangeExcel = (event, id) => {
+    const clone = [...excelAttachment];
+    const obj = clone[id];
+
+    obj[`${event.target.name}`] = event.target.value;
+    console.log(obj);
+    clone[id] = obj;
+    setExcelAttachment([...clone]);
   };
 
   const generateSuggestion = async () => {
@@ -203,6 +219,28 @@ No other damages were noted or reported on the site.`,
     // console.log(obj2);
     setObservationsAndVerificationsAttach([...clone]);
   };
+  const handleShowingImageChangeExcel = (event, id) => {
+    const clone = [...excelAttachment];
+    const obj = clone[id];
+    const clone2 = [...imageUrlExcel];
+    const obj2 = clone2[id];
+
+    clone2[id] = {
+      url: avatarExcel,
+    };
+
+    clone[id] = {
+      description: itemsDataExcel.description,
+      title: itemsDataExcel.title,
+      attachmentUrl: cuurentExcel,
+      attachmentImage: "",
+    };
+    setImageUrlExcel([...clone2]);
+    console.log(excelAttachment);
+    console.log(imageUrlExcel);
+    // console.log(obj2);
+    setExcelAttachment([...clone]);
+  };
   const addAttachments = () => {
     if (observationsAndVerificationsAttach.length < 10) {
       const obj = {
@@ -217,20 +255,46 @@ No other damages were noted or reported on the site.`,
       };
       const newobj2 = imageUrl.concat(obj2);
       setImageUrl(newobj2);
-
       const newData = observationsAndVerificationsAttach.concat(obj);
-
       setObservationsAndVerificationsAttach(newData);
     }
   };
+  const addAttachmentsExcel = () => {
+    console.log(excelAttachment.length);
+    if (excelAttachment.length < 10) {
+      console.log("working");
+      const obj = {
+        description: "vgjc gvkh ",
+        title: "hg v     vgv",
+        attachmentUrl: cuurentExcel,
+        attachmentImage: "",
+      };
+      console.log(obj);
+      const obj2 = {
+        url: avatarExcel,
+      };
+      const newobj2 = imageUrlExcel.concat(obj2);
+      setImageUrlExcel(newobj2);
+      const newData = excelAttachment.concat(obj);
+      console.log(newData);
+      setExcelAttachment(newData);
+    }
+    console.log("working");
+  };
 
   const [avatar, setAvatar] = useState(null);
+  const [avatarExcel, setAvatarExcel] = useState(null);
   const [images, setImages] = useState(null);
   const [cuurent, setCurrentImage] = useState(null);
+  const [cuurentExcel, setCurrentImageExcel] = useState(null);
 
   const handleAvatarchange = (e) => {
     setAvatar(e.target.files[0]);
     setCurrentImage(URL.createObjectURL(e.target.files[0]));
+  };
+  const handleAvatarchangeExcel = (e) => {
+    setAvatarExcel(e.target.files[0]);
+    setCurrentImageExcel(URL.createObjectURL(e.target.files[0]));
   };
   const handleImagechange = (e) => {
     setImages(e.target.files[0]);
@@ -242,6 +306,11 @@ No other damages were noted or reported on the site.`,
   };
 
   const [itemsData, setItemsData] = useState({
+    description: "",
+    title: "",
+    attachmentUrl: "",
+  });
+  const [itemsDataExcel, setItemsDataExcel] = useState({
     description: "",
     title: "",
     attachmentUrl: "",
@@ -260,7 +329,9 @@ No other damages were noted or reported on the site.`,
             setConc(false);
             setIntro(true);
             setIsShowing(false);
-            setIsUploading(true);
+            setIsUploading(false);
+            setIsUploadingAttach(false);
+            setIsShowingExcel(false);
           }}
         >
           Introduction
@@ -271,7 +342,9 @@ No other damages were noted or reported on the site.`,
             setConc(true);
             setIntro(false);
             setIsShowing(false);
-            setIsUploading(true);
+            setIsUploading(false);
+            setIsUploadingAttach(false);
+            setIsShowingExcel(false);
           }}
         >
           Conclusion
@@ -290,6 +363,8 @@ No other damages were noted or reported on the site.`,
                     setIsShowing(true);
                     setIsUploading(false);
                     setPage(index);
+                    setIsUploadingAttach(false);
+                    setIsShowingExcel(false);
                   }}
                 >
                   <p>attachment {index + 1}</p>
@@ -332,9 +407,80 @@ No other damages were noted or reported on the site.`,
             setIntro(false);
             setIsShowing(false);
             setIsUploading(true);
+            setIsUploadingAttach(false);
+            setIsShowingExcel(false);
           }}
         >
           Add Attachment
+        </button>
+        <p className={styles.add_attach}>Add Excel Attachments</p>
+        <div className={styles.add_attachment_div}>
+          {excelAttachment && excelAttachment.length != 0 ? (
+            <div>
+              {excelAttachment.map((data, index) => (
+                <div
+                  className={
+                    pageExcel === pageExcel ? styles.tables : styles.tables1
+                  }
+                  key={index}
+                  onClick={() => {
+                    console.log(pageExcel);
+                    setIntro(false);
+                    setConc(false);
+                    setIsShowing(false);
+                    setIsUploading(false);
+                    setPageExcel(index);
+                    setIsUploadingAttach(false);
+                    setIsShowingExcel(true);
+                  }}
+                >
+                  <p>attachment {index + 1}</p>
+                  <div className={styles.logos}>
+                    {/* <FaPlusCircle className={styles.logo1} />
+                <FaEdit className={styles.logo2} /> */}
+                    <FaTrash
+                      className={styles.logo3}
+                      onClick={() => {
+                        console.log(index);
+                        const subarr1 = excelAttachment.slice(0, index);
+                        const subarr2 = excelAttachment.slice(
+                          index + 1,
+                          excelAttachment.length
+                        );
+
+                        const sb1 = imageUrlExcel.slice(0, index);
+                        const sb2 = imageUrlExcel.slice(
+                          index + 1,
+                          imageUrlExcel.length
+                        );
+                        const newdata2 = [...sb1, ...sb2];
+                        const newData = [...subarr1, ...subarr2];
+                        setImageUrlExcel(newdata2);
+                        setExcelAttachment(newData);
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p style={{ fontSize: "12.2px", marginTop: "5px", color: "gray" }}>
+              no data available click button to fill
+            </p>
+          )}
+        </div>
+        <button
+          className={styles.add_attach_button}
+          onClick={() => {
+            setConc(false);
+            setIntro(false);
+            setIsShowing(false);
+            setIsUploading(false);
+            setIsUploadingAttach(true);
+            setIsShowingExcel(false);
+          }}
+        >
+          Add Excel Attachment
         </button>
       </div>
       {intro ? (
@@ -400,7 +546,7 @@ No other damages were noted or reported on the site.`,
               handleChange(e, 0);
             }}
             className={styles.intro_textarea}
-            placeholder="conclusion ..."
+            placeholder="Conclusion ..."
           ></textarea>{" "}
           <p
             onClick={() => {
@@ -447,6 +593,55 @@ No other damages were noted or reported on the site.`,
             ></input>
             <div>
               <button className={styles.add_btn} onClick={addAttachments}>
+                Add
+              </button>
+              {/* <input
+                type="file"
+                name="image"
+                autoComplete="true"
+                onChange={handleImageChange}
+              ></input> */}
+
+              {/* <button className={styles.delete_btn}>Delete</button> */}
+            </div>
+          </div>
+        </div>
+      ) : isUploadingAttach ? (
+        <div className={styles.items}>
+          <p className={styles.add_attach_title}>Add Excel Attachment </p>
+          {/* <p className={styles.des}>Description</p>
+          <input
+            value={itemsData.description}
+            name="description"
+            onChange={handleAttachmentChange}
+            className={styles.client_input}
+            placeholder="description ..."
+          ></input> */}
+          {/* <p className={styles.des}>Title</p>
+          <input
+            value={itemsData.title}
+            name="title"
+            onChange={handleAttachmentChange}
+            className={styles.client_input}
+            placeholder="title ..."
+          ></input> */}
+          <p className={styles.des}>Attachment</p>
+          <div className={styles.img}>
+            <img className={styles.avatar} src={cuurentExcel}></img>
+          </div>
+          <div>
+            <input
+              className={styles.input2}
+              type="file"
+              name="avatarExcel"
+              id="avatar"
+              placeholder="avatar"
+              // value={registerData.avatar}
+              onChange={handleAvatarchangeExcel}
+              autoComplete="true"
+            ></input>
+            <div>
+              <button className={styles.add_btn} onClick={addAttachmentsExcel}>
                 Add
               </button>
               {/* <input
@@ -521,6 +716,81 @@ No other damages were noted or reported on the site.`,
                 className={styles.add_btn}
                 onClick={(e) => {
                   handleShowingImageChange(e, page);
+                }}
+              >
+                Update
+              </button>
+              {/* <input
+                type="file"
+                name="image"
+                autoComplete="true"
+                onChange={handleImageChange}
+              ></input> */}
+
+              {/* <button className={styles.delete_btn}>Delete</button> */}
+            </div>
+          </div>
+        </div>
+      ) : isShowingExcel ? (
+        <div className={styles.items}>
+          <p className={styles.add_attach_title}>Attachment {pageExcel + 1}</p>
+          {/* <p className={styles.des}>Description</p>
+          <input
+            value={
+              excelAttachment.length != 0
+                ? excelAttachment[pageExcel] &&
+                  excelAttachment[pageExcel].description
+                : ""
+            }
+            onChange={(e) => {
+              handleShowingChangeExcel(e, pageExcel);
+            }}
+            name="description"
+            className={styles.client_input}
+            placeholder="description ..."
+          ></input>
+          <p className={styles.des}>Title</p>
+          <input
+            value={
+              excelAttachment.length != 0
+                ? excelAttachment[pageExcel] && excelAttachment[pageExcel].title
+                : ""
+            }
+            onChange={(e) => {
+              handleShowingChangeExcel(e, pageExcel);
+            }}
+            name="title"
+            className={styles.client_input}
+            placeholder="title ..."
+          ></input> */}
+          <p className={styles.des}>Attachment</p>
+          <div className={styles.img}>
+            <img
+              className={styles.prev_image}
+              src={
+                ismain
+                  ? excelAttachment[pageExcel] &&
+                    excelAttachment[pageExcel].attachmentUrl
+                  : imageUrlExcel[pageExcel] && imageUrlExcel[pageExcel].imgurl
+              }
+            ></img>
+          </div>
+          <div>
+            <input
+              className={styles.input2}
+              type="file"
+              name="avatarExcel"
+              id="avatar"
+              placeholder="avatar"
+              // value={registerData.avatar}
+              onChange={handleAvatarchangeExcel}
+              autoComplete="true"
+            ></input>
+            <div>
+              <button
+                className={styles.add_btn}
+                onClick={(e) => {
+                  handleShowingImageChangeExcel(e, pageExcel);
                 }}
               >
                 Update

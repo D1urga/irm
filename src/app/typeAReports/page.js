@@ -86,8 +86,10 @@ export default function HomePage() {
     observationsAndVerificationsAttach,
     setObservationsAndVerificationsAttach,
   ] = useState([]);
+  const [excelAttachment, setExcelAttachment] = useState([]);
 
   const [imageUrl, setImageUrl] = useState([]);
+  const [imageUrlExcel, setImageUrlExcel] = useState([]);
   const [ismain, setIsmain] = useState(true);
   const [conImageUrl, setConImageUrl] = useState([]);
   const [
@@ -232,6 +234,7 @@ export default function HomePage() {
       "observationsAndVerificationsAttach",
       JSON.stringify(observationsAndVerificationsAttach)
     );
+    formData.append("excelAttachment", JSON.stringify(excelAttachment));
     formData.append("conclusionTable", JSON.stringify(conclusionTable));
     formData.append(
       "periodOfInsurance",
@@ -261,10 +264,13 @@ export default function HomePage() {
     );
 
     for (let i = 0; i < imageUrl.length; i++) {
-      formData.append(`img${i + 1}`, imageUrl[i].url);
+      formData.append(`img1`, imageUrl[i].url);
     }
     for (let i = 0; i < conImageUrl.length; i++) {
-      formData.append(`img${i + 11}`, conImageUrl[i].url);
+      formData.append(`img2`, conImageUrl[i].url);
+    }
+    for (let i = 0; i < imageUrlExcel.length; i++) {
+      formData.append(`img3`, imageUrlExcel[i].url);
     }
 
     const response = await axios({
@@ -475,10 +481,14 @@ export default function HomePage() {
           setObservationsAndVerificationsImages={
             setObservationsAndVerificationsImages
           }
+          excelAttachment={excelAttachment}
+          setExcelAttachment={setExcelAttachment}
           ismain={ismain}
           setIsmain={setIsmain}
           imageUrl={imageUrl}
           setImageUrl={setImageUrl}
+          imageUrlExcel={imageUrlExcel}
+          setImageUrlExcel={setImageUrlExcel}
           onClickFun={() => {
             setCurrentState(0);
           }}
@@ -1830,6 +1840,23 @@ export default function HomePage() {
           >
             {observationsAndVerificationsData[0].conclusion}
           </p>
+          <p
+            style={{
+              fontSize: "15px",
+              marginTop: "15px",
+              marginBottom: "15px",
+              fontWeight: "550",
+            }}
+          >
+            Excel Attachment
+          </p>
+          {excelAttachment.map((data, index) => (
+            <img
+              key={index}
+              src={data.attachmentUrl}
+              style={{ width: "100%" }}
+            ></img>
+          ))}
           <p
             style={{
               fontSize: "17px",
